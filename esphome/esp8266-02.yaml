@@ -1,0 +1,61 @@
+substitutions:
+  devicename: "esp8266-02"
+  friendly_devicename: "Kamin"
+  room: "Esszimmer"
+  comment: "Kamin"
+  project_name: "Wemos.D1 Mini ESP8266"
+  project_version: "1.0"
+  dallas_address: "0xcc3c620457962328"
+  dallas_pin_number: D4
+
+<<: !include devicetypes/esp8266-d1-mini_v2.yaml
+
+esphome:
+  <<: !include common/section-esphome.yaml
+
+<<: !include common/section-system.yaml
+
+# MAX6675 Thermo couple sensor
+spi:
+  miso_pin: D0
+  clk_pin: D1
+
+dallas:
+  - <<: !include common/sensor/dallas.yaml
+
+binary_sensor:
+  - <<: !include common/binary_sensor/status.yaml
+
+sensor:
+  - <<: !include common/sensor/uptime.yaml
+  - <<: !include common/sensor/wifi_signal.yaml
+
+  - platform: max6675
+    name: "Chimney Temperature"
+    id: chimney_temperature
+    update_interval: 60s
+    filters:
+      - lambda: return (x * 10) / 10.0;
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+
+# MAX6675 Thermo couple sensor
+  - <<: !include common/sensor/max6675.yaml
+  - <<: !include common/sensor/ds18b20.yaml
+
+binary_sensor:
+  - <<: !include common/text_sensor/version.yaml
+  - platform: template
+    name: "Zustand"
+    id: zustand
+    icon: mdi:fireplace
+    lambda: |-
+      if (id(dallas_temperature).state > 40) {
+        return true;
+      } else {
+        return false;
+      }
+
+
+button:
+  - <<: !include common/button/restart.yaml

@@ -1,0 +1,32 @@
+esphome:
+  name: ${devicename}
+  friendly_name: ${friendly_devicename}
+  comment: "${comment}"
+  #name_add_mac_suffix: true
+  project:
+    name: "${project_name}"
+    version: "${project_version}"
+  # OTA password change
+  #on_boot:
+    #- lambda: |-
+        #id(ota_pw).set_auth_password("Globus-Especial-23#");
+
+<<: !include generic/api.yaml
+<<: !include generic/logger.yaml
+<<: !include generic/mdns.yaml
+<<: !include generic/ota.yaml
+<<: !include generic/time.yaml
+<<: !include generic/wifi.yaml
+
+text_sensor:
+  <<: !include text_sensor/version.yaml
+
+binary_sensor:
+  <<: !include binary_sensor/status.yaml
+
+sensor:
+  <<: !include sensor/uptime.yaml
+  <<: !include sensor/wifi_signal.yaml
+
+button:
+  <<: !include button/restart.yaml

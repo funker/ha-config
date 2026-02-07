@@ -1,0 +1,9 @@
+substitutions:
+  devicename: "blitzwolfshp9-01"
+  friendly_devicename: "Powerstrip Flur EG"
+  room: "Flur EG"
+  comment: "Blitzwolf SHP9 Powerstrip Flur EG"
+  project_name: "Blitzwolf.SHP9"
+  project_version: "1.0"
+
+<<: !include devicetypes/blitzwolf-shp9.yaml

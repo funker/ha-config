@@ -1,0 +1,23 @@
+- binary_sensor:
+    - name: "Status Jan Krank"
+      unique_id: status_jan_krank
+      state: >
+        {{ is_state_attr('calendar.jan_amundsen_cc', 'message', 'Krank') 
+          and state_attr('calendar.jan_amundsen_cc', 'all_day', False)
+          and is_state('calendar.jan_amundsen_cc', 'on') }}
+
+    - name: "Status Jan Urlaub Zu Hause"
+      unique_id: status_jan_urlaub_zu_hause
+      state: >
+        {{ is_state_attr('calendar.jan_amundsen_cc', 'message', 'Urlaub')
+          and (state_attr('calendar.jan_amundsen_cc', 'location', '') in ['', 'Zu Hause', 'Zuhause'])
+          and state_attr('calendar.jan_amundsen_cc', 'all_day', False)
+          and is_state('calendar.jan_amundsen_cc', 'on') }}
+
+    - name: "Status Jan Urlaub Nicht Zu Hause"
+      unique_id: status_jan_urlaub_nicht_zu_hause
+      state: >
+        {{ is_state_attr('calendar.jan_amundsen_cc', 'message', 'Urlaub')
+          and state_attr('calendar.jan_amundsen_cc', 'location', '') not in ['', 'Zu Hause', 'Zuhause']
+          and state_attr('calendar.jan_amundsen_cc', 'all_day', False)
+          and is_state('calendar.jan_amundsen_cc', 'on') }}

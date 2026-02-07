@@ -1,0 +1,9 @@
+substitutions:
+  devicename: "athompresence02"
+  friendly_devicename: "Präsenz Keller"
+  room: "Keller"
+  comment: "Athom Presence Sensor Keller"
+  project_name: "Athom.Presence Sensor"
+  project_version: "1.0"
+
+<<: !include devicetypes/athom-presence.yaml

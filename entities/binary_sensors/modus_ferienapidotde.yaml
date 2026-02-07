@@ -1,0 +1,146 @@
+# Groups
+# https://www.home-assistant.io/components/group/
+
+- platform: ferienapidotde
+  name: Ferien heute Baden-Württemberg
+  state_code: BW
+
+- platform: ferienapidotde
+  name: Ferien morgen Baden-Württemberg
+  state_code: BW
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Bayern
+  state_code: BY
+
+- platform: ferienapidotde
+  name: Ferien morgen Bayern
+  state_code: BY
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Berlin
+  state_code: BE
+
+- platform: ferienapidotde
+  name: Ferien morgen Berlin
+  state_code: BE
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Brandenburg
+  state_code: BB
+
+- platform: ferienapidotde
+  name: Ferien morgen Brandenburg
+  state_code: BB
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Bremen
+  state_code: HB
+
+- platform: ferienapidotde
+  name: Ferien morgen Bremen
+  state_code: HB
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Hamburg
+  state_code: HH
+
+- platform: ferienapidotde
+  name: Ferien morgen Hamburg
+  state_code: HH
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Hessen
+  state_code: HE
+
+- platform: ferienapidotde
+  name: Ferien morgen Hessen
+  state_code: HE
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Mecklenburg-Vorpommern
+  state_code: MV
+
+- platform: ferienapidotde
+  name: Ferien morgen Mecklenburg-Vorpommern
+  state_code: MV
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Niedersachsen
+  state_code: NI
+
+- platform: ferienapidotde
+  name: Ferien morgen Niedersachsen
+  state_code: NI
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Nordrhein-Westfalen
+  state_code: NW
+
+- platform: ferienapidotde
+  name: Ferien morgen Nordrhein-Westfalen
+  state_code: NW
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Rheinland-Pfalz
+  state_code: RP
+
+- platform: ferienapidotde
+  name: Ferien morgen Rheinland-Pfalz
+  state_code: RP
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Saarland
+  state_code: SL
+
+- platform: ferienapidotde
+  name: Ferien morgen Saarland
+  state_code: SL
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Sachsen
+  state_code: SN
+
+- platform: ferienapidotde
+  name: Ferien morgen Sachsen
+  state_code: SN
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Sachsen-Anhalt
+  state_code: ST
+
+- platform: ferienapidotde
+  name: Ferien morgen Sachsen-Anhalt
+  state_code: ST
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Schleswig-Holstein
+  state_code: SH
+
+- platform: ferienapidotde
+  name: Ferien morgen Schleswig-Holstein
+  state_code: SH
+  days_offset: 1
+
+- platform: ferienapidotde
+  name: Ferien heute Thüringen
+  state_code: TH
+
+- platform: ferienapidotde
+  name: Ferien morgen Thüringen
+  state_code: TH
+  days_offset: 1

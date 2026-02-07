@@ -1,0 +1,12 @@
+# Base settings
+<<: !include ../common/device_base.yaml
+
+# Web Server
+<<: !include ../common/generic/web_server.yaml
+
+# Captive Portal
+<<: !include ../common/generic/captive_portal.yaml
+
+# Board selection
+<<: !include ../boards/esp8266-esp8285.yaml
+

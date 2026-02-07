@@ -1,0 +1,6 @@
+pin: 
+  number: ${dallas_pin_number}
+  mode:
+    input: true
+    pullup: true
+update_interval: 10s 

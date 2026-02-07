@@ -1,0 +1,6 @@
+- platform: ultrasonic
+  trigger_pin: ${trigger_pin}
+  echo_pin: ${echo_pin}
+  name: "Entfernung"
+  icon: mdi:tape-measure
+  update_interval: 1s

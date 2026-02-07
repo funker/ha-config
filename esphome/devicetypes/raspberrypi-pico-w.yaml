@@ -1,0 +1,6 @@
+# Base settings
+<<: !include ../common/device_base.yaml
+
+# Board selection
+<<: !include ../boards/rp2040.yaml
+

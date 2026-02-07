@@ -1,0 +1,114 @@
+# ------------------------------------------------
+# Basis: Alles ignorieren, dann gezielt erlauben
+# ------------------------------------------------
+*
+
+# Diese Dateitypen / Dateien dürfen ins Repo
+!*.yaml
+!.gitignore
+!*.md
+!README*
+!LICENSE
+
+# Falls du bestimmte Ordner mit YAML-Strukturen behalten willst
+!automations/
+!automation/
+!scripts/
+!scenes/
+!sensors/
+!binary_sensors/
+!integrations/
+!templates/
+!blueprints/
+!entities/
+!entities/**/
+!entities/**/*.yaml
+!esphome/
+!esphome/**/
+!esphome/**/*.yaml
+
+# ------------------------------------------------
+# Eigene Dateien
+# ------------------------------------------------
+
+# ------------------------------------------------
+# Home Assistant interne Daten / Caches / Logs
+# ------------------------------------------------
+# Logs & Datenbanken
+home-assistant.log*
+*.log
+*.db
+*.db-*
+*.db-shm
+*.db-wal
+*.sqlite
+
+# HA-Interne Ordner
+.storage/
+.cloud/
+deps/
+tts/
+media/
+image/
+
+# Laufzeit-Dateien
+.HA_VERSION
+core
+home-assistant_v2.db*
+.ha_run.lock
+
+# ------------------------------------------------
+# Dateien mit Zugangsdaten & Tokens
+# ------------------------------------------------
+secrets.yaml
+ip_bans.yaml
+known_devices.yaml
+.google.token
+*.google.token
+.google*.json
+google_calendars.yaml
+shopping_list.json
+.shopping_list.json
+spotify.yaml
+.spotify-token-cache
+.ip_authenticated.yaml
+# notify.yaml
+solcast_solar/
+.ssh/
+/entities/binary_sensors/modus_urlaub.yaml
+*hohage*
+
+# Service-Accounts & weitere Credentials
+SERVICE_ACCOUNT.json
+googleassistant_serviceaccount.json
+includes/googleassistant_serviceaccount.json
+.sonoff.json
+
+# ------------------------------------------------
+# ESPHome / zusätzliche Secrets
+# ------------------------------------------------
+esphome/secrets.yaml
+esphome/common/secrets.yaml
+
+# ------------------------------------------------
+# HACS & Custom Components (werden separat verwaltet)
+# ------------------------------------------------
+custom_components/
+www/community/
+www/camera/doorbell/
+themes/
+
+# ------------------------------------------------
+# IDE-/Editor-/System-Dateien
+# ------------------------------------------------
+.vscode/
+.idea/
+*.iml
+*.swp
+.Trash*
+.old
+.bak
+._*
+__pycache__/
+*.pyc
+.pc-session

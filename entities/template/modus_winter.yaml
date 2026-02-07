@@ -1,0 +1,29 @@
+# Modus Winter
+
+# True if the current date is in the specified time range
+
+sensor:
+  - name: "Modus Winter"
+    unique_id: modus_winter
+    icon: "mdi:snowflake"
+    state: >
+      {% set date_start = states('input_datetime.modus_winter_datum_start')[5:] %}
+      {% set date_end = states('input_datetime.modus_winter_datum_ende')[5:] %}
+      {% set current_date = now().strftime('%m-%d') %}
+      {{ (date_start <= current_date <= '12-31'
+          or '01-01' <= current_date <= date_end)
+          and not is_state('input_boolean.modus_urlaub_home', 'on')
+          and not is_state('input_boolean.modus_urlaub_away', 'on') }}
+
+
+# platform: template
+# sensors:
+#   modus_winter:
+#     friendly_name: Modus Winter
+#     unique_id: modus_winter
+#     icon_template: mdi:snowflake
+#     value_template: >-
+#       {% set date_start = states('input_datetime.modus_winter_datum_start')[5:] %}
+#       {% set date_end = states('input_datetime.modus_winter_datum_ende')[5:] %}
+#       {% set current_date = now().strftime('%m-%d') %}
+#       {{ (date_start <= current_date <= '12-31' or '01-01' <= current_date <= date_end) and not is_state('input_boolean.modus_urlaub_home', 'on') and not is_state('input_boolean.modus_urlaub_away', 'on') }}

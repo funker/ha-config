@@ -1,0 +1,10 @@
+- binary_sensor:
+    - name: "Modus Nacht"
+      unique_id: modus_nacht
+      icon: mdi:weather-night
+      state: >-
+        {% set time = now().strftime('%H:%M') %}
+        {% set start_time = '21:30' %}
+        {% set end_time = '06:30' %}
+        {{ (start_time <= time < '24:00') or ('00:00' <= time < end_time) }}
+

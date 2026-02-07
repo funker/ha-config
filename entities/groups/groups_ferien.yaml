@@ -1,0 +1,39 @@
+ferien_heute:
+  name: Ferien Heute
+  entities:
+    - binary_sensor.ferien_heute_baden_wurttemberg
+    - binary_sensor.ferien_heute_bayern
+    - binary_sensor.ferien_heute_berlin
+    - binary_sensor.ferien_heute_brandenburg
+    - binary_sensor.ferien_heute_bremen
+    - binary_sensor.ferien_heute_hamburg
+    - binary_sensor.ferien_heute_hessen
+    - binary_sensor.ferien_heute_mecklenburg_vorpommern
+    - binary_sensor.ferien_heute_niedersachsen
+    - binary_sensor.ferien_heute_nordrhein_westfalen
+    - binary_sensor.ferien_heute_rheinland_pfalz
+    - binary_sensor.ferien_heute_saarland
+    - binary_sensor.ferien_heute_sachsen
+    - binary_sensor.ferien_heute_sachsen_anhalt
+    - binary_sensor.ferien_heute_schleswig_holstein
+    - binary_sensor.ferien_heute_thuringen
+
+ferien_morgen:
+  name: Ferien Morgen
+  entities:
+    - binary_sensor.ferien_morgen_baden_wurttemberg
+    - binary_sensor.ferien_morgen_bayern
+    - binary_sensor.ferien_morgen_berlin
+    - binary_sensor.ferien_morgen_brandenburg
+    - binary_sensor.ferien_morgen_bremen
+    - binary_sensor.ferien_morgen_hamburg
+    - binary_sensor.ferien_morgen_hessen
+    - binary_sensor.ferien_morgen_mecklenburg_vorpommern
+    - binary_sensor.ferien_morgen_niedersachsen
+    - binary_sensor.ferien_morgen_nordrhein_westfalen
+    - binary_sensor.ferien_morgen_rheinland_pfalz
+    - binary_sensor.ferien_morgen_saarland
+    - binary_sensor.ferien_morgen_sachsen
+    - binary_sensor.ferien_morgen_sachsen_anhalt
+    - binary_sensor.ferien_morgen_schleswig_holstein
+    - binary_sensor.ferien_morgen_thuringen

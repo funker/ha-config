@@ -1,0 +1,19 @@
+# Configuration splitting
+# https://github.com/jonathanadams/Home-Assistant-Configuration/tree/master
+
+homeassistant:
+  # Load packages
+  packages: !include_dir_named integrations
+
+my:
+
+script: !include scripts.yaml
+
+# image_processing:
+#   - platform: zbar
+#     source:
+#       - entity_id: camera.haustuer
+#     name: qr_code_detection
+#     scan_interval: 60
+#     constraints:
+#       - qr_code

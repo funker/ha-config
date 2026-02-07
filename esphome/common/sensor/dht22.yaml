@@ -1,0 +1,9 @@
+- platform: dht
+  pin: ${dht22_pin_number}
+  temperature:
+    name: "Temperatur"
+  humidity:
+    name: "Relative Luftfeuchtigkeit"
+    accuracy_decimals: 1
+  update_interval: 60s
+  

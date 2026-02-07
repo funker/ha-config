@@ -1,0 +1,29 @@
+- sensor:
+    - unique_id: open_doors_counter
+      default_entity_id: sensor.open_doors_counter
+      name: Zähler offene Türen
+      icon: mdi:door-open
+      state: "{{ expand('binary_sensor.gruppe_turen') | selectattr('state', 'eq', 'on') | list | count }}"
+
+- sensor:
+    - unique_id: open_doors_message
+      default_entity_id: sensor.open_doors_message
+      name: "Nachricht offene Türen"
+      icon: "mdi:door-open"
+      state: >
+        {% set door_entities = state_attr('binary_sensor.gruppe_turen', 'entity_id') %}
+        {% if door_entities is none %}
+          {% set door_entities = [] %}
+        {% endif %}
+
+        {% set doors_open = states.binary_sensor
+          | selectattr('entity_id', 'in', door_entities)
+          | selectattr('state', 'eq', 'on')
+          | map(attribute='name')
+          | list %}
+
+        {% set message = 'Keine offenen Türen.' if doors_open | length == 0 else
+          'Die folgende Tür ist offen: ' + doors_open[0] if doors_open | length == 1 else
+          'Die folgenden Türen sind offen: ' + doors_open | join(', ') + '.' %}
+
+        {{ message }}
