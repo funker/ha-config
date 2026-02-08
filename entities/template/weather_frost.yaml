@@ -10,22 +10,3 @@ sensor:
       {% else %}
         false
       {% endif %}
-
-# platform: template
-# sensors:
-#   frost_tomorrow:
-#     friendly_name: "Frost erwartet"
-#     unique_id: frost_tomorrow
-#     icon_template: mdi:snowflake-alert
-#     value_template: >
-#       {% set forecast = state_attr('weather.cast_home_assistant', 'forecast') %}
-#       {% if forecast %}
-#         {% set tomorrow = forecast[1] %}
-#         {% if tomorrow.templow <= 1 %}
-#           true
-#         {% else %}
-#           false
-#         {% endif %}
-#       {% else %}
-#         false
-#       {% endif %}

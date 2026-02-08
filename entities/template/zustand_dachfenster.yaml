@@ -22,39 +22,3 @@ binary_sensor:
       {% else %}
         phu:tilt-window-closed
       {% endif %}
-
-# platform: template
-# sensors:
-#   dachfenster_links:
-#     friendly_name: Dachfenster links Zustand
-#     device_class: window
-#     unique_id: dachfenster_links_zustand
-#     value_template: >-
-#       {% if state_attr('cover.dachfenster_links', 'current_position') != 0 %}
-#         on
-#       {% else %}
-#         off
-#       {% endif %}
-#     icon_template: >-
-#       {% if state_attr('cover.dachfenster_links', 'current_position') != 0 %}
-#         phu:tilt-window-closed
-#       {% else %}
-#         phu:tilt-window-open
-#       {% endif %}
-
-#   dachfenster_rechts:
-#     friendly_name: Dachfenster rechts Zustand
-#     device_class: window
-#     unique_id: dachfenster_rechts_zustand
-#     value_template: >-
-#       {% if state_attr('cover.dachfenster_rechts', 'current_position') != 0 %}
-#         on
-#       {% else %}
-#         off
-#       {% endif %}
-#     icon_template: >-
-#       {% if state_attr('cover.dachfenster_rechts', 'current_position') != 0 %}
-#         phu:tilt-window-closed
-#       {% else %}
-#         phu:tilt-window-open
-#       {% endif %}

@@ -10,22 +10,3 @@ sensor:
       {% else %}
         false
       {% endif %}
-
-# platform: template
-# sensors:
-#   rain_tomorrow:
-#     friendly_name: "Regen erwartet"
-#     unique_id: modus_rain_tomorrow
-#     icon_template: mdi:weather-rainy
-#     value_template: >
-#       {% set forecast = state_attr('weather.forecast_home_assistant', 'forecast') %}
-#       {% if forecast %}
-#         {% set tomorrow = forecast[1] %}
-#         {% if 'rain' in tomorrow.condition %}
-#           true
-#         {% else %}
-#           false
-#         {% endif %}
-#       {% else %}
-#         false
-#       {% endif %}

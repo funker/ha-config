@@ -1,117 +1,44 @@
-platform: template
-sensors:
-  modus_urlaub_home:
-    friendly_name: Modus Urlaub Home
+# entities/binary_sensors/modus_urlaub.yaml (HA 2026 kompatibel)
+
+binary_sensor:
+  - type: template
+    name: "Modus Urlaub Home" 
     unique_id: modus_urlaub_home
-    icon_template: mdi:home
-    value_template: >
+    icon: mdi:home
+    device_class: occupancy
+    state: >
       {% set locations = ['Zuhause', 'Zu Hause', 'sinena', ''] %}
       {% set keywords = ['Urlaub', 'Holiday'] %}
-      {% set message_steffi = state_attr('calendar.steffi', 'message') %}
-      {% set location_steffi = state_attr('calendar.steffi', 'location') %}
-      {% set all_day_steffi = state_attr('calendar.steffi', 'all_day') %}
-      {% set message_jan = state_attr('calendar.jan', 'message') %}
-      {% set location_jan = state_attr('calendar.jan', 'location') %}
-      {% set all_day_jan = state_attr('calendar.jan', 'all_day') %}
+      {% set message_steffi = state_attr('calendar.steffi', 'message') or '' %}
+      {% set location_steffi = state_attr('calendar.steffi', 'location') or '' %}
+      {% set message_jan = state_attr('calendar.jan', 'message') or '' %}
+      {% set location_jan = state_attr('calendar.jan', 'location') or '' %}
 
-      {% set steffi_match = false %}
-      {% set jan_match = false %}
+      {% set steffi_match = keywords | select('lower') | select('in', message_steffi.lower()) | list %}
+      {% set jan_match = keywords | select('lower') | select('in', message_jan.lower()) | list %}
 
-      {# Check if any keyword is in Steffi's message (case-insensitive) #}
-      {% for keyword in keywords %}
-        {% if keyword.lower() in message_steffi.lower() %}
-          {% set steffi_match = true %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
+      {% set steffi_home = steffi_match | length > 0 and location_steffi in locations %}
+      {% set jan_home = jan_match | length > 0 and location_jan in locations %}
 
-      {# Check if any keyword is in Jan's message (case-insensitive) #}
-      {% for keyword in keywords %}
-        {% if keyword.lower() in message_jan.lower() %}
-          {% set jan_match = true %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-
-      {# Determine if location is in the list or empty for Steffi #}
-      {% if steffi_match %}
-        {% if location_steffi in locations %}
-          {% set steffi_home = true %}
-        {% else %}
-          {% set steffi_home = false %}
-        {% endif %}
-      {% else %}
-        {% set steffi_home = false %}
-      {% endif %}
-
-      {# Determine if location is in the list or empty for Jan #}
-      {% if jan_match %}
-        {% if location_jan in locations %}
-          {% set jan_home = true %}
-        {% else %}
-          {% set jan_home = false %}
-        {% endif %}
-      {% else %}
-        {% set jan_home = false %}
-      {% endif %}
-
-      {# Final determination for modus_urlaub_home #}
       {{ steffi_home or jan_home }}
 
-  modus_urlaub_away:
-    friendly_name: Modus Urlaub Away
+  - type: template
+    name: "Modus Urlaub Away"
     unique_id: modus_urlaub_away
-    icon_template: mdi:island
-    value_template: >
+    icon: mdi:island
+    device_class: occupancy
+    state: >
       {% set locations = ['Zuhause', 'Zu Hause', 'sinena', ''] %}
       {% set keywords = ['Urlaub', 'Holiday'] %}
-      {% set message_steffi = state_attr('calendar.steffi', 'message') %}
-      {% set location_steffi = state_attr('calendar.steffi', 'location') %}
-      {% set all_day_steffi = state_attr('calendar.steffi', 'all_day') %}
-      {% set message_jan = state_attr('calendar.jan', 'message') %}
-      {% set location_jan = state_attr('calendar.jan', 'location') %}
-      {% set all_day_jan = state_attr('calendar.jan', 'all_day') %}
+      {% set message_steffi = state_attr('calendar.steffi', 'message') or '' %}
+      {% set location_steffi = state_attr('calendar.steffi', 'location') or '' %}
+      {% set message_jan = state_attr('calendar.jan', 'message') or '' %}
+      {% set location_jan = state_attr('calendar.jan', 'location') or '' %}
 
-      {% set steffi_match = false %}
-      {% set jan_match = false %}
+      {% set steffi_match = keywords | select('lower') | select('in', message_steffi.lower()) | list %}
+      {% set jan_match = keywords | select('lower') | select('in', message_jan.lower()) | list %}
 
-      {# Check if any keyword is in Steffi's message (case-insensitive) #}
-      {% for keyword in keywords %}
-        {% if keyword.lower() in message_steffi.lower() %}
-          {% set steffi_match = true %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
+      {% set steffi_away = steffi_match | length > 0 and location_steffi not in locations %}
+      {% set jan_away = jan_match | length > 0 and location_jan not in locations %}
 
-      {# Check if any keyword is in Jan's message (case-insensitive) #}
-      {% for keyword in keywords %}
-        {% if keyword.lower() in message_jan.lower() %}
-          {% set jan_match = true %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-
-      {# Determine if location is not in the list or is empty for Steffi #}
-      {% if steffi_match %}
-        {% if location_steffi not in locations %}
-          {% set steffi_away = true %}
-        {% else %}
-          {% set steffi_away = false %}
-        {% endif %}
-      {% else %}
-        {% set steffi_away = false %}
-      {% endif %}
-
-      {# Determine if location is not in the list or is empty for Jan #}
-      {% if jan_match %}
-        {% if location_jan not in locations %}
-          {% set jan_away = true %}
-        {% else %}
-          {% set jan_away = false %}
-        {% endif %}
-      {% else %}
-        {% set jan_away = false %}
-      {% endif %}
-
-      {# Final determination for modus_urlaub_away #}
       {{ steffi_away or jan_away }}

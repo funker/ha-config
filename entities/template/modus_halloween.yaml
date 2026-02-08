@@ -9,14 +9,3 @@ sensor:
     state: >
       {% set current_date = now().strftime('%m-%d') %}
       {{ current_date == '10-31' }}
-
-# platform: template
-# sensors:
-#   modus_halloween:
-#     friendly_name: Modus Halloween
-#     unique_id: modus_halloween
-#     icon_template: mdi:halloween
-#     value_template: >-
-#       {% set current_date = now().strftime('%m-%d') %}
-#       {% set halloween_date = '10-31' %}
-#       {{ current_date == halloween_date }}
