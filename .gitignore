@@ -86,3 +86,4 @@ __pycache__/
 .Trash*/
 .old
 .bak
+disabled_*
