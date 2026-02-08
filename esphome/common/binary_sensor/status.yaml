@@ -1,0 +1,3 @@
+- platform: status
+  name: "Status"
+  icon: mdi:check-circle

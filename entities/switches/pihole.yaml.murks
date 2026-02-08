@@ -1,0 +1,7 @@
+# switch:
+  - platform: command_line
+    switches:
+      pihole_blacklist_toggle:
+        command_on: ssh 10.1.1.248 pihole -w -d Guckverbot
+        command_off: ssh 10.1.1.248 pihole -w Guckverbot
+        friendly_name: "Guckverbot"

@@ -1,0 +1,6 @@
+- sensor:
+    name: "Sonnenwinkel"
+    unique_id: sonnenwinkel
+    unit_of_measurement: "°"
+    icon: mdi:sun-angle-outline
+    state: "{{ '%+.1f' | format(state_attr('sun.sun', 'elevation') | float(0)) }}"

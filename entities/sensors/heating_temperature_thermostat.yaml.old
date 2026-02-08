@@ -1,0 +1,33 @@
+platform: template
+sensors:
+  heizung_bad_temperatur_thermostat:
+    unique_id: heizung_bad_temperatur_thermostat
+    friendly_name: Heizung Bad Temperatur Thermostat
+    unit_of_measurement: "°C"
+    device_class: temperature
+    icon_template: mdi:temperature-celsius
+    value_template: "{{ state_attr('climate.heizung_bad', 'current_temperature') }}"
+
+  heizung_lasse_temperatur_thermostat:
+    unique_id: heizung_lasse_temperatur_thermostat
+    friendly_name: Heizung Lasse Temperatur Thermostat
+    unit_of_measurement: "°C"
+    device_class: temperature
+    icon_template: mdi:temperature-celsius
+    value_template: "{{ state_attr('climate.heizung_lasse', 'current_temperature') }}"
+
+  heizung_steffi_temperatur_thermostat:
+    unique_id: heizung_steffi_temperatur_thermostat
+    friendly_name: Heizung Steffi Temperatur Thermostat
+    unit_of_measurement: "°C"
+    device_class: temperature
+    icon_template: mdi:temperature-celsius
+    value_template: "{{ state_attr('climate.heizung_steffi', 'current_temperature') }}"
+
+  heizung_tim_temperatur_thermostat:
+    unique_id: heizung_tim_temperatur_thermostat
+    friendly_name: Heizung Tim Temperatur Thermostat
+    unit_of_measurement: "°C"
+    device_class: temperature
+    icon_template: mdi:temperature-celsius
+    value_template: "{{ state_attr('climate.heizung_tim', 'current_temperature') }}"

@@ -1,0 +1,4 @@
+- platform: version
+  name: "Version"
+  icon: mdi:cube-outline
+  hide_timestamp: true

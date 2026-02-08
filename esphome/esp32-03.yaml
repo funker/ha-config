@@ -1,0 +1,22 @@
+substitutions:
+  devicename: "esp32-03"
+  friendly_devicename: "Fan-Controller"
+  room: "Datacenter"
+  comment: "Serverschrank Fan-Controller"
+  project_name: "Espressif.ESP32"
+  project_version: "1.0"
+
+esphome:
+  <<: !include common/section-esphome.yaml
+
+# Throttle writing parameters to the internal flash memory to reduce ESP memory wear / degradation
+preferences:
+  flash_write_interval: 15min
+
+<<: !include common/section-system.yaml
+
+# Board selection
+<<: !include boards/esp32.yaml
+
+<<: !include custom/fan_controller.yaml
+

@@ -1,0 +1,26 @@
+# Modus Weihnachtszeit
+
+# True if current date is between December 1st and January 6th
+
+sensor:
+  - name: "Modus Weihnachtszeit"
+    unique_id: modus_weihnachtszeit
+    icon: "mdi:string-lights"
+    state: >
+      {% set current_date = now().strftime('%m-%d') %}
+      {% set start_date = states('input_datetime.modus_weihnachtszeit_datum_start') | regex_replace('^\d{4}-', '') %}
+      {% set end_date = states('input_datetime.modus_weihnachtszeit_datum_ende') | regex_replace('^\d{4}-', '') %}
+      {{ start_date <= current_date <= end_date }}
+
+# platform: template
+# sensors:
+#   modus_weihnachtszeit:
+#     friendly_name: Modus Weihnachtszeit
+#     unique_id: modus_weihnachtszeit
+#     icon_template: mdi:string-lights
+#     value_template: >-
+#       {% set current_date = now().strftime('%m-%d') %}
+#       {% set start_date = states('input_datetime.modus_weihnachtszeit_datum_start') | regex_replace('^\d{4}-', '') %}
+#       {% set end_date = states('input_datetime.modus_weihnachtszeit_datum_ende') | regex_replace('^\d{4}-', '') %}
+
+#       {{ start_date <= current_date <= end_date }}

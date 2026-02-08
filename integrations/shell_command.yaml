@@ -1,0 +1,8 @@
+# Shell Command
+# https://www.home-assistant.io/integrations/shell_command/
+
+# shell_command: !include_dir_list ../entities/shell_command
+
+shell_command:
+  # https://youtu.be/hhv-WqGUy_o?si=e2CVS_rsAaDy90bY
+  pushupdates_to_github: /bin/bash pushupdates.sh

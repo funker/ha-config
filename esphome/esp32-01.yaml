@@ -1,0 +1,212 @@
+.script_flashing: !include &flashing scripts/rain-flashing.yaml
+
+substitutions:
+  devicename: "esp32-01"
+  friendly_devicename: "Regensensor"
+  room: "Garten"
+  comment: "Regensensor"
+  project_name: "Espressif.ESP32"
+  project_version: "1.0"
+
+  # TODO: Handle case where resistance higher than max_resistance
+  resistor_value: "9.868kOhm"
+
+  # Skip the value not in the range
+  min_resistance: "1000"
+  max_resistance: "500000"
+
+  # Value of the resistance at which a significant change is considered
+  # to occur
+  rain_detection_threshold: "4000"
+
+  # If the resistance increases by this value, the sensor is considered
+  # to be dry
+  dry_detection_threshold: "4000"
+
+  # When booting, if the resistance is lower this value, assume sensor is wet
+  wet_resistance_when_booting: "50000"
+
+  # +------------------------------+
+  # | Delay between 2 rain measure |
+  # +------------------------------+
+  # In dry mode
+  measure_interval_dry: "5000"
+
+  # In wet mode
+  # Must be large enough not to damage the tracks prematurely
+  # but small enough to be reactive enough.
+  measure_interval_wet: "30000"
+
+  # Stabilization before reading the resistance
+  # A too short delay will not allow to read the low resistances
+  stabilization_delay: 2sec
+
+esphome:
+# Base settings
+  <<: !include common/section-esphome.yaml
+  on_boot:
+    then:
+      - script.execute: test_resistance
+      - script.execute: measure_loop
+      #- script.execute: flashing
+
+<<: !include devicetypes/esp32.yaml
+
+<<: !include common/section-system.yaml
+
+text_sensor:
+  - <<: !include common/text_sensor/version.yaml
+  - <<: !include common/text_sensor/wifi_info.yaml
+  - platform: template
+    id: text_status
+    name: "${friendly_devicename} text status"
+    lambda: |-
+      return {"Watching"};
+
+button:
+  - <<: !include common/buttons.yaml
+
+binary_sensor:
+  - <<: !include common/binary_sensors.yaml
+  - platform: template
+    id: raining
+    name: "${friendly_devicename} raining"
+    device_class: moisture
+
+  - platform: template
+    id: drying
+    name: "${friendly_devicename} drying"
+    device_class: moisture
+
+sensor:
+  - <<: !include common/sensors.yaml
+  - platform: adc
+    id: source_sensor
+    # pin: A0 @ esp8266-05
+    pin: GPIO33
+    name: ADC
+    #attenuation: 11db
+    internal: true
+
+    # It is important to have a low update interval so that
+    # the measurement has time to be done correctly during
+    # the activation of the voltage AND taking into account the median filter
+    update_interval: 250ms
+
+    filters:
+      - multiply: 0.846153 # 3.9 (11db attenuation full-scale voltage) -> 3.3V
+      - median:
+          window_size: 7
+          send_every: 4
+          send_first_at: 3
+
+  - platform: resistance
+    sensor: source_sensor
+    id: real_resistance_sensor
+    #name: "${friendly_devicename} resistance"
+    configuration: DOWNSTREAM
+    resistor: $resistor_value
+    reference_voltage: 3.3V
+    internal: true
+    icon: "mdi:omega"
+    filters:
+      # No value lower than 0
+      - lambda: 'return max((float)$min_resistance, x);'
+      # No value greater than $max_resistance
+      - lambda: 'return min((float)$max_resistance, x);'
+    on_value:
+      then:
+        - if:
+            condition:
+              lambda: |-
+                  return (
+                      id(real_resistance_sensor).state > $min_resistance
+                      &&
+                      // <= is important to force the resistance to the max
+                      // in order to have a value to compare if the
+                      // resistance drops
+                      id(real_resistance_sensor).state <= $max_resistance
+                  );
+            then:
+              - sensor.template.publish:
+                  id: resistance_sensor
+                  state: !lambda "return id(real_resistance_sensor).state;"
+
+  - platform: template
+    id: latest_resistance_sensor
+    name: "${friendly_devicename} latest resistance"
+    icon: "mdi:omega"
+    unit_of_measurement: 'Ω'
+
+  - platform: template
+    id: latest_average_resistance_sensor
+    name: "${friendly_devicename} latest average resistance"
+    icon: "mdi:omega"
+    unit_of_measurement: 'Ω'
+
+  - platform: template
+    id: resistance_sensor
+    name: "${friendly_devicename} resistance"
+    icon: "mdi:omega"
+    unit_of_measurement: 'Ω'
+
+  - platform: template
+    id: average_resistance_sensor
+    name: "${friendly_devicename} average resistance"
+    icon: "mdi:omega"
+    unit_of_measurement: 'Ω'
+    filters:
+      - sliding_window_moving_average:
+          window_size: 15
+          send_every: 15
+      #- heartbeat: 2min
+
+#  - platform: bme280
+#    address: 0x76
+#    update_interval: 60s
+#    iir_filter: 16x
+#    temperature:
+#      name: "${friendly_devicename} temperature"
+#      id: bme280_temperature
+#      oversampling: 16x
+#    pressure:
+#      name: "${friendly_devicename} pressure"
+#      id: bme280_pressure
+#      oversampling: 16x
+#    humidity:
+#      name: "${friendly_devicename} humidity"
+#      id: bme280_humidity
+#      oversampling: 16x
+#      filters:
+#        - median:
+#            window_size: 7
+#            send_every: 4
+#            send_first_at: 3
+
+switch:
+  - platform: template
+    id: run_measure
+    name: "${friendly_devicename} run measure"
+    turn_on_action:
+    - script.execute: measure
+
+  - platform: gpio
+    id: resistance_bias
+    name: "${friendly_devicename} resistance bias"
+    icon: "mdi:power"
+    pin:
+      # number: GPIO16 @ esp8266-05
+      number: GPIO32
+      mode: OUTPUT
+
+#light:
+#  - platform: fastled_clockless
+#    chipset: WS2812
+#    id: status_light
+#    name: "${friendly_devicename} status light"
+#    pin: GPIO18
+#    num_leds: 1
+#    rgb_order: GRB
+#    restore_mode: ALWAYS_OFF
+
+<<: !include common/sensor/rain.yaml

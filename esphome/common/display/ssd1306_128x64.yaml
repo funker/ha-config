@@ -1,0 +1,35 @@
+- platform: ssd1306_i2c
+  model: "SSD1306 128x64"
+  reset_pin: D0
+  address: 0x3C
+  setup_priority: -200
+  lambda: |-
+    // auto red = Color(255, 0, 0);
+    // auto green = Color(0, 255, 0);
+    // auto blue = Color(0, 0, 255);
+    // auto white = Color(255, 255, 255);
+    // it.print(0, 0, id(${font_name}), "Hello World!");
+    // Print inside temperature (from homeassistant sensor)
+    it.rectangle(0, 0, it.get_width() / 2 - 4, it.get_height() / 2 - 4);
+
+    if (id(bad_occupancy).has_state()) {
+      if (id(bad_occupancy).state) {
+        it.print(0, 0, id(${font_name}), TextAlign::TOP_CENTER, "state: ON");
+      } else {
+        it.print(0, 0, id(${font_name}), TextAlign::TOP_CENTER, "state: OFF");
+      }
+    } else {
+        it.print(0, 0, id(${font_name}), TextAlign::TOP_CENTER, "FEHLER!");
+    }
+    
+    //it.printf(0, it.get_height() / 2 - 8, id(${font_name}), TextAlign::TOP_CENTER, "so: %s", id(bad_occupancy)");
+      // } else {
+        // it.print(64, 0, id(${font_name}), white, TextAlign::TOP_CENTER, "Besetzt");
+      // }
+      
+      // it.printf(0, 0, id(${font_name}), id(bad_occupancy).state);
+      // it.printf(127, 23, id(${font_name}), TextAlign::TOP_RIGHT , "%.1f°", id(bad_occupancy).state);
+      // it.printf(0, 0, id(${font_name}), TextAlign::TOP_RIGHT , "%.1f°", id(bad_occupancy).state);
+    // } else {
+      // it.print(64, 0, id(${font_name}), TextAlign::TOP_CENTER, "Unbekannt");
+    // }

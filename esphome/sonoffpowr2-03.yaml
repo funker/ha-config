@@ -1,0 +1,9 @@
+substitutions:
+  devicename: "sonoffpowr2-02"
+  friendly_devicename: "Trockner"
+  room: "Keller"
+  comment: "Sonoff POW R2 Trockner"
+  project_name: "Sonoff.POW R2"
+  project_version: "1.0"
+
+<<: !include devicetypes/sonoff-pow-r2.yaml

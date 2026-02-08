@@ -1,0 +1,165 @@
+substitutions:
+  devicename: "star-projector-jan"
+  friendly_devicename: "Star Projector Jan"
+  room: "Jan"
+  comment: "Star Projector Jan"
+  project_name: "Espressif.ESP32"
+  project_version: "1.0"
+  node_name: "star_projector_jan"
+
+globals:
+  - id: dim
+    type: bool
+    restore_value: no
+    initial_value: 'false'
+    
+<<: !include devicetypes/generic-bk7231t-qfn32-tuya.yaml
+
+esphome:
+  <<: !include common/section-esphome.yaml
+
+<<: !include common/section-system.yaml
+
+light:
+  - platform: rgb
+    name: ${friendly_devicename} Light
+    icon: mdi:star-shooting
+    id: rgb_light
+    red: red
+    green: green
+    blue: blue
+    restore_mode: RESTORE_DEFAULT_OFF
+    default_transition_length: 2s
+    effects:
+      - random:
+          name: Random
+          transition_length: 5s
+          update_interval: 5s
+      - random:
+          name: Random Slow
+          transition_length: 10s
+          update_interval: 5s
+    on_turn_on:
+      then:
+        - light.turn_on: btn_led
+    on_turn_off:
+      then:
+        - light.turn_off: btn_led
+
+  - platform: monochromatic
+    name: ${friendly_devicename} Laser
+    icon: mdi:laser-pointer
+    id: laser
+    output: laser_pwm
+    restore_mode: ALWAYS_OFF
+    default_transition_length: 3s
+
+  - platform: status_led
+    name: ${friendly_devicename} Status Led
+    icon: mdi:led-outline
+    entity_category: diagnostic
+    id: ${node_name}_status_led
+    pin: GPIO0
+    internal: true
+
+  - platform: monochromatic
+    name: ${friendly_devicename} Button Led
+    icon: mdi:led-outline
+    entity_category: diagnostic
+    id: btn_led
+    output: btn_led_pwm
+    restore_mode: ALWAYS_OFF
+
+fan:
+  platform: speed
+  name: ${friendly_devicename} Motor
+  icon: mdi:play-speed
+  id: motor
+  output: motor_pwm
+  restore_mode: ALWAYS_OFF
+
+output:
+  - platform: esp8266_pwm
+    id: red
+    pin: GPIO4
+    inverted: true
+
+  - platform: esp8266_pwm
+    id: green
+    pin: GPIO12
+    inverted: true
+
+  - platform: esp8266_pwm
+    id: blue
+    pin: GPIO14
+    inverted: true
+
+  - platform: esp8266_pwm
+    id: laser_pwm
+    pin: GPIO5
+    inverted: true
+
+  - platform: esp8266_pwm
+    id: motor_pwm
+    pin: GPIO13
+    min_power: 15%
+
+  - platform: esp8266_pwm
+    id: btn_led_pwm
+    pin: GPIO15
+    inverted: true
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO16
+      mode: INPUT_PULLDOWN_16
+      inverted: true
+    name: ${friendly_devicename} Button
+    id: ${node_name}_button
+    on_multi_click:
+    # single click
+    - timing:
+          - ON for at most 1s
+          - OFF for at least 0.350s
+      then:
+        - light.toggle: rgb_light
+    # double click
+    - timing:
+          - ON for at most 1s
+          - OFF for at most 0.35s
+          - ON for at most 1s
+          - OFF for at least 0.35s
+      then:
+        - light.toggle: laser
+    # hold
+    on_press:
+      then:
+      - if:
+          condition:
+              lambda: |-
+                return id(dim);
+          then:
+          - delay: 0.1s
+          - while:
+              condition:
+                binary_sensor.is_on: ${node_name}_button
+              then:
+                - light.dim_relative:
+                    id: rgb_light
+                    relative_brightness: 5%
+                - delay: 0.1s
+          - lambda: |-
+              id(dim) = (false);
+          else:
+          - delay: 0.1s
+          - while:
+              condition:
+                binary_sensor.is_on: ${node_name}_button
+              then:
+                - light.dim_relative:
+                    id: rgb_light
+                    relative_brightness: 5%
+                - delay: 0.1s
+          - lambda: |-
+              id(dim) = (true);

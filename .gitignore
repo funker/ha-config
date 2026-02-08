@@ -1,0 +1,88 @@
+# ------------------------------------------------
+# BASIS: Alles ignorieren → gezielt erlauben
+# ------------------------------------------------
+*
+
+# Erlaubte Dateitypen
+!*.yaml
+!*.md
+!*.sh
+!README*
+!LICENSE
+!.gitignore
+
+# YAML-Ordner (rekursiv)
+!automations/
+!scenes/
+!scripts/
+!integrations/
+!entities/
+!entities/**
+!entities/**/*.yaml
+!templates/
+!blueprints/
+!customizations/
+!esphome/
+!esphome/**
+!esphome/**/*.yaml
+
+# ------------------------------------------------
+# HA INTERN (Daten/Logs/Cache)
+# ------------------------------------------------
+*.log
+*.db
+*.db-*
+*.db-shm
+*.db-wal
+*.sqlite
+.storage/
+.cloud/
+deps/
+tts/
+media/
+image/
+.HA_VERSION
+core
+home-assistant_v2.db*
+.ha_run.lock
+
+# ------------------------------------------------
+# SECRETS & TOKENS
+# ------------------------------------------------
+secrets.yaml
+zigbee2mqtt/configuration.yaml
+zigbee2mqtt/configuration_backup*.yaml
+zigbee2mqtt/log/
+solcast_solar/
+addons_configs/
+esphome/secrets.yaml
+esphome/archive/
+.ssh/
+.google*.token
+.google*.json
+.sonoff.json
+SERVICE_ACCOUNT*.json
+google_calendars.yaml
+ip_bans.yaml
+known_devices.yaml
+spotify.yaml
+
+# ------------------------------------------------
+# HACS & CUSTOM
+# ------------------------------------------------
+custom_components/
+www/community/
+www/camera/
+themes/
+
+# ------------------------------------------------
+# SYSTEM/EDITOR
+# ------------------------------------------------
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+*.swp
+.Trash*/
+.old
+.bak

@@ -1,0 +1,20 @@
+substitutions:
+  devicename: "esp32-btproxy-03"
+  friendly_devicename: "Bluetooth Proxy Wohnzimmer"
+  room: "Wohnzimmer"
+  comment: "ESP32 Bluetooth Proxy 03"
+  project_name: "Espressif.ESP32"
+  project_version: "1.0"
+
+<<: !include devicetypes/esp32.yaml
+
+esphome:
+  <<: !include common/section-esphome.yaml
+
+<<: !include common/section-system.yaml
+
+# Board selection
+<<: !include boards/esp32.yaml
+
+packages:
+  esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main

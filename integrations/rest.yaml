@@ -1,0 +1,4 @@
+# REST
+# https://www.home-assistant.io/integrations/rest/
+
+script: !include_dir_merge_named ../rest

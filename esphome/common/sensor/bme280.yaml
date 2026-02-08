@@ -1,0 +1,34 @@
+- platform: bme280
+  temperature:
+    name: "Temperatur"
+    id: bme280_temperature
+  pressure:
+    name: "Luftdruck"
+    id: bme280_pressure
+  humidity:
+    name: "Relative Luftfeuchtigkeit"
+    id: bme280_humidity
+  address: 0x77
+  update_interval: 15s
+- platform: template
+  name: "Höhe"
+  lambda: |-
+    const float STANDARD_SEA_LEVEL_PRESSURE = 1013.25; //in hPa, see note
+    return ((id(bme280_temperature).state + 273.15) / 0.0065) *
+      (powf((STANDARD_SEA_LEVEL_PRESSURE / id(bme280_pressure).state), 0.190234) - 1); // in meter
+  update_interval: 15s
+  icon: 'mdi:signal'
+  unit_of_measurement: 'm'
+- platform: absolute_humidity
+  name: "Absolute Luftfeuchtigkeit"
+  temperature: bme280_temperature
+  humidity: bme280_humidity
+  icon: mdi:humidity
+- platform: template
+  name: "Taupunkt"
+  lambda: |-
+    return (243.5*(log(id(bme280_humidity).state/100)+((17.67*id(bme280_temperature).state)/
+    (243.5+id(bme280_temperature).state)))/(17.67-log(id(bme280_humidity).state/100)-
+    ((17.67*id(bme280_temperature).state)/(243.5+id(bme280_temperature).state))));
+  unit_of_measurement: °C
+  icon: 'mdi:thermometer-alert'

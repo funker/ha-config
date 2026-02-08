@@ -1,0 +1,19 @@
+
+platform: template
+sensors:
+  qr_code_restmull:
+    friendly_name: "Restmüll"
+    unique_id: qr_code_restmull
+    value_template: "{{ 'Restmüll' in state_attr('image_processing.qr_code_detection', 'matches') }}"
+  qr_code_papier:
+    friendly_name: "Papier"
+    unique_id: qr_code_papier
+    value_template: "{{ 'Papier' in state_attr('image_processing.qr_code_detection', 'matches') }}"
+  qr_code_wertstoff:
+    friendly_name: "Wertstoff"
+    unique_id: qr_code_wertstoff
+    value_template: "{{ 'Wertstoff' in state_attr('image_processing.qr_code_detection', 'matches') }}"
+  qr_code_biomull:
+    friendly_name: "Biomüll"
+    unique_id: qr_code_biomull
+    value_template: "{{ 'Biomüll' in state_attr('image_processing.qr_code_detection', 'matches') }}"

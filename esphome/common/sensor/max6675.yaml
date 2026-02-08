@@ -1,0 +1,10 @@
+- platform: max6675
+  id: kamin_temperature
+  name: "Kamin Temperatur"
+  cs_pin: D8
+  update_interval: 10s
+  unit_of_measurement: "°C"
+  icon: mdi:thermometer
+  device_class: "temperature"
+  state_class: "measurement"
+  accuracy_decimals: 1

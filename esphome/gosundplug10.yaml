@@ -1,0 +1,14 @@
+substitutions:
+  devicename: "gosundplug10"
+  friendly_devicename: "Kaffeemaschine"
+  room: "Küche"
+  comment: "Gosund SP111 Kaffeemaschine"
+  project_name: "Gosund.SP111"
+  project_version: "1.0"
+
+  # Higher value gives lower watt readout
+  current_res: "0.00280"
+  # Lower value gives lower voltage readout
+  voltage_div: "775"
+
+<<: !include devicetypes/gosund-sp111-always-on.yaml

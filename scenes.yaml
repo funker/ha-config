@@ -1,0 +1,686 @@
+- id: '1676102470316'
+  name: Frühstück
+  entities:
+    light.dimmer_01:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 254
+      is_deconz_group: false
+      icon: mdi:led-strip
+      friendly_name: Küche Arbeitsplatte
+      supported_features: 40
+      state: 'on'
+    light.dimmer_02:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 254
+      is_deconz_group: false
+      icon: mdi:light-recessed
+      friendly_name: Küche Schrank
+      supported_features: 40
+      state: 'on'
+    light.licht_esszimmer_kommode:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: mdi:string-lights
+      friendly_name: Esszimmer Kommode
+      supported_features: 0
+      state: 'on'
+    light.esszimmer_decke:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: bha:ceiling-lamp-plafond
+      friendly_name: Esszimmer Decke
+      supported_features: 0
+      state: 'on'
+    light.gruppe_licht_kuche_decke:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      entity_id:
+      - light.licht_kuche_decke_links
+      - light.licht_kuche_decke_mitte
+      - light.licht_kuche_decke_rechts
+      icon: phu:bulb-group-ceiling-round
+      friendly_name: Küche Decke
+      supported_features: 40
+      state: 'off'
+  icon: mdi:food-croissant
+  metadata:
+    light.dimmer_02:
+      entity_only: true
+    light.licht_esszimmer_kommode:
+      entity_only: true
+    light.esszimmer_decke:
+      entity_only: true
+    light.gruppe_licht_kuche_decke:
+      entity_only: true
+- id: '1676156512223'
+  name: Badezimmer normal
+  entities:
+    light.shelly_bad_decke:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: bha:ceiling-downlight
+      friendly_name: Shelly 1L Bad
+      supported_features: 0
+      state: 'off'
+    light.spiegelleuchte:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 212
+      color_temp_kelvin: 3412
+      color_temp: 293
+      hs_color:
+      - 27.265
+      - 46.72
+      rgb_color:
+      - 255
+      - 190
+      - 135
+      xy_color:
+      - 0.461
+      - 0.376
+      is_deconz_group: false
+      icon: phu:adore
+      friendly_name: Badezimmerspiegel
+      supported_features: 40
+      state: 'on'
+  icon: mdi:mirror-rectangle
+  metadata:
+    light.shelly_bad_decke:
+      entity_only: true
+    light.spiegelleuchte:
+      entity_only: true
+- id: '1676289861809'
+  name: Badezimmer putzen
+  entities:
+    light.shelly_bad_decke:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: bha:ceiling-downlight
+      friendly_name: Shelly 1L Bad
+      supported_features: 0
+      state: 'on'
+    light.spiegelleuchte:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 254
+      color_temp_kelvin: 4651
+      color_temp: 215
+      hs_color:
+      - 26.765
+      - 24.202
+      rgb_color:
+      - 255
+      - 220
+      - 193
+      xy_color:
+      - 0.387
+      - 0.354
+      is_deconz_group: false
+      icon: phu:adore
+      friendly_name: Badezimmerspiegel
+      supported_features: 40
+      state: 'on'
+  metadata:
+    light.shelly_bad_decke:
+      entity_only: true
+    light.spiegelleuchte:
+      entity_only: true
+  icon: mdi:spray-bottle
+- id: '1676290013697'
+  name: Badezimmer duschen
+  entities:
+    light.shelly_bad_decke:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: bha:ceiling-downlight
+      friendly_name: Shelly 1L Bad
+      supported_features: 0
+      state: 'off'
+    light.spiegelleuchte:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 71
+      color_temp_kelvin: 2252
+      color_temp: 444
+      hs_color:
+      - 29.616
+      - 82.339
+      rgb_color:
+      - 255
+      - 148
+      - 45
+      xy_color:
+      - 0.574
+      - 0.388
+      is_deconz_group: false
+      icon: phu:adore
+      friendly_name: Badezimmerspiegel
+      supported_features: 40
+      state: 'on'
+  metadata:
+    light.shelly_bad_decke:
+      entity_only: true
+    light.spiegelleuchte:
+      entity_only: true
+  icon: mdi:shower-head
+- id: '1676319601068'
+  name: Szene Küche gemütlich
+  entities:
+    light.gruppe_kuche_arbeitsplatte:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 178
+      entity_id:
+      - light.dimmer_01
+      - light.dimmer_02
+      icon: bha:ceiling-downlight
+      friendly_name: Küche Arbeitsplatte
+      supported_features: 40
+      state: 'on'
+    light.dimmer_02:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 178
+      is_deconz_group: false
+      icon: mdi:light-recessed
+      friendly_name: Küche Schrank
+      supported_features: 40
+      state: 'on'
+    light.licht_esszimmer_kommode:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: mdi:string-lights
+      friendly_name: Esszimmer Kommode
+      supported_features: 0
+      state: 'on'
+    light.esszimmer_decke:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: bha:ceiling-lamp-plafond
+      friendly_name: Esszimmer Decke
+      supported_features: 0
+      state: 'off'
+    light.shelly_licht_kuche_tresen:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: phu:pendant-long-up
+      friendly_name: Tresen
+      supported_features: 0
+      state: 'off'
+    light.gruppe_licht_kuche_decke:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      entity_id:
+      - light.licht_kuche_decke_links
+      - light.licht_kuche_decke_mitte
+      - light.licht_kuche_decke_rechts
+      icon: phu:bulb-group-ceiling-round
+      friendly_name: Küche Decke
+      supported_features: 40
+      state: 'off'
+  icon: mdi:lightbulb-on-50
+  metadata:
+    light.gruppe_kuche_arbeitsplatte:
+      entity_only: true
+    light.dimmer_02:
+      entity_only: true
+    light.licht_esszimmer_kommode:
+      entity_only: true
+    light.esszimmer_decke:
+      entity_only: true
+    light.shelly_licht_kuche_tresen:
+      entity_only: true
+    light.gruppe_licht_kuche_decke:
+      entity_only: true
+- id: '1676319932799'
+  name: Szene Küche hell
+  entities:
+    light.gruppe_kuche_arbeitsplatte:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 254
+      entity_id:
+      - light.dimmer_01
+      - light.dimmer_02
+      icon: bha:ceiling-downlight
+      friendly_name: Küche Arbeitsplatte
+      supported_features: 40
+      state: 'on'
+    light.gruppe_licht_kuche_decke:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      color_mode: color_temp
+      brightness: 254
+      color_temp_kelvin: 4000
+      color_temp: 250
+      hs_color:
+      - 26.812
+      - 34.87
+      rgb_color:
+      - 255
+      - 205
+      - 166
+      xy_color:
+      - 0.421
+      - 0.364
+      entity_id:
+      - light.licht_kuche_decke_links
+      - light.licht_kuche_decke_mitte
+      - light.licht_kuche_decke_rechts
+      icon: phu:bulb-group-ceiling-round
+      friendly_name: Küche Decke
+      supported_features: 40
+      state: 'on'
+  icon: mdi:lightbulb-on
+  metadata:
+    light.gruppe_kuche_arbeitsplatte:
+      entity_only: true
+    light.gruppe_licht_kuche_decke:
+      entity_only: true
+- id: '1677197125247'
+  name: Jan Bettzeit
+  entities:
+    light.licht_jan_nachttisch:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 20
+      color_temp_kelvin: 3412
+      color_temp: 293
+      hs_color:
+      - 27.265
+      - 46.72
+      rgb_color:
+      - 255
+      - 190
+      - 136
+      xy_color:
+      - 0.46
+      - 0.376
+      is_deconz_group: false
+      icon: mdi:lamp
+      friendly_name: Jan Nachttisch
+      supported_features: 40
+      state: 'on'
+    light.licht_jan_arbeit:
+      supported_color_modes:
+      - brightness
+      color_mode:
+      brightness:
+      is_deconz_group: false
+      icon: mdi:lightbulb-fluorescent-tube
+      friendly_name: Jan Schreibtisch
+      supported_features: 40
+      state: 'off'
+    light.jan_monitorlampe:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:monitor-shimmer
+      friendly_name: Jan Monitorlampe
+      supported_features: 0
+      state: 'off'
+    light.licht_jan_decke:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:lightbulb-fluorescent-tube
+      friendly_name: Jan Decke
+      supported_features: 0
+      state: 'off'
+  icon: mdi:sleep
+  metadata:
+    light.licht_jan_nachttisch:
+      entity_only: true
+    light.licht_jan_arbeit:
+      entity_only: true
+    light.jan_monitorlampe:
+      entity_only: true
+    light.licht_jan_decke:
+      entity_only: true
+- id: '1677974814725'
+  name: Jan Arbeit
+  entities:
+    light.licht_jan_decke:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: mdi:lightbulb-fluorescent-tube
+      friendly_name: Jan Decke
+      supported_features: 0
+      state: 'on'
+    light.jan_monitorlampe:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: mdi:monitor-shimmer
+      friendly_name: Jan Monitorlampe
+      supported_features: 0
+      state: 'on'
+    light.licht_jan_arbeit:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 254
+      is_deconz_group: false
+      icon: mdi:lightbulb-fluorescent-tube
+      friendly_name: Jan Schreibtisch
+      supported_features: 40
+      state: 'on'
+  metadata:
+    light.licht_jan_decke:
+      entity_only: true
+    light.jan_monitorlampe:
+      entity_only: true
+    light.licht_jan_arbeit:
+      entity_only: true
+  icon: mdi:briefcase
+- id: '1702841139555'
+  name: Weihnachten aus
+  entities: {}
+  icon: phu:christmas-tree
+  metadata: {}
+- id: '1708801410029'
+  name: Jan Fernsehen
+  entities:
+    light.licht_jan_decke:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:lightbulb-fluorescent-tube
+      friendly_name: Jan Decke
+      supported_features: 0
+      state: 'off'
+    light.licht_jan_nachttisch:
+      min_color_temp_kelvin: 1538
+      max_color_temp_kelvin: 7142
+      min_mireds: 140
+      max_mireds: 650
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 36
+      color_temp_kelvin: 3412
+      color_temp: 293
+      hs_color:
+      - 27.265
+      - 46.72
+      rgb_color:
+      - 255
+      - 190
+      - 136
+      xy_color:
+      - 0.46
+      - 0.376
+      is_deconz_group: false
+      icon: mdi:lamp
+      friendly_name: Jan Nachttisch
+      supported_features: 40
+      state: 'on'
+    light.licht_jan_arbeit:
+      supported_color_modes:
+      - brightness
+      color_mode:
+      brightness:
+      is_deconz_group: false
+      icon: mdi:lightbulb-fluorescent-tube
+      friendly_name: Jan Schreibtisch
+      supported_features: 40
+      state: 'off'
+    light.jan_monitorlampe:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:monitor-shimmer
+      friendly_name: Jan Monitorlampe
+      supported_features: 0
+      state: 'off'
+  metadata:
+    light.licht_jan_decke:
+      entity_only: true
+    light.licht_jan_nachttisch:
+      entity_only: true
+    light.licht_jan_arbeit:
+      entity_only: true
+    light.jan_monitorlampe:
+      entity_only: true
+  icon: fas:tv
+- id: '1718740618075'
+  name: Wohnzimmer Fernsehen
+  entities:
+    light.wohnzimmer_hintergrund:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      icon: mdi:string-lights
+      friendly_name: Wohnzimmer Dekolicht
+      supported_features: 0
+      state: 'on'
+    light.govee_tv_wohnzimmer:
+      min_color_temp_kelvin: 9000
+      max_color_temp_kelvin: 2000
+      min_mireds: 500
+      max_mireds: 111
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 128
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      - 307.423
+      - 38.039
+      rgb_color:
+      - 255
+      - 158
+      - 243
+      xy_color:
+      - 0.371
+      - 0.239
+      rate_limit_total: 100
+      rate_limit_remaining: -64635
+      rate_limit_reset_seconds: -1748728849.72
+      rate_limit_reset: '1970-01-01T01:00:00'
+      rate_limit_on: 5
+      manufacturer: Govee
+      model: H6199
+      icon: mdi:television-ambient-light
+      friendly_name: Govee TV Wohnzimmer
+      supported_features: 0
+      state: 'on'
+    light.gruppe_wohnzimmer_stehlampen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - blink
+      - breathe
+      - channel_change
+      - colorloop
+      - finish_effect
+      - okay
+      - stop_colorloop
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect:
+      color_mode: color_temp
+      brightness: 61
+      color_temp_kelvin: 2994
+      color_temp: 334
+      hs_color:
+      - 27.835
+      - 57.058
+      rgb_color:
+      - 255
+      - 177
+      - 110
+      xy_color:
+      - 0.496
+      - 0.383
+      entity_id:
+      - light.wohnzimmer_stehlampe_links_oben
+      - light.wohnzimmer_stehlampe_links_unten
+      - light.wohnzimmer_stehlampe_rechts_oben
+      - light.wohnzimmer_stehlampe_rechts_unten
+      icon: mdi:lightbulb-group
+      friendly_name: Wohnzimmer Stehlampen
+      supported_features: 44
+      state: 'on'
+  metadata:
+    light.wohnzimmer_hintergrund:
+      entity_only: true
+    light.govee_tv_wohnzimmer:
+      entity_only: true
+    light.gruppe_wohnzimmer_stehlampen:
+      entity_only: true
+  icon: phu:lightstrip-tv
+- id: '1750539089767'
+  name: Im Garten sitzen
+  entities:
+    light.garten_lichterkette_kurz:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:string-lights
+      friendly_name: Garten Lichterkette kurz
+      supported_features: 0
+      state: 'off'
+    light.garten_lichterkette_lang:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:string-lights
+      friendly_name: Garten Lichterkette lang
+      supported_features: 0
+      state: 'off'
+    light.gardenpole_mini_2:
+      min_color_temp_kelvin: 2702
+      max_color_temp_kelvin: 6535
+      min_mireds: 153
+      max_mireds: 370
+      effect_list:
+      - blink
+      - breathe
+      - okay
+      - channel_change
+      - finish_effect
+      - stop_effect
+      - colorloop
+      - stop_colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      effect:
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      icon: mdi:sign-pole
+      friendly_name: Gardenpole Mini
+      supported_features: 44
+      state: 'off'
+    light.gruppe_licht_werkstatt_wand:
+      effect_list:
+      - blink
+      - breathe
+      - channel_change
+      - finish_effect
+      - okay
+      - stop_effect
+      supported_color_modes:
+      - brightness
+      effect:
+      color_mode:
+      brightness:
+      entity_id:
+      - light.licht_garten_wand_1_oben
+      - light.licht_garten_wand_1_unten
+      - light.licht_garten_wand_2_oben
+      - light.licht_garten_wand_2_unten
+      - light.licht_garten_wand_3_oben
+      - light.licht_garten_wand_3_unten
+      - light.licht_garten_wand_4_oben
+      - light.licht_garten_wand_4_unten
+      icon: phu:wall-appear-group
+      friendly_name: Gartenweg
+      supported_features: 44
+      state: 'off'
+  icon: mdi:shovel
+  metadata:
+    light.garten_lichterkette_kurz:
+      entity_only: true
+    light.garten_lichterkette_lang:
+      entity_only: true
+    light.gardenpole_mini_2:
+      entity_only: true
+    light.gruppe_licht_werkstatt_wand:
+      entity_only: true

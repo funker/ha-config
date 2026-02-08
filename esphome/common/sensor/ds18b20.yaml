@@ -1,0 +1,9 @@
+  - platform: dallas
+    address: ${dallas_address}
+    name: "Temperatur"
+    id: "dallas_temperature"
+    unit_of_measurement: "°C"
+    icon: "mdi:thermometer"
+    device_class: "temperature"
+    state_class: "measurement"
+    accuracy_decimals: 2

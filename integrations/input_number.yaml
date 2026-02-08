@@ -1,0 +1,4 @@
+# Input Number
+# https://www.home-assistant.io/integrations/input_number/
+
+input_number: !include_dir_merge_named ../entities/input_numbers

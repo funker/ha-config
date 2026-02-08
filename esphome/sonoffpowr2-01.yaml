@@ -1,0 +1,9 @@
+substitutions:
+  devicename: "sonoffpowr2-01"
+  friendly_devicename: "Dekolicht Wohnzimmer"
+  room: "Wohnzimmer"
+  comment: "Sonoff POW R2 Dekolicht Wohnzimmer"
+  project_name: "Sonoff.POW R2"
+  project_version: "1.0"
+
+<<: !include devicetypes/sonoff-pow-r2.yaml

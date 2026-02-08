@@ -1,0 +1,4 @@
+# mDNS
+mdns:
+  disabled: false
+  

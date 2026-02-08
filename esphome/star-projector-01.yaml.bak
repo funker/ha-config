@@ -1,0 +1,52 @@
+substitutions:
+  devicename: "star-projector-01"
+  friendly_devicename: "Star Projector Jan"
+  room: "Jan"
+  comment: "Star Projector 01"
+  project_name: "Espressif.ESP32"
+  project_version: "1.0"
+
+<<: !include devicetypes/generic-bk7231t-qfn32-tuya.yaml
+
+esphome:
+  <<: !include common/section-esphome.yaml
+
+<<: !include common/section-system.yaml
+
+button:
+  - platform: restart
+    name: Restart
+
+debug:
+  update_interval: 30s
+
+text_sensor:
+  - platform: debug
+    reset_reason:
+      name: Reset Reason
+  - platform: libretiny
+    version:
+      name: LibreTiny Version
+
+sensor:
+  - platform: uptime
+    name: Uptime
+
+output:
+  - platform: libretiny_pwm
+    id: output_red
+    pin: P6
+  - platform: libretiny_pwm
+    id: output_green
+    pin: P7
+  - platform: libretiny_pwm
+    id: output_blue
+    pin: P8
+
+light:
+  - platform: rgb
+    id: light_rgb
+    name: Light
+    red: output_red
+    green: output_green
+    blue: output_blue

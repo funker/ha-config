@@ -1,0 +1,9 @@
+substitutions:
+  devicename: "rpi-pico-04"
+  friendly_devicename: "Raspberry Pi Pico W 04"
+  room: "Auf Lager"
+  comment: "Raspberry Pi Pico W 04"
+  project_name: "Raspberry Pi.Pico W"
+  project_version: "1.0"
+
+<<: !include devicetypes/raspberrypi-pico-w.yaml

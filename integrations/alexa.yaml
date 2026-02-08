@@ -1,0 +1,6 @@
+# Alexa custom integration
+
+# Make devices visible to custom Alexa skill
+
+alexa:
+  smart_home:

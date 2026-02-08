@@ -1,0 +1,13 @@
+platform: wifi_info
+ip_address:
+  name: IP Address
+ssid:
+  name: Connected SSID
+bssid:
+  name: Connected BSSID
+mac_address:
+  name: MAC Address
+scan_results:
+  name: Latest Scan Results
+dns_address:
+  name: DNS Address

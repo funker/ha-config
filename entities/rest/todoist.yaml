@@ -1,0 +1,66 @@
+platform: rest
+name: Todoist smart_home tasks
+resource: https://api.todoist.com/rest/v2/tasks?filter=label:smart_home
+headers:
+  Authorization: "!secret todoist_api_token"
+value_template: "{{ value_json | count }}"
+json_attributes:
+  - task_list
+  - project
+  - items
+  - sections
+  - project_notes
+scan_interval: 300 # Fetch tasks every 5 minutes
+
+# # Example configuration.yaml entry
+# calendar:
+#   - platform: todoist
+#     token: !secret todoist_api_token
+#     custom_projects:
+#       - name: 'All Projects'
+#       - name: 'Heute fällig'
+#         due_date_days: 0
+#       - name: 'Diese Woche fällig'
+#         due_date_days: 7
+#       #- name: 'Math Homework'
+#         #labels:
+#           #- Homework
+#         #include_projects:
+#           #- Mathematical Structures II
+#           #- Calculus II
+
+# sensor:
+#   - name: Todoist List
+#     platform: rest
+#     method: GET
+#     resource: 'https://api.todoist.com/sync/v9/projects/get_data'
+#     params:
+#       project_id: 805839359
+#     headers:
+#       Authorization: !secret todoist_api_token
+#     value_template: '{{ value_json[''project''][''id''] }}'
+#     json_attributes:
+#       - project
+#       - items
+#       - sections
+#       - project_notes
+#     scan_interval: 30
+
+# command_line:
+#   - sensor:
+#       name: label_colors
+#       command: !secret todoist_cmd_with_api_token
+#       value_template: >
+#         {{ value_json.label_colors | length }}
+#       json_attributes:
+#         - label_colors
+#       scan_interval: 200
+
+# rest_command:
+#   todoist:
+#     method: post
+#     url: 'https://api.todoist.com/sync/v9/{{ url }}'
+#     payload: '{{ payload }}'
+#     headers:
+#       Authorization: !secret todoist_api_token
+#     content_type: 'application/x-www-form-urlencoded'

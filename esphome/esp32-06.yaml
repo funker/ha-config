@@ -1,0 +1,34 @@
+#substitutions:
+  #devicename: "esp32-06"
+  #friendly_devicename: "ESP32 06"
+  #room: "Auf Lager"
+  #comment: "ESP32 06"
+  #project_name: "Espressif.ESP32"
+  #project_version: "1.0"
+
+#<<: !include devicetypes/esp32-s2-mini.yaml
+
+esphome:
+  name: WemosS2
+  friendly_name: WemosS2
+
+esp32:
+  board: lolin_s2_mini
+  framework:
+    type: esp-idf
+    sdkconfig_options:
+      CONFIG_ESP_CONSOLE_USB_CDC: y
+
+debug:
+  update_interval: 5s
+
+text_sensor:
+  - platform: debug
+    device:
+      name: "Device Info"
+    reset_reason:
+      name: "Reset Reason"
+
+# Logger must be at least debug (default)
+logger:
+  level: debug

@@ -1,0 +1,23 @@
+substitutions:
+  devicename: "FILENAME"
+  friendly_devicename: "${devicename}"
+  reboot_timeout: 1d
+  old_ota_password: ""
+  api_key: ""
+  
+esphome:
+  name: ${devicename}
+  platform: ESP8266
+  board: esp8285
+  on_boot:
+    - lambda: |-
+        id(ota_pw).set_auth_password("Globus-Especial-23#");
+        
+<<: !include common/generic/wifi.yaml
+
+# OTA Settings
+ota:
+  id: ota_pw
+  password: ${old_ota_password}
+  
+logger:

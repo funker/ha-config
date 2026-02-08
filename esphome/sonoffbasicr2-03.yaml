@@ -1,0 +1,9 @@
+substitutions:
+  devicename: "sonoffbasicr2-03"
+  friendly_devicename: "Licht Keller Waschbecken"
+  room: "Keller"
+  comment: "Licht Keller Waschbecken"
+  project_name: "Sonoff.Basic R2"
+  project_version: "1.0"
+
+<<: !include devicetypes/sonoff-basic-r2.yaml

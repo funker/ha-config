@@ -1,0 +1,128 @@
+substitutions:
+  devicename: "esp8266-04"
+  friendly_devicename: "_Testbrett"
+  room: "Auf Lager"
+  comment: "_Testbrett"
+  project_name: "Wemos.D1 Mini ESP8266"
+  project_version: "1.0"
+  
+  # OLED displays
+  font_name: "lucasfont_alternate"
+  font_size: "16"
+
+  # DHT22 Temperature/Humidity sensor
+  #dht22_pin_number: D2
+
+  # HC-SR04 Ultrasonic sensor
+  #trigger_pin: D1
+  #echo_pin: D2
+
+<<: !include devicetypes/esp8266-d1-mini_v2.yaml
+
+esphome:
+  <<: !include common/section-esphome.yaml
+
+<<: !include common/section-system.yaml
+
+# OLED displays
+# BME280 Temperature/Humidity/Pressure sensor
+# AHT30 Temperature/Humidity sensor NOT WORKING YET
+#i2c:
+  #sda: D1
+  #scl: D2
+  # OLED displays
+  #frequency: 400kHz
+  #scan: false
+
+# BME680 Temperature/Pressure/Humidity/Gas sensor
+#i2c:
+  #- id: "i2cbus_bme"
+    #sda: D1
+    #scl: D2
+    #scan: true
+
+# MAX6675 Thermo couple sensor
+spi:
+  miso_pin: D6
+  clk_pin: D5
+
+#bme680_bsec:
+  #- id: bme680_internal
+    #i2c_id: "i2cbus_bme"
+    #address: 0x76
+
+
+# OLED displays
+#font:
+  #- file: "common/fonts/materialdesignicons-webfont.ttf"  # Material Design Icons font
+    #id: mdi_font_24
+    #size: 24  # Adjust the size as needed
+    #glyphs:
+      #- "\U000F1158" # mdi:paper-roll-outline
+      #- "\U000F09A1" # mdi:shower-head
+
+  #- file: "gfonts://Roboto"
+    #id: roboto_24
+    #size: 24
+
+  #- file: "gfonts://Roboto"
+    #id: roboto_22
+    #size: 22
+  #<<: !include common/fonts/font.yaml
+
+# OLED displays
+#display:
+  # OLED display 128 x 32 pixel
+  #<<: !include common/display/ssd1306_128x32.yaml
+
+  # OLED display 128 x 64 pixel
+  #<<: !include common/display/ssd1306_128x64.yaml
+
+binary_sensor:
+  - <<: !include common/binary_sensor/status.yaml
+  #- platform: homeassistant
+    #id: bad_occupancy
+    # entity_id: binary_sensor.firetab_eg_eingesteckt_2
+    # entity_id: binary_sensor.presence_bad_occupancy
+    #entity_id: binary_sensor.prasenz_keller_occupancy
+    #internal: true
+
+  # DHT22 Temperature/Humidity sensor
+  #<<: !include common/sensor/dht22.yaml
+
+  # AHT30 Temperature/Humidity sensor NOT WORKING YET
+  #<<: !include common/sensor/aht30.yaml
+  
+  # BME280 Temperature/Humidity/Pressure sensor
+  #<<: !include common/sensor/bme280.yaml
+
+  # HC-SR04 Ultrasonic sensor
+  #<<: !include common/sensor/hcsr04.yaml
+
+  # BME680 Temperature/Pressure/Humidity/Gas sensor
+  #<<: !include common/sensor/bme680.yaml
+
+sensor:
+  - <<: !include common/sensor/uptime.yaml
+  - <<: !include common/sensor/wifi_signal.yaml
+    
+  # MAX6675 Thermo couple sensor
+  - <<: !include common/sensor/max6675.yaml
+
+text_sensor:
+  # BME680 Temperature/Pressure/Humidity/Gas sensor
+  #<<: !include common/text_sensor/bme680.yaml
+  - <<: !include common/text_sensor/version.yaml
+  - platform: template
+    name: "Kamin Zustand"
+    id: kamin_zustand
+    icon: mdi:fireplace-off
+    lambda: |-
+      if (id(kamin_temperature).state < 30) {
+        return {"Aus"};
+      } else {
+        return {"Läuft"};
+      }
+
+button:
+  - <<: !include common/button/restart.yaml

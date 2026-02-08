@@ -1,0 +1,29 @@
+- sensor:
+  - unique_id: open_windows_counter
+    default_entity_id: sensor.open_windows_counter
+    name: Zähler offene Fenster
+    icon: mdi:window-open-variant
+    state: "{{ expand('binary_sensor.gruppe_fenster') | selectattr('state', 'eq', 'on') | list | count }}"
+
+- sensor:
+  - unique_id: open_windows_message
+    default_entity_id: sensor.open_windows_message
+    name: Nachricht offene Fenster
+    icon: mdi:window-open-variant
+    state: >
+      {% set window_entities = state_attr('binary_sensor.gruppe_fenster', 'entity_id') %}
+      {% if window_entities is none %}
+        {% set window_entities = [] %}
+      {% endif %}
+
+      {% set windows_open = states.binary_sensor
+        | selectattr('entity_id', 'in', window_entities)
+        | selectattr('state', 'eq', 'on')
+        | map(attribute='name')
+        | list %}
+
+      {% set message = 'Keine offenen Fenster.' if windows_open | length == 0 else
+        'Das folgende Fenster ist offen: ' + windows_open[0] if windows_open | length == 1 else
+        'Die folgenden Fenster sind offen: ' + windows_open | join(', ') + '.' %}
+
+      {{ message }}

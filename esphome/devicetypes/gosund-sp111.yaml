@@ -1,0 +1,94 @@
+# Base settings
+<<: !include ../common/device_base.yaml
+
+# Web Server
+<<: !include ../common/generic/web_server.yaml
+
+# Captive Portal
+<<: !include ../common/generic/captive_portal.yaml
+
+# Board selection
+<<: !include ../boards/esp8266-esp8285.yaml
+
+# toggle relay on/off
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO13
+      mode: INPUT_PULLUP
+      inverted: True
+    id: "${devicename}_button_state"
+    on_press:
+      - switch.toggle: button_switch
+
+sensor:
+  - platform: total_daily_energy
+    name: "Verbrauch heute"
+    power_id: "power_wattage"
+    filters:
+      # Multiplication factor from W to kW is 0.001
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    icon: mdi:calendar-clock
+
+  - platform: adc
+    pin: VCC
+    name: "Aktuell - VCC Volt"
+    icon: mdi:flash-outline
+
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: True
+    cf_pin: GPIO05
+    cf1_pin: GPIO04
+    change_mode_every: 4
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    update_interval: 3s
+
+    current:
+      name: "Aktuell - Ampere"
+      unit_of_measurement: A
+      accuracy_decimals: 3
+      icon: mdi:current-ac
+
+    voltage:
+      name: "Aktuell - Volt"
+      unit_of_measurement: V
+      accuracy_decimals: 1
+      icon: mdi:flash-outline
+
+    power:
+      name: "Aktuell - Watt"
+      unit_of_measurement: W
+      id: "power_wattage"
+      icon: mdi:gauge
+      
+status_led:
+  pin:
+    number: GPIO02
+    inverted: True
+  id: led_blue
+
+output:
+  - platform: gpio
+    pin: GPIO00
+    inverted: true
+    id: led_red
+
+switch:
+  - platform: template
+    name: "${friendly_devicename}"
+    icon: mdi:power
+    optimistic: true
+    id: button_switch
+    turn_on_action:
+      - switch.turn_on: relay
+      - output.turn_on: led_red
+    turn_off_action:
+      - switch.turn_off: relay
+      - output.turn_off: led_red
+  - platform: gpio
+    pin: GPIO15
+    id: relay

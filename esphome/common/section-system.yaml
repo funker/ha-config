@@ -1,0 +1,23 @@
+# API
+<<: !include generic/api.yaml
+
+# Logger
+<<: !include generic/logger.yaml
+
+# mDNS
+<<: !include generic/mdns.yaml
+
+# OTA
+<<: !include generic/ota.yaml
+
+# Time
+<<: !include generic/time.yaml
+
+# Wifi
+<<: !include generic/wifi.yaml
+
+# Web Server
+<<: !include generic/web_server.yaml
+
+# Captive Portal
+<<: !include generic/captive_portal.yaml

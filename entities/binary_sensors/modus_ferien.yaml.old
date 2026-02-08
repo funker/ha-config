@@ -1,0 +1,34 @@
+platform: template
+sensors:
+  modus_ferien:
+    friendly_name: Modus Ferien
+    unique_id: modus_ferien
+    icon_template: mdi:home
+    value_template: >
+      {% set keywords = ['ferien'] %}
+      {% set message_2024 = state_attr('calendar.ferien_hamburg_2024', 'message') %}
+      {% set all_day_2024 = state_attr('calendar.ferien_hamburg_2024', 'all_day') %}
+      {% set message_2025 = state_attr('calendar.ferien_hamburg_2025', 'message') %}
+      {% set all_day_2025 = state_attr('calendar.ferien_hamburg_2025', 'all_day') %}
+
+      {% set match_2024 = false %}
+      {% set match_2025 = false %}
+
+      {# Check if any keyword is in 2024's message (case-insensitive) #}
+      {% for keyword in keywords %}
+        {% if keyword.lower() in message_2024.lower() %}
+          {% set match_2024 = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {# Check if any keyword is in 2025's message (case-insensitive) #}
+      {% for keyword in keywords %}
+        {% if keyword.lower() in message_2025.lower() %}
+          {% set match_2025 = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+
+      {# Final determination for modus_urlaub_home #}
+      {{ match_2024 or match_2025 }}
