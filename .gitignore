@@ -9,7 +9,6 @@
 !*.md
 !README*
 !LICENSE
-!pushupdates.sh
 
 
 # Falls du bestimmte Ordner mit YAML-Strukturen behalten willst
