@@ -1,6 +1,15 @@
-homeoffice_beide:
-  name: Homeoffice beide
-  icon: mdi:chair-rolling
+homeoffice_generell: # OR: Jemand Homeoffice
+  name: "Homeoffice (jemand)"
+  icon: mdi:briefcase-account
   entities:
     - input_boolean.modus_homeoffice_jan
     - input_boolean.modus_homeoffice_steffi
+  all: false # Mindestens 1 ON
+
+homeoffice_beide: # AND: Beide Homeoffice
+  name: "Homeoffice (beide)"
+  icon: mdi:briefcase-account-outline
+  entities:
+    - input_boolean.modus_homeoffice_jan
+    - input_boolean.modus_homeoffice_steffi
+  all: true # Beide ON
