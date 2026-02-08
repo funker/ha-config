@@ -1,17 +1,17 @@
-sensor:
-  - name: "Modus Homeoffice beide"
-    unique_id: modus_homeoffice_beide
-    icon: "mdi:chair-rolling"
-    state: >
-      {{ is_state('input_boolean.modus_homeoffice_steffi', 'on')
-         and is_state('input_boolean.modus_homeoffice_jan', 'on') }}
+# sensor:
+#   - name: "Modus Homeoffice beide"
+#     unique_id: modus_homeoffice_beide
+#     icon: "mdi:chair-rolling"
+#     state: >
+#       {{ is_state('input_boolean.modus_homeoffice_steffi', 'on')
+#          and is_state('input_boolean.modus_homeoffice_jan', 'on') }}
 
-  - name: "Modus Homeoffice generell"
-    unique_id: modus_homeoffice_generell
-    icon: "mdi:chair-rolling"
-    state: >
-      {{ is_state('input_boolean.modus_homeoffice_steffi', 'on')
-         or is_state('input_boolean.modus_homeoffice_jan', 'on') }}
+#   - name: "Modus Homeoffice generell"
+#     unique_id: modus_homeoffice_generell
+#     icon: "mdi:chair-rolling"
+#     state: >
+#       {{ is_state('input_boolean.modus_homeoffice_steffi', 'on')
+#          or is_state('input_boolean.modus_homeoffice_jan', 'on') }}
 
 # platform: template
 # sensors:
