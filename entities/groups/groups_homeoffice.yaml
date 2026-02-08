@@ -1,13 +1,13 @@
-homeoffice_generell: # OR: Jemand Homeoffice
-  name: "Homeoffice (jemand)"
+modus_homeoffice_generell: # OR: Jemand Homeoffice
+  name: "Modus Homeoffice generell"
   icon: mdi:briefcase-account
   entities:
     - input_boolean.modus_homeoffice_jan
     - input_boolean.modus_homeoffice_steffi
   all: false # Mindestens 1 ON
 
-homeoffice_beide: # AND: Beide Homeoffice
-  name: "Homeoffice (beide)"
+modus_homeoffice_beide: # AND: Beide Homeoffice
+  name: "Modus Homeoffice beide"
   icon: mdi:briefcase-account-outline
   entities:
     - input_boolean.modus_homeoffice_jan
