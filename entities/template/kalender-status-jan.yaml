@@ -2,22 +2,22 @@
     - name: "Status Jan Krank"
       unique_id: status_jan_krank
       state: >
-        {{ is_state_attr('calendar.der_herr', 'message', 'Krank') 
-          and state_attr('calendar.der_herr', 'all_day', False)
-          and is_state('calendar.der_herr', 'on') }}
+        {{ is_state_attr('calendar.jan', 'message', 'Krank') 
+          and state_attr('calendar.jan', 'all_day', False)
+          and is_state('calendar.jan', 'on') }}
 
     - name: "Status Jan Urlaub Zu Hause"
       unique_id: status_jan_urlaub_zu_hause
       state: >
-        {{ is_state_attr('calendar.der_herr', 'message', 'Urlaub')
-          and (state_attr('calendar.der_herr', 'location', '') in ['', 'Zu Hause', 'Zuhause'])
-          and state_attr('calendar.der_herr', 'all_day', False)
-          and is_state('calendar.der_herr', 'on') }}
+        {{ is_state_attr('calendar.jan', 'message', 'Urlaub')
+          and (state_attr('calendar.jan', 'location', '') in ['', 'Zu Hause', 'Zuhause'])
+          and state_attr('calendar.jan', 'all_day', False)
+          and is_state('calendar.jan', 'on') }}
 
     - name: "Status Jan Urlaub Nicht Zu Hause"
       unique_id: status_jan_urlaub_nicht_zu_hause
       state: >
-        {{ is_state_attr('calendar.der_herr', 'message', 'Urlaub')
-          and state_attr('calendar.der_herr', 'location', '') not in ['', 'Zu Hause', 'Zuhause']
-          and state_attr('calendar.der_herr', 'all_day', False)
-          and is_state('calendar.der_herr', 'on') }}
+        {{ is_state_attr('calendar.jan', 'message', 'Urlaub')
+          and state_attr('calendar.jan', 'location', '') not in ['', 'Zu Hause', 'Zuhause']
+          and state_attr('calendar.jan', 'all_day', False)
+          and is_state('calendar.jan', 'on') }}

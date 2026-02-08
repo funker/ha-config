@@ -1551,7 +1551,7 @@
     - platform: calendar
       event: start
       offset: -0:15:0
-      entity_id: calendar.der_herr
+      entity_id: calendar.jan
   condition: []
   action:
     - action: notify.mobile_app_pixel_7_pro
@@ -2396,7 +2396,7 @@
                   - climate.heizung_tim
                   - climate.heizung_steffi
                   - climate.heizung_bad
-                  - climate.heizung_lasse
+                  - climate.heizung_das_kind_2
               enabled: false
         - conditions:
             - condition: trigger
@@ -2412,7 +2412,7 @@
                   - climate.heizung_bad
                   - climate.heizung_steffi
                   - climate.heizung_tim
-                  - climate.heizung_lasse
+                  - climate.heizung_das_kind_2
               enabled: false
       enabled: false
   mode: single
@@ -2575,7 +2575,7 @@
   use_blueprint:
     path: smarthomejunkie/awtrix_list_calendar.yaml
     input:
-      my_calendar: calendar.der_herr
+      my_calendar: calendar.jan
       toggle_helper: input_boolean.awtrix_list_calendar_jan
       awtrix_displays:
         - 6121487a963d56c58c43d945c41f9496
@@ -3129,7 +3129,7 @@
       trigger: time
   actions:
     - target:
-        entity_id: calendar.der_herr
+        entity_id: calendar.jan
       data:
         start_time: "{{ states('sensor.month_upcoming_first_day') }}"
         end_time: "{{ states('sensor.month_upcoming_last_day') }}"
@@ -3139,7 +3139,7 @@
     - target:
         entity_id: input_text.calendar_events_jan_upcoming_month
       data:
-        value: "{{ state_attr('calendar.der_herr', 'events') | tojson }}"
+        value: "{{ state_attr('calendar.jan', 'events') | tojson }}"
       action: input_text.set_value
 - id: "1729636292721"
   alias: Kellertreppe - Bewegung - Benachrichtigung
@@ -3346,7 +3346,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: calendar.lasse_amundsen_cc
+      calendar: calendar.lasse
       calendar_trigger: "#Krank,#Kindkrank"
       global_conditions:
         - condition: state
@@ -3376,7 +3376,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: calendar.der_herr
+      calendar: calendar.jan
       calendar_trigger: "#Krank,#Kindkrank"
       global_conditions:
         - condition: state
@@ -3406,7 +3406,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: die_dame
+      calendar: calendar.steffi
       calendar_trigger: "#Krank,#Kindkrank"
       global_conditions:
         - condition: state
@@ -3436,7 +3436,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: das_kind_1
+      calendar: tim
       calendar_trigger: "#Krank,#Kindkrank"
       global_conditions:
         - condition: state
@@ -3466,7 +3466,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: calendar.der_herr
+      calendar: calendar.jan
       calendar_trigger: Homeoffice
       include_start_action_buttons: []
       include_start_auto_actions:
@@ -3495,7 +3495,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: die_dame
+      calendar: calendar.steffi
       calendar_trigger: Homeoffice,Home-Office
       include_start_action_buttons: []
       include_start_auto_actions:

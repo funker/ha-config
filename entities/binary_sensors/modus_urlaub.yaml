@@ -5,14 +5,14 @@ sensors:
     unique_id: modus_urlaub_home
     icon_template: mdi:home
     value_template: >
-      {% set locations = ['Zuhause', 'Zu Hause', 'Bekassinenau', ''] %}
+      {% set locations = ['Zuhause', 'Zu Hause', 'sinena', ''] %}
       {% set keywords = ['Urlaub', 'Holiday'] %}
-      {% set message_steffi = state_attr('die_dame', 'message') %}
-      {% set location_steffi = state_attr('die_dame', 'location') %}
-      {% set all_day_steffi = state_attr('die_dame', 'all_day') %}
-      {% set message_jan = state_attr('calendar.der_herr', 'message') %}
-      {% set location_jan = state_attr('calendar.der_herr', 'location') %}
-      {% set all_day_jan = state_attr('calendar.der_herr', 'all_day') %}
+      {% set message_steffi = state_attr('calendar.steffi', 'message') %}
+      {% set location_steffi = state_attr('calendar.steffi', 'location') %}
+      {% set all_day_steffi = state_attr('calendar.steffi', 'all_day') %}
+      {% set message_jan = state_attr('calendar.jan', 'message') %}
+      {% set location_jan = state_attr('calendar.jan', 'location') %}
+      {% set all_day_jan = state_attr('calendar.jan', 'all_day') %}
 
       {% set steffi_match = false %}
       {% set jan_match = false %}
@@ -63,14 +63,14 @@ sensors:
     unique_id: modus_urlaub_away
     icon_template: mdi:island
     value_template: >
-      {% set locations = ['Zuhause', 'Zu Hause', 'Bekassinenau', ''] %}
+      {% set locations = ['Zuhause', 'Zu Hause', 'sinena', ''] %}
       {% set keywords = ['Urlaub', 'Holiday'] %}
-      {% set message_steffi = state_attr('die_dame', 'message') %}
-      {% set location_steffi = state_attr('die_dame', 'location') %}
-      {% set all_day_steffi = state_attr('die_dame', 'all_day') %}
-      {% set message_jan = state_attr('calendar.der_herr', 'message') %}
-      {% set location_jan = state_attr('calendar.der_herr', 'location') %}
-      {% set all_day_jan = state_attr('calendar.der_herr', 'all_day') %}
+      {% set message_steffi = state_attr('calendar.steffi', 'message') %}
+      {% set location_steffi = state_attr('calendar.steffi', 'location') %}
+      {% set all_day_steffi = state_attr('calendar.steffi', 'all_day') %}
+      {% set message_jan = state_attr('calendar.jan', 'message') %}
+      {% set location_jan = state_attr('calendar.jan', 'location') %}
+      {% set all_day_jan = state_attr('calendar.jan', 'all_day') %}
 
       {% set steffi_match = false %}
       {% set jan_match = false %}
