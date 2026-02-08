@@ -1,3 +1,0 @@
-# Board selection
-<<: !include ../boards/esp8266-d1-mini.yaml
-

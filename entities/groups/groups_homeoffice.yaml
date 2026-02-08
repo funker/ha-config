@@ -1,6 +1,0 @@
-homeoffice_beide:
-  name: Homeoffice beide
-  icon: mdi:chair-rolling
-  entities:
-    - input_boolean.modus_homeoffice_jan
-    - input_boolean.modus_homeoffice_steffi

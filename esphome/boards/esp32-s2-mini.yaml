@@ -1,6 +1,0 @@
-esp32:
-  board: lolin_s2_mini
-  variant: ESP32S2
-  framework:
-    type: esp-idf
-    platform_version: https://github.com/jhamhader/platform-espressif32#8bc085573e4f6986ffcda7050b9607739f3c6976

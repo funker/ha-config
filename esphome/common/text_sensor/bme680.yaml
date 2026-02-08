@@ -1,4 +1,0 @@
-- platform: bme680_bsec
-  bme680_bsec_id: bme680_internal
-  iaq_accuracy:
-    name: "IN_IAQaccuracy"

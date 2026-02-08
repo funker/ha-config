@@ -1,9 +1,0 @@
-substitutions:
-  devicename: "sonoffbasicr2-04"
-  friendly_devicename: "Licht Abseite UG"
-  room: "Abseite UG"
-  comment: "Licht Abseite UG"
-  project_name: "Sonoff.Basic R2"
-  project_version: "1.0"
-
-<<: !include devicetypes/sonoff-basic-r2.yaml

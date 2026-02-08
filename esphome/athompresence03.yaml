@@ -1,9 +1,0 @@
-substitutions:
-  devicename: "athompresence03"
-  friendly_devicename: "Präsenz Küche"
-  room: "Küche"
-  comment: "Athom Presence Sensor Küche"
-  project_name: "Athom.Presence Sensor"
-  project_version: "1.0"
-
-<<: !include devicetypes/athom-presence.yaml

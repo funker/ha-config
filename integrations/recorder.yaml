@@ -1,6 +1,0 @@
-# Recorder
-# https://www.home-assistant.io/integrations/recorder/
-
-recorder:
-  # The number of days of history to keep in the recorder database
-  purge_keep_days: 7

@@ -1,4 +1,0 @@
-calendar_events_jan_upcoming_month:
-  name: "Kalendereinträge nächsten Monat"
-  initial: ""
-  mode: text
