@@ -1,8 +1,8 @@
 substitutions:
   devicename: "gosundplug05"
-  friendly_devicename: "Licht Serverschrank"
-  room: "Datacenter"
-  comment: "Gosund SP111 Licht Serverschrank"
+  friendly_devicename: "Airfryer"
+  room: "Küche"
+  comment: "Gosund SP111 Airfryer"
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
