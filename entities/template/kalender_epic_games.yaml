@@ -1,33 +1,33 @@
 ### Epic Store Free Games
-trigger:
-  - platform: time_pattern
-    hours: "/1"
-action:
-  - action: calendar.get_events
-    target:
-      entity_id: calendar.epic_games_store_kostenlose_spiele
-    data:
-      duration:
-        hours: 24
-        minutes: 0
-        seconds: 0
-    response_variable: my_games
-sensor:
-  - name: Epic Store Free Games
-    unique_id: 3cb1c076-e0c9-4297-ad04-6b8cbec8e055
-    icon: mdi:controller
-    state: >
-      {{ states('calendar.epic_games_store_kostenlose_spiele') }}
-    attributes:
-      gamename_one: >
-        {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[0].summary }}
-      gamedescription_one: >
-        {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[0].description }}
-      gamename_two: >
-        {% if my_games['calendar.epic_games_store_kostenlose_spiele'] | count == 2 %}
-          {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[1].summary }}
-        {% endif %}
-      gamedescription_two: >
-        {% if my_games['calendar.epic_games_store_kostenlose_spiele'] | count == 2 %}
-          {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[1].description }}
-        {% endif %}
+- trigger:
+    - platform: time_pattern
+      hours: "/1"
+  action:
+    - action: calendar.get_events
+      target:
+        entity_id: calendar.epic_games_store_kostenlose_spiele
+      data:
+        duration:
+          hours: 24
+          minutes: 0
+          seconds: 0
+      response_variable: my_games
+  sensor:
+    - name: Epic Store Free Games
+      unique_id: 3cb1c076-e0c9-4297-ad04-6b8cbec8e055
+      icon: mdi:controller
+      state: >
+        {{ states('calendar.epic_games_store_kostenlose_spiele') }}
+      attributes:
+        gamename_one: >
+          {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[0].summary }}
+        gamedescription_one: >
+          {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[0].description }}
+        gamename_two: >
+          {% if my_games['calendar.epic_games_store_kostenlose_spiele'] | count == 2 %}
+            {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[1].summary }}
+          {% endif %}
+        gamedescription_two: >
+          {% if my_games['calendar.epic_games_store_kostenlose_spiele'] | count == 2 %}
+            {{ my_games['calendar.epic_games_store_kostenlose_spiele'].events[1].description }}
+          {% endif %}
