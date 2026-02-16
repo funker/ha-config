@@ -111,3 +111,18 @@ awtrix_new_app_2:
         false
   mode: parallel
   max: 10
+system_master_notify:
+  alias: System Master Notify
+  use_blueprint:
+    path: FourtyNos/Master_Notify.yaml
+    input:
+      user_group_admins:
+      - db7e38b06231c2341537d1bafe5b7dec
+      - 79732d01d82065e54ca2bc097f626758
+      - 3f820e6a8cd4b946f2bed9eb6a7b8f59
+      user_group_family:
+      - 96a9f03f46d6cda88e538a226e3fa01f
+      tts_provider: tts.home_assistant_cloud
+      tts_group_devices:
+      - media_player.echo_show_jan
+  description: ''
