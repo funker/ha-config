@@ -4048,15 +4048,15 @@
     - fri
     id: open
     alias: Öffnen wochentags
-    enabled: false
+    enabled: true
   - alias: Öffnen Wochenende
     trigger: time
-    at: 09:00:00
+    at: 09:30:00
     id: open
     weekday:
     - sat
     - sun
-    enabled: false
+    enabled: true
   conditions: []
   actions:
   - choose:
@@ -4074,9 +4074,15 @@
         entity_id: 7edc1bfd7c01e234e16166e71aae9072
         type: close
     - conditions:
-      - condition: trigger
-        id:
-        - open
+      - condition: and
+        conditions:
+        - condition: trigger
+          id:
+          - open
+        - condition: state
+          entity_id: binary_sensor.schulferien_feiertage
+          state:
+          - 'off'
       sequence:
       - device_id: 34e938884dd537fd5767badeb0c40da9
         domain: cover
