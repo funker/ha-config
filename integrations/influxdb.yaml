@@ -1,8 +1,8 @@
 # Influx DB
 
 influxdb:
-  username: !secret influx_username
-  password: !secret influx_password
+  # username: !secret influx_username
+  # password: !secret influx_password
   tags:
     source: HA
   tags_attributes:
@@ -22,4 +22,4 @@ influxdb:
       - light
       - cover
     entities:
-      - weather.home
+      - weather.bergstedt

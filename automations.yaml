@@ -4224,3 +4224,12 @@
     metadata: {}
     data: {}
   mode: single
+- id: '1774713331275'
+  alias: ESPHome Device Auto Bulk Update
+  description: ''
+  use_blueprint:
+    path: bferd/esphome_auto_bulk_update.yaml
+    input:
+      notify_device: db7e38b06231c2341537d1bafe5b7dec
+      update_mode: sequential
+      sequential_delay: 30
