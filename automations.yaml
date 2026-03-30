@@ -58,10 +58,11 @@
       button_down_long_max_loop_repeats: 100
       action_button_right_double: []
       action_button_right_short:
-      - type: toggle
-        device_id: 544531e7a9b77df743f4c5f796066c67
-        entity_id: switch.dekolicht_kommode
-        domain: switch
+      - action: light.toggle
+        metadata: {}
+        target:
+          device_id: 09a2bdb9c6b59c172ac1c684b721edc5
+        data: {}
 - id: '1676070740695'
   alias: Schaltung Licht Küche Arbeitsplatte
   description: ''
@@ -109,9 +110,11 @@
     id: bad_decke
   - trigger: state
     entity_id:
-    - light.spiegelleuchte
-    from: 'on'
-    to: 'off'
+    - light.bad_spiegelleuchte
+    from:
+    - 'on'
+    to:
+    - 'off'
     for:
       hours: 0
       minutes: 0
@@ -125,10 +128,11 @@
         id:
         - bad_spiegel
       sequence:
-      - type: toggle
-        device_id: 95e17d8963715301757598a3d4a371f3
-        entity_id: light.spiegelleuchte
-        domain: light
+      - action: light.toggle
+        metadata: {}
+        target:
+          entity_id: light.bad_spiegelleuchte
+        data: {}
     - conditions:
       - condition: trigger
         id:
@@ -378,14 +382,16 @@
 - id: '1676197933702'
   alias: Status Waschmaschine geöffnet
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.klappe_briefkasten
-    from: 'off'
-    to: 'on'
-  condition: []
-  action:
+  triggers:
+  - entity_id:
+    - binary_sensor.tur_waschmaschine_contact
+    from:
+    - 'off'
+    to:
+    - 'on'
+    trigger: state
+  conditions: []
+  actions:
   - action: input_text.set_value
     data:
       value: Geöffnet
@@ -395,14 +401,16 @@
 - id: '1676204016305'
   alias: Status Waschmaschine geschlossen
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.klappe_briefkasten
-    from: 'on'
-    to: 'off'
-  condition: []
-  action:
+  triggers:
+  - entity_id:
+    - binary_sensor.tur_waschmaschine_contact
+    from:
+    - 'on'
+    to:
+    - 'off'
+    trigger: state
+  conditions: []
+  actions:
   - action: input_text.set_value
     data:
       value: Geschlossen
@@ -872,17 +880,17 @@
 - id: '1680622701789'
   alias: Tim - Licht Decke
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
+  triggers:
+  - entity_id:
     - binary_sensor.shelly_tim_channel_1_input
-  condition: []
-  action:
+    trigger: state
+  conditions: []
+  actions:
   - if:
     - condition: device
       type: is_off
-      device_id: ecb6825dfb38b99a768c77f8d2430c8f
-      entity_id: light.tim_deckenlampe
+      device_id: 00dfff642e527376d337365997efa2b5
+      entity_id: afc2b47fa83832aec895c34081b98323
       domain: light
     then:
     - action: light.turn_on
@@ -890,8 +898,7 @@
         transition: 2
         brightness_pct: 100
       target:
-        entity_id:
-        - light.tim_deckenlampe
+        entity_id: light.tim_deckenlampe
     else:
     - action: light.turn_off
       data:
@@ -1106,32 +1113,32 @@
     input:
       button: 107384eeb132a760bf229948f3124a03
       singleb2:
-      - type: toggle
-        device_id: c0c8d1b9ddd4e356d0702dc8c2253c46
-        entity_id: light.licht_jan_nachttisch
-        domain: light
+      - action: light.toggle
+        metadata: {}
+        target:
+          entity_id: light.licht_jan_nachttisch_2
+        data:
+          transition: 2
       singleb1:
-      - type: toggle
-        device_id: eaf46b76803c3eba413c045be2761484
-        entity_id: light.licht_jan_arbeit
-        domain: light
+      - action: light.toggle
+        metadata: {}
+        target:
+          entity_id: light.licht_jan_arbeit
+        data: {}
       doubleb1: []
       longb2:
-      - type: toggle
-        device_id: 4de421a2a3a131f3e49815d117f6a26c
-        entity_id: light.licht_jan_decke
-        domain: light
-      doubleb2: []
-      longb1:
-      - action: homeassistant.turn_off
+      - action: light.toggle
         metadata: {}
         data: {}
         target:
-          entity_id:
-          - light.licht_jan_decke
-          - light.licht_jan_nachttisch
-          - light.licht_jan_arbeit
-          - light.jan_monitorlampe
+          device_id: a2936d982a6b006ce85b5d36eb3eea57
+      doubleb2: []
+      longb1:
+      - action: light.turn_off
+        metadata: {}
+        target:
+          area_id: jan
+        data: {}
 - id: '1687523358889'
   alias: Badezimmer - Luftfeuchtigkeit
   description: ''
@@ -1289,13 +1296,13 @@
       ambient_light_sensor: sensor.prasenz_kuche_light_sensor
       light_switch:
         entity_id:
-        - light.dimmer_01
-        - light.dimmer_02
         - light.gruppe_licht_kuche_decke
+        - light.licht_kuche_arbeitsplatte
+        - light.licht_kuche_schrank
       night_lights:
         entity_id:
-        - light.dimmer_02
-        - light.dimmer_01
+        - light.licht_kuche_schrank
+        - light.licht_kuche_arbeitsplatte
       light_brightness: 100
       motion_bypass_lights_on:
       - input_boolean.modus_spielen
@@ -3061,7 +3068,8 @@
       motion_trigger:
       - binary_sensor.presence_bad_occupancy
       light_switch:
-        entity_id: light.spiegelleuchte
+        entity_id:
+        - light.bad_spiegelleuchte
       time_delay: 0
       include_light_control:
       - use_brightness
@@ -3077,7 +3085,8 @@
       night_lights_conditions:
       - sun_enabled
       night_lights:
-        entity_id: light.spiegelleuchte
+        entity_id:
+        - light.bad_spiegelleuchte
       night_time_delay: 0
       include_night_light_control:
       - use_brightness
