@@ -351,15 +351,16 @@
 - id: '1676149155109'
   alias: Jan - Arbeitslicht
   description: ''
-  trigger:
-  - platform: tag
-    tag_id: dfb7cc5b-8c30-4d80-aef9-e9b1e2cdc638
-  condition: []
-  action:
-  - type: toggle
-    device_id: eaf46b76803c3eba413c045be2761484
-    entity_id: light.licht_jan_arbeit
-    domain: light
+  triggers:
+  - tag_id: dfb7cc5b-8c30-4d80-aef9-e9b1e2cdc638
+    trigger: tag
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    target:
+      entity_id: light.licht_jan_arbeit
+    data: {}
   mode: single
 - id: '1676156961612'
   alias: Schuppen - Licht
@@ -1116,7 +1117,8 @@
       - action: light.toggle
         metadata: {}
         target:
-          entity_id: light.licht_jan_nachttisch_2
+          entity_id:
+          - light.licht_jan_nachttisch
         data:
           transition: 2
       singleb1:
@@ -1196,13 +1198,15 @@
 - id: '1689461542434'
   alias: Flur EG - Bewegung Benachrichtigung
   description: ''
-  trigger:
-  - type: motion
-    platform: device
-    device_id: ba4f0f2d3b6a9f96ec383080d95b676d
-    entity_id: 480b2f001f592d04c314468f296686b1
-    domain: binary_sensor
-  condition:
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.bewegung_flur_eg_occupancy
+    from:
+    - 'off'
+    to:
+    - 'on'
+  conditions:
   - condition: time
     after: '22:00:00'
     before: 05:00:00
@@ -1214,7 +1218,7 @@
     - fri
     - sat
     - sun
-  action:
+  actions:
   - device_id: db7e38b06231c2341537d1bafe5b7dec
     domain: mobile_app
     type: notify
@@ -1234,7 +1238,7 @@
     path: Blackshome/sensor-light.yaml
     input:
       motion_trigger:
-      - binary_sensor.bewegung_flur_eg
+      - binary_sensor.bewegung_flur_eg_occupancy
       light_switch:
         entity_id: light.gruppe_licht_flur_eg_decke
       time_delay: 0
@@ -3676,7 +3680,7 @@
     path: Blackshome/sensor-light.yaml
     input:
       motion_trigger:
-      - binary_sensor.bewegung_abseite_ug
+      - binary_sensor.bewegung_abseite_ug_occupancy
       light_switch:
         entity_id:
         - light.licht_abseite_ug_licht_abseite_ug
