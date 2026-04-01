@@ -1599,7 +1599,7 @@
     path: EPMatt/ikea_e1812.yaml
     input:
       integration: deCONZ
-      controller_device: 38516e78d8d3ba22bce7a1a9efca90ed
+      controller_device: 61fd532b819820b293e7eb9a1cd51712
       helper_last_controller_event: input_text.last_controller_event_button_b01
       action_button_short:
       - choose:
