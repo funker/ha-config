@@ -2698,8 +2698,8 @@
   use_blueprint:
     path: EPMatt/ikea_e1743.yaml
     input:
-      integration: deCONZ
-      controller_device: 3458bf5e5eeb5fbcd39603273382a118
+      integration: Zigbee2MQTT
+      controller_device: fb4d6093b48b74c7e6fc70d58183038a
       helper_last_controller_event: input_text.remote_a03_last_controller_event
       action_button_up_short:
       - action: todo.get_items
