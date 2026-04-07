@@ -500,19 +500,6 @@
     target:
       entity_id: automation.flur_og_bewegung_licht
   mode: single
-- id: '1676420263329'
-  alias: 'deconz: Refresh devices'
-  description: ''
-  trigger:
-  - platform: homeassistant
-    event: start
-  - platform: time
-    at: 01:00:00
-  condition: []
-  action:
-  - data: {}
-    action: deconz.device_refresh
-  mode: single
 - id: '1676579157585'
   alias: Flur UG - NFC Tag 3D-Drucker ist gescannt
   description: ''
@@ -1029,15 +1016,6 @@
       message: Akkulader ausgeschaltet um {{now()}}
       title: Akkulader Bosch
       enabled: false
-  mode: single
-- id: '1684654801933'
-  alias: 'Allgemein - deconz: Remove orphaned devices'
-  description: ''
-  trigger: []
-  condition: []
-  action:
-  - action: deconz.remove_orphaned_entries
-    data: {}
   mode: single
 - id: '1685362241154'
   alias: Gerät nicht verfügbar
