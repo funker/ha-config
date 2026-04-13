@@ -373,10 +373,10 @@
       time_delay: 0.5
       light_switch:
         entity_id:
-        - light.schuppen_decke
+        - light.licht_schuppen
       include_light_control:
-      - use_transition
       - use_brightness
+      - use_transition
       light_brightness: 100
       include_bypass_auto_off: bypass_auto_off_disabled
       bypass_auto_off_delay: 1
