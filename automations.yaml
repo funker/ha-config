@@ -4224,3 +4224,79 @@
       notify_device: db7e38b06231c2341537d1bafe5b7dec
       update_mode: sequential
       sequential_delay: 30
+- id: '1776584741719'
+  alias: Küche - Airfryer fertig
+  description: ''
+  use_blueprint:
+    path: sbyx/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml
+    input:
+      power_sensor: sensor.licht_datacenter_aktuell_watt
+      starting_threshold: 15
+      actions:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+      - action: notify.mobile_app_pixel_7_pro
+        metadata: {}
+        data:
+          message: Der Airfryer ist fertig.
+      pre_actions:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+- id: '1776584871054'
+  alias: Küche - Kaffeemaschine fertig
+  description: ''
+  use_blueprint:
+    path: sbyx/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml
+    input:
+      power_sensor: sensor.gosundplug10_aktuell_watt
+      starting_threshold: 15
+      actions:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+      - action: notify.mobile_app_pixel_7_pro
+        metadata: {}
+        data:
+          message: Die Kaffeemaschine ist fertig.
+      pre_actions:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+      starting_hysteresis: 1
+      finishing_hysteresis: 1
+- id: '1776585193626'
+  alias: Küche - Thermomix fertig
+  description: ''
+  use_blueprint:
+    path: sbyx/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml
+    input:
+      power_sensor: sensor.thermomix_aktuell_watt
+      starting_threshold: 15
+      actions:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+      - action: notify.mobile_app_pixel_7_pro
+        metadata: {}
+        data:
+          message: Die Kaffeemaschine ist fertig.
+      pre_actions:
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+      starting_hysteresis: 1
+      finishing_hysteresis: 1
