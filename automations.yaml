@@ -2311,104 +2311,6 @@
       - button.shelly_2pm_gen3_kuche_reboot
     action: button.press
   mode: single
-- id: '1724949330980'
-  alias: Heizung nach Entfernung schalten
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - sensor.zuhause_jan_fahrtrichtung
-    from: arrived
-    to: away_from
-    id: jan_geht_weg
-    enabled: false
-  - platform: state
-    entity_id:
-    - sensor.zuhause_steffi_fahrtrichtung
-    from: arrived
-    to: away_from
-    id: steffi_geht_weg
-    enabled: false
-  - platform: state
-    entity_id:
-    - sensor.zuhause_tim_fahrtrichtung
-    from: arrived
-    to: away_from
-    id: tim_geht_weg
-    enabled: false
-  - platform: numeric_state
-    entity_id:
-    - sensor.zuhause_nachste_entfernung
-    below: 5000
-    id: Approaching
-  - platform: numeric_state
-    entity_id:
-    - zone.zuhause
-    above: 0
-    id: Approaching
-  - platform: state
-    entity_id:
-    - zone.zuhause
-    to: '0'
-    id: Leaving
-  - platform: numeric_state
-    entity_id:
-    - sensor.zuhause_nachste_entfernung
-    above: 5000
-    id: Leaving
-  condition: []
-  action:
-  - action: homeassistant.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - cover.dachfenster_rollos
-      - lock.nuki_haustur_lock
-    enabled: false
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - Approaching
-      - condition: or
-        conditions:
-        - condition: state
-          entity_id: sensor.zuhause_nachste_fahrtrichtung
-          state: towards
-        - condition: state
-          entity_id: sensor.zuhause_nachste_fahrtrichtung
-          state: arrived
-      sequence:
-      - action: climate.set_temperature
-        metadata: {}
-        data:
-          temperature: 18
-        target:
-          entity_id:
-          - climate.heizung_tim
-          - climate.heizung_steffi
-          - climate.heizung_bad
-          - climate.heizung_lasse
-        enabled: false
-    - conditions:
-      - condition: trigger
-        id:
-        - Leaving
-      sequence:
-      - action: climate.set_temperature
-        metadata: {}
-        data:
-          temperature: 15
-        target:
-          entity_id:
-          - climate.heizung_bad
-          - climate.heizung_steffi
-          - climate.heizung_tim
-          - climate.heizung_lasse
-        enabled: false
-    enabled: false
-  mode: single
 - id: '1725202356746'
   alias: Alarm - Rauchmelder
   description: ''
@@ -3441,7 +3343,7 @@
   use_blueprint:
     path: Blackshome/calendar-notifications-and-actions.yaml
     input:
-      calendar: tim
+      calendar: calendar.tim
       calendar_trigger: '#Krank,#Kindkrank'
       global_conditions:
       - condition: state
@@ -3772,25 +3674,6 @@
       input_liming_protection: true
       input_liming_in_winter: true
       input_mode_winter: input_boolean.modus_winter
-      input_log_level: warning
-- id: '1739311217969'
-  alias: Heizungssteuerung Lasse v5
-  description: ''
-  use_blueprint:
-    path: panhans/advanced_heating_control.yaml
-    input:
-      input_trvs:
-      - climate.heizung_lasse
-      input_temperature_sensor: sensor.klima_lasse_temperature_2
-      input_temperature_comfort: input_number.heizungssteuerung_lasse_komfort_temperatur
-      input_temperature_eco: input_number.heizungssteuerung_temperatur_eco
-      input_schedulers:
-      - schedule.heizungssteuerung_lasse_zeitplan
-      input_windows: []
-      input_liming_protection: true
-      input_liming_in_winter: true
-      input_mode_winter: input_boolean.modus_winter
-      input_mode_party: []
       input_log_level: warning
 - id: '1739574041103'
   alias: Müll Erinnerung
