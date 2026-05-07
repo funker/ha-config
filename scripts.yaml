@@ -126,3 +126,22 @@ system_master_notify:
       tts_group_devices:
       - media_player.echo_show_jan
   description: ''
+echo_uhrzeit_30_minuten:
+    alias: Echo sagt 30 Minuten lang alle 5 Minuten die Uhrzeit
+      mode: single
+        sequence:
+            - repeat:
+                    count: 7
+                            sequence:
+                                      - service: notify.alexa_media_wohnzimmer_echo
+                                                  data:
+                                                                message: >-
+                                                                                Es ist jetzt {{ now().strftime('%H Uhr %M') }}.
+                                                                                              data:
+                                                                                                              type: tts
+                                                                                                                        - if:
+                                                                                                                                      - condition: template
+                                                                                                                                                      value_template: "{{ not repeat.last }}"
+                                                                                                                                                                  then:
+                                                                                                                                                                                - delay:
+                                                                                                                                                                                                  minutes: 5
