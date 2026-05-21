@@ -1,147 +1,146 @@
-test_alexa_text_to_speech:
-  alias: Alexa Sprachausgabe EG komlett
-  sequence:
-  - service: notify.alexa_media_erdgeschoss
-    data:
-      message: '{{ message }}'
-      data:
-        type: announce
-  mode: single
-weihnachtsbeleuchtung:
-  alias: Weihnachtsbeleuchtung
-  use_blueprint:
-    path: panhans/scene_toggle.yaml
-    input:
-      included_scenes:
-      - scene.weihnachten
-      - scene.weihnachten_aus
-      use_static_order: true
-  icon: mdi:hexagram-outline
-awtrix_new_app_2:
-  alias: awtrix - new app
-  sequence:
-  - action: mqtt.publish
-    metadata: {}
-    data:
-      evaluate_payload: false
-      qos: 0
-      retain: false
-      topic: awtrix_3e536c/custom/{{topicname}}
-      payload: "{\n  \"text\": \"{{text}}\",\n  \"rainbow\": {{rainbow|tojson}},\n
-        \ \"duration\": \"{{duration}}\",\n  \"icon\": \"{{icon}}\",\n  \"scrollSpeed\":
-        80,\n  \"textCase\": \"{{textcase}}\",\n  \"lifetime\": \"{{lifetime}}\"\n}"
-  - if:
-    - condition: template
-      value_template: '{{ showimmediately == true or showimmediately == True}}'
-    then:
-    - action: mqtt.publish
-      metadata: {}
-      data:
-        evaluate_payload: false
-        qos: 0
-        retain: false
-        topic: awtrix_3e536c/switch
-        payload: '{"name": "{{topicname}}"}'
-  description: ''
-  icon: mdi:led-strip
-  fields:
-    topicname:
-      selector:
-        text:
-      name: topicname
-      required: true
-      description: Name of the topic - one topic per app
-    text:
-      selector:
-        text:
-      name: text
-      required: true
-      description: Text to be displayed
-    icon:
-      selector:
-        number:
-          min: 0
-          max: 100000
-      name: icon
-      required: true
-      description: Icon ID, needs to be present on the awtrix filesystem - default
-        no icon
-      default: 1
-    rainbow:
-      selector:
-        boolean: {}
-      name: rainbow
-      default: false
-      required: true
-      description: Rainbow text yes/no
-    lifetime:
-      selector:
-        number:
-          min: 0
-          max: 86400
-          step: 1
-      name: lifetime
-      default: 0
-      description: Discard app after X seconds - default 0 (never expire)
-    duration:
-      selector:
-        number:
-          min: 1
-          max: 180
-          step: 1
-      name: duration
-      default: 3
-      description: How many seconds should the message be displayed - default 3
-    textcase:
-      selector:
-        number:
-          min: 0
-          max: 2
-          step: 1
-      name: textCase
-      default: 0
-      description: Changes the Uppercase setting. 0=global setting, 1=forces uppercase;
-        2=shows as it sent - default 0
-    showimmediately:
-      selector:
-        boolean: {}
-      name: showImmediately
-      required: false
-      description: Jumps the queue and displays the message immediately - default
-        false
-  mode: parallel
-  max: 10
-system_master_notify:
-  alias: System Master Notify
-  use_blueprint:
-    path: FourtyNos/Master_Notify.yaml
-    input:
-      user_group_admins:
-      - db7e38b06231c2341537d1bafe5b7dec
-      - 79732d01d82065e54ca2bc097f626758
-      - 3f820e6a8cd4b946f2bed9eb6a7b8f59
-      user_group_family:
-      - 96a9f03f46d6cda88e538a226e3fa01f
-      tts_provider: tts.home_assistant_cloud
-      tts_group_devices:
-      - media_player.echo_show_jan
-  description: ''
-echo_uhrzeit_30_minuten:
-    alias: Echo sagt 30 Minuten lang alle 5 Minuten die Uhrzeit
-      mode: single
-        sequence:
-            - repeat:
-                    count: 7
-                            sequence:
-                                      - service: notify.alexa_media_wohnzimmer_echo
-                                                  data:
-                                                                message: >-
-                                                                                Es ist jetzt {{ now().strftime('%H Uhr %M') }}.
-                                                                                              data:
-                                                                                                              type: tts
-                                                                                                                        - if:
-                                                                                                                                      - condition: template
-                                                                                                                                                      value_template: "{{ not repeat.last }}"
-                                                                                                                                                                  then:
-                                                                                                                                                                                - delay:
-                                                                                                                                                                                                  minutes: 5
+# test_alexa_text_to_speech:
+#   alias: Alexa Sprachausgabe EG komlett
+#   sequence:
+#   - service: notify.alexa_media_erdgeschoss
+#     data:
+#       message: '{{ message }}'
+#       data:
+#         type: announce
+#   mode: single
+# weihnachtsbeleuchtung:
+#   alias: Weihnachtsbeleuchtung
+#   use_blueprint:
+#     path: panhans/scene_toggle.yaml
+#     input:
+#       included_scenes:
+#       - scene.weihnachten
+#       - scene.weihnachten_aus
+#       use_static_order: true
+#   icon: mdi:hexagram-outline
+# awtrix_new_app_2:
+#   alias: awtrix - new app
+#   sequence:
+#   - action: mqtt.publish
+#     metadata: {}
+#     data:
+#       evaluate_payload: false
+#       qos: 0
+#       retain: false
+#       topic: awtrix_3e536c/custom/{{topicname}}
+#       payload: "{\n  \"text\": \"{{text}}\",\n  \"rainbow\": {{rainbow|tojson}},\n
+#         \ \"duration\": \"{{duration}}\",\n  \"icon\": \"{{icon}}\",\n  \"scrollSpeed\":
+#         80,\n  \"textCase\": \"{{textcase}}\",\n  \"lifetime\": \"{{lifetime}}\"\n}"
+#   - if:
+#     - condition: template
+#       value_template: '{{ showimmediately == true or showimmediately == True}}'
+#     then:
+#     - action: mqtt.publish
+#       metadata: {}
+#       data:
+#         evaluate_payload: false
+#         qos: 0
+#         retain: false
+#         topic: awtrix_3e536c/switch
+#         payload: '{"name": "{{topicname}}"}'
+#   description: ''
+#   icon: mdi:led-strip
+#   fields:
+#     topicname:
+#       selector:
+#         text:
+#       name: topicname
+#       required: true
+#       description: Name of the topic - one topic per app
+#     text:
+#       selector:
+#         text:
+#       name: text
+#       required: true
+#       description: Text to be displayed
+#     icon:
+#       selector:
+#         number:
+#           min: 0
+#           max: 100000
+#       name: icon
+#       required: true
+#       description: Icon ID, needs to be present on the awtrix filesystem - default
+#         no icon
+#       default: 1
+#     rainbow:
+#       selector:
+#         boolean: {}
+#       name: rainbow
+#       default: false
+#       required: true
+#       description: Rainbow text yes/no
+#     lifetime:
+#       selector:
+#         number:
+#           min: 0
+#           max: 86400
+#           step: 1
+#       name: lifetime
+#       default: 0
+#       description: Discard app after X seconds - default 0 (never expire)
+#     duration:
+#       selector:
+#         number:
+#           min: 1
+#           max: 180
+#           step: 1
+#       name: duration
+#       default: 3
+#       description: How many seconds should the message be displayed - default 3
+#     textcase:
+#       selector:
+#         number:
+#           min: 0
+#           max: 2
+#           step: 1
+#       name: textCase
+#       default: 0
+#       description: Changes the Uppercase setting. 0=global setting, 1=forces uppercase;
+#         2=shows as it sent - default 0
+#     showimmediately:
+#       selector:
+#         boolean: {}
+#       name: showImmediately
+#       required: false
+#       description: Jumps the queue and displays the message immediately - default
+#         false
+#   mode: parallel
+#   max: 10
+# system_master_notify:
+#   alias: System Master Notify
+#   use_blueprint:
+#     path: FourtyNos/Master_Notify.yaml
+#     input:
+#       user_group_admins:
+#       - db7e38b06231c2341537d1bafe5b7dec
+#       - 79732d01d82065e54ca2bc097f626758
+#       - 3f820e6a8cd4b946f2bed9eb6a7b8f59
+#       user_group_family:
+#       - 96a9f03f46d6cda88e538a226e3fa01f
+#       tts_provider: tts.home_assistant_cloud
+#       tts_group_devices:
+#       - media_player.echo_show_jan
+# echo_10_minuten:
+#   alias: Echo sagt 30 Minuten lang alle 5 Minuten die Uhrzeit
+#   mode: single
+#   sequence:
+#     - repeat:
+#       count: 7
+#     sequence:
+#       - service: notify.alexa_media_wohnzimmer_echo
+#         data:
+#         message: >-
+#           Es ist jetzt {{ now().strftime('%H Uhr %M') }}.
+#           data:
+#           type: tts
+#           - if:
+#             - condition: template
+#               value_template: "{{ not repeat.last }}"
+#             then:
+#           - delay:
+#                                                                                                                                                                                                   minutes: 5
