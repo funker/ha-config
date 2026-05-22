@@ -1,0 +1,19 @@
+  - resource: https://nlt-media.com/
+    scan_interval: 3600
+    log_response: true
+    sensor:
+      - unique_id: nlt_latest_post_title
+        name: NLT letzter Beitrag Titel
+        select: "h2"
+        value_template: "{{ value | trim }}"
+
+      - unique_id: nlt_latest_post_url
+        name: NLT letzter Beitrag URL
+        select: "h2 a"
+        attribute: "href"
+
+      - unique_id: nlt_latest_post_id
+        name: NLT letzter Beitrag ID
+        select: "h2 a"
+        attribute: "href"
+        value_template: "{{ value | trim }}"
