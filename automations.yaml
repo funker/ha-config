@@ -3367,66 +3367,6 @@
       - enable_start_action_1
       include_end_auto_actions:
       - enable_end_action_1
-- id: '1738071912939'
-  alias: Modus Homeoffice Jan
-  description: ''
-  use_blueprint:
-    path: Blackshome/calendar-notifications-and-actions.yaml
-    input:
-      calendar: calendar.jan
-      calendar_trigger: Homeoffice
-      include_start_action_buttons: []
-      include_start_auto_actions:
-      - enable_start_action_1
-      start_action_1:
-      - action: input_boolean.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.modus_homeoffice_jan
-      include_end_auto_actions:
-      - enable_end_action_1
-      end_action_1:
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.modus_homeoffice_jan
-      global_conditions:
-      - condition: state
-        entity_id: input_boolean.modus_urlaub
-        state: 'off'
-- id: '1738072018060'
-  alias: Modus Homeoffice Steffi
-  description: ''
-  use_blueprint:
-    path: Blackshome/calendar-notifications-and-actions.yaml
-    input:
-      calendar: calendar.steffi
-      calendar_trigger: Homeoffice,Home-Office
-      include_start_action_buttons: []
-      include_start_auto_actions:
-      - enable_start_action_1
-      start_action_1:
-      - action: input_boolean.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id:
-          - input_boolean.modus_homeoffice_steffi
-      include_end_auto_actions:
-      - enable_end_action_1
-      end_action_1:
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id:
-          - input_boolean.modus_homeoffice_steffi
-      global_conditions:
-      - condition: state
-        entity_id: input_boolean.modus_urlaub
-        state: 'off'
 - id: '1738072107925'
   alias: Modus Homeoffice Check
   description: ''
@@ -4227,3 +4167,125 @@
         url: '{{ states(''sensor.nlt_latest_post_url'') }}'
     action: notify.jan_pixel_7_pro
   mode: single
+- id: '1779998058358'
+  alias: Urlaub Jan
+  description: ''
+  use_blueprint:
+    path: Blackshome/calendar-notifications-and-actions.yaml
+    input:
+      calendar: calendar.jan
+      calendar_trigger: Urlaub
+      include_start_auto_actions:
+      - enable_start_action_1
+      start_action_1:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) == '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_jan_home
+            data: {}
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) != '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id:
+              - input_boolean.urlaub_jan_away
+            data: {}
+      include_end_action_buttons: []
+      include_end_auto_actions:
+      - enable_end_action_1
+      end_action_1:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.urlaub_jan_home
+          - input_boolean.urlaub_jan_away
+        data: {}
+      start_action_2: []
+- id: '1780006644834'
+  alias: Modus Homeoffice Jan
+  description: ''
+  use_blueprint:
+    path: Blackshome/calendar-notifications-and-actions.yaml
+    input:
+      calendar: calendar.jan
+      calendar_trigger: Homeoffice
+      include_start_auto_actions:
+      - enable_start_action_1
+      start_action_1:
+      - action: input_boolean.turn_on
+        metadata: {}
+        target:
+          entity_id: input_boolean.modus_homeoffice_jan
+        data: {}
+      include_end_action_buttons: []
+      include_end_auto_actions:
+      - enable_end_action_1
+      end_action_1:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.modus_homeoffice_jan
+        data: {}
+      start_action_2: []
+      global_conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.urlaub_jan_away
+          state:
+          - 'off'
+        - condition: state
+          entity_id: input_boolean.urlaub_jan_home
+          state:
+          - 'off'
+- id: '1780006739888'
+  alias: Modus Homeoffice Steffi
+  description: ''
+  use_blueprint:
+    path: Blackshome/calendar-notifications-and-actions.yaml
+    input:
+      calendar: calendar.steffi
+      calendar_trigger: Homeoffice
+      include_start_auto_actions:
+      - enable_start_action_1
+      start_action_1:
+      - action: input_boolean.turn_on
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.modus_homeoffice_steffi
+        data: {}
+      include_end_action_buttons: []
+      include_end_auto_actions:
+      - enable_end_action_1
+      end_action_1:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.modus_homeoffice_steffi
+        data: {}
+      start_action_2: []
+      global_conditions:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: input_boolean.urlaub_steffi_away
+          state:
+          - 'off'
+        - condition: state
+          entity_id: input_boolean.urlaub_steffi_home
+          state:
+          - 'off'
