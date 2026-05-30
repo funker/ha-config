@@ -3773,10 +3773,7 @@
         ", "") | title }} abgebrochen.'
       end_time_delay_confirmation_message: '{{ trigger.calendar_event.summary.replace("Abfuhr
         ", "") | title }} wurde bereits abgeholt. Du bist zu spät.'
-      global_conditions:
-      - condition: state
-        entity_id: binary_sensor.modus_urlaub_away
-        state: 'off'
+      global_conditions: []
 - id: '1746032883711'
   alias: Always On - Shelly WC
   description: ''
