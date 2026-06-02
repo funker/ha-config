@@ -4120,7 +4120,8 @@
           milliseconds: 0
       starting_hysteresis: 1
       finishing_hysteresis: 1
-- id: nlt_media_new_post
+- &id001
+  id: nlt_media_new_post
   alias: Allgemein - NLT Media - neuer Beitrag
   description: ''
   triggers:
@@ -4133,37 +4134,11 @@
       '']\n   and trigger.to_state.state not in ['unknown', 'unavailable', '']\n   and
       trigger.from_state.state != trigger.to_state.state }}\n"
   actions:
-  - data:
-      title: 'NLT Media: neuer Beitrag'
-      message: '{{ states(''sensor.nlt_latest_post_title'') }}
-
-        '
-      data:
-        url: '{{ states(''sensor.nlt_latest_post_url'') }}'
-    action: notify.jan_pixel_7_pro
+  - action: notify.mobile_app_pixel_7_pro
+    data:
+      message: Neuer Beitrag bei NLT.
   mode: single
-- id: nlt_media_new_post
-  alias: NLT Media - neuer Beitrag
-  description: ''
-  triggers:
-  - entity_id: sensor.nlt_latest_post_id
-    trigger: state
-  conditions:
-  - condition: template
-    value_template: "{{ trigger.from_state is not none\n   and trigger.to_state is
-      not none\n   and trigger.from_state.state not in ['unknown', 'unavailable',
-      '']\n   and trigger.to_state.state not in ['unknown', 'unavailable', '']\n   and
-      trigger.from_state.state != trigger.to_state.state }}\n"
-  actions:
-  - data:
-      title: 'NLT Media: neuer Beitrag'
-      message: '{{ states(''sensor.nlt_latest_post_title'') }}
-
-        '
-      data:
-        url: '{{ states(''sensor.nlt_latest_post_url'') }}'
-    action: notify.jan_pixel_7_pro
-  mode: single
+- *id001
 - id: '1779998058358'
   alias: Urlaub Jan
   description: ''
