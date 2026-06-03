@@ -57,6 +57,6 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/esp32-s2-generic.yaml
-  - !include common/sensor/mh-rd.yaml
+  - !include roles/rain-sensor.yaml
 
 # Custom configuration
