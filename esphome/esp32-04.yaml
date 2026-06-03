@@ -1,4 +1,8 @@
+# esp32-04.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
   devicename: "esp32-04"
   friendly_devicename: "ESP32 04"
   room: "Auf Lager"
@@ -6,4 +10,15 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
-<<: !include devicetypes/esp32.yaml
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp32-generic.yaml
