@@ -1,46 +1,44 @@
+# esp8266-02.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
   devicename: "esp8266-02"
   friendly_devicename: "Kamin"
   room: "Esszimmer"
   comment: "Kamin"
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "1.0"
-  # dallas_address: "0xcc3c620457962328"
 
+  # Custom substitutions
   max6675_update_interval: 10s
-
-  spi_miso_pin: D0
-  spi_clk_pin: D1
   max6675_cs_pin: D8
-
+  spi_miso_pin: D6
+  spi_clk_pin: D5
   temperature_threshold: "40.0"
 
-  # dallas_pin_number: D4
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp8266-d1-mini.yaml
 
-<<: !include devicetypes/esp8266-d1-mini_v2.yaml
-
-esphome:
-  <<: !include common/section-esphome.yaml
-
-<<: !include common/section-system.yaml
-
-# SPI für MAX6675 Thermoelement
+# Custom configuration
 spi:
   miso_pin: ${spi_miso_pin}
   clk_pin: ${spi_clk_pin}
 
 sensor:
-  - <<: !include common/sensor/uptime.yaml
-  - <<: !include common/sensor/wifi_signal.yaml
-
-  # MAX6675 Thermoelement
-  - <<: !include common/sensor/max6675.yaml
-
-text_sensor:
-  - <<: !include common/text_sensor/version.yaml
+  - !include common/sensor/max6675.yaml
 
 binary_sensor:
-  - <<: !include common/binary_sensor/status.yaml
   - platform: template
     name: "Zustand"
     id: zustand
@@ -51,7 +49,3 @@ binary_sensor:
       } else {
         return false;
       }
-
-
-button:
-  - <<: !include common/button/restart.yaml

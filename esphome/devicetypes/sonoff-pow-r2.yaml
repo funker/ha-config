@@ -1,69 +1,68 @@
-# Base settings
-<<: !include ../common/device_base.yaml
+esp8266:
+  board: esp8285
 
-# Web Server
-<<: !include ../common/generic/web_server.yaml
-
-# Captive Portal
-<<: !include ../common/generic/captive_portal.yaml
-
-# Board selection
-<<: !include ../boards/esp8266-esp8285.yaml
-
+uart:
+  rx_pin: GPIO3
+  baud_rate: 4800
+  parity: EVEN
 
 binary_sensor:
   - platform: gpio
     pin:
       number: GPIO0
       mode: INPUT_PULLUP
-      inverted: True
+      inverted: true
     name: "${devicename}_button_state"
     on_press:
-      - switch.toggle: fakebutton
+      - switch.toggle: relay
 
   - platform: template
-    name: SonOff POW Running
+    name: "Sonoff POW Running"
     filters:
       - delayed_off: 15s
     lambda: |-
       if (isnan(id(power).state)) {
-          return {};
+        return {};
       } else if (id(power).state > 4) {
-          // Running
-          return true;
+        return true;
       } else {
-          // Not running
-          return false;
+        return false;
       }
 
-sensor:
-  <<: !include ../common/sensor/hlw8012.yaml
-
 switch:
-  - platform: template
-    name: Switch
-    optimistic: true
-    id: fakebutton
-    icon: mdi:power
-    turn_on_action:
-    - switch.turn_on: relay
-    - light.turn_on: led
-    turn_off_action:
-    - switch.turn_off: relay
-    - light.turn_off: led
   - platform: gpio
     id: relay
+    name: ${friendly_devicename}
     pin: GPIO12
+    on_turn_on:
+      - light.turn_on: led
+    on_turn_off:
+      - light.turn_off: led
 
 output:
   - platform: esp8266_pwm
     id: pow_blue_led
     pin:
-      number: GPIO15
+      number: GPIO13
       inverted: true
 
 light:
   - platform: monochromatic
-    name: LED
-    output: pow_blue_led
     id: led
+    name: "LED"
+    output: pow_blue_led
+
+sensor:
+  - platform: cse7766
+    current:
+      name: "${friendly_devicename} Current"
+      id: current
+    voltage:
+      name: "${friendly_devicename} Voltage"
+      id: voltage
+    power:
+      name: "${friendly_devicename} Power"
+      id: power
+    energy:
+      name: "${friendly_devicename} Energy"
+      id: energy

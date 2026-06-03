@@ -4,3 +4,7 @@
 /.esphome/
 /secrets.yaml
 archive/
+
+.device-builder*
+.offloader*
+.old

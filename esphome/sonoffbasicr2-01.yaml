@@ -1,4 +1,8 @@
+# sonoffbasicr2-01.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
   devicename: "sonoffbasicr2-01"
   friendly_devicename: "Licht Werkstatt Wand"
   room: "Werkstatt"
@@ -6,4 +10,17 @@ substitutions:
   project_name: "Sonoff.Basic R2"
   project_version: "1.0"
 
-<<: !include devicetypes/sonoff-basic-r2.yaml
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/sonoff-basic-r2.yaml
+
+# Custom configuration

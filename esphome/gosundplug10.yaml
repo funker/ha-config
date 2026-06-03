@@ -1,4 +1,8 @@
+# gosundplug10.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
   devicename: "gosundplug10"
   friendly_devicename: "Kaffeemaschine"
   room: "Küche"
@@ -6,9 +10,24 @@ substitutions:
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
+  # Custom substitutions
   # Higher value gives lower watt readout
   current_res: "0.00280"
   # Lower value gives lower voltage readout
   voltage_div: "775"
 
-<<: !include devicetypes/gosund-sp111-always-on.yaml
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/gosund-sp111.yaml
+
+# Custom configuration
+

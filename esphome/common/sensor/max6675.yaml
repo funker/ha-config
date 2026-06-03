@@ -1,10 +1,12 @@
-- platform: max6675
-  id: max6675_temperature
-  name: "${friendly_devicename} Temperatur"
-  cs_pin: ${max6675_cs_pin}
-  update_interval: ${max6675_update_interval}
-  unit_of_measurement: "°C"
-  icon: mdi:thermometer
-  device_class: temperature
-  state_class: measurement
-  accuracy_decimals: 1
+# common/sensor/max6675.yaml
+
+platform: max6675
+id: max6675_temperature
+name: "${friendly_devicename} Temperatur"
+cs_pin: ${max6675_cs_pin}
+update_interval: ${max6675_update_interval}
+unit_of_measurement: "°C"
+icon: mdi:thermometer
+device_class: temperature
+state_class: measurement
+accuracy_decimals: 1

@@ -1,4 +1,8 @@
+# esp32-btproxy-01.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "XXX"
   devicename: "esp32-btproxy-01"
   friendly_devicename: "Bluetooth Proxy Jan"
   room: "Jan"
@@ -6,15 +10,21 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
-<<: !include devicetypes/esp32.yaml
-
-esphome:
-  <<: !include common/section-esphome.yaml
-
-<<: !include common/section-system.yaml
-
-# Board selection
-<<: !include boards/esp32.yaml
-
 packages:
-  esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp32-generic.yaml
+  - !include devicetypes/esp32-btproxy.yaml
+  
+  # Online version
+  # esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main
+
+# Custom configuration

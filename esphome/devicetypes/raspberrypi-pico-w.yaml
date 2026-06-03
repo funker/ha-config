@@ -1,6 +1,4 @@
-# Base settings
-<<: !include ../common/device_base.yaml
+# devicetypes/raspberrypi-pico-w.yaml
 
-# Board selection
-<<: !include ../boards/rp2040.yaml
-
+rp2040:
+  board: rpipicow

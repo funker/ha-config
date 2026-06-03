@@ -1,12 +1,4 @@
-# Base settings
-<<: !include ../common/device_base.yaml
+# devicetypes/esp8266-d1-mini.yaml
 
-# Web Server
-<<: !include ../common/generic/web_server.yaml
-
-# Captive Portal
-<<: !include ../common/generic/captive_portal.yaml
-
-# Board selection
-<<: !include ../boards/esp8266-d1-mini.yaml
-
+esp8266:
+  board: d1_mini

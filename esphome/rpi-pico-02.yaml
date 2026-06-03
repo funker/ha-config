@@ -1,4 +1,8 @@
+# rpi-pico-02.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "XXX"
   devicename: "rpi-pico-02"
   friendly_devicename: "Raspberry Pi Pico W 02"
   room: "Auf Lager"
@@ -6,4 +10,17 @@ substitutions:
   project_name: "Raspberry Pi.Pico W"
   project_version: "1.0"
 
-<<: !include devicetypes/raspberrypi-pico-w.yaml
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/raspberrypi-pico-w.yaml
+
+# Custom configuration

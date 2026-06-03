@@ -1,0 +1,27 @@
+text_sensor:
+  - platform: version
+    name: "Version"
+    icon: mdi:cube-outline
+    hide_timestamp: true
+    hide_hash: true
+
+  - platform: template
+    name: "Configuration tested"
+    id: config_tested
+    icon: mdi:check
+    lambda: |-
+      return {"${config_tested_date}"};
+
+  - platform: wifi_info
+    ip_address:
+      name: IP Address
+    ssid:
+      name: Connected SSID
+    bssid:
+      name: Connected BSSID
+    mac_address:
+      name: MAC Address
+    scan_results:
+      name: Latest Scan Results
+    dns_address:
+      name: DNS Address

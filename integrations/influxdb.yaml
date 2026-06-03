@@ -14,12 +14,13 @@ influxdb:
     domains:
       - persistent_notification
       - person
+      - automation
+      - script
+      - update
   include:
     domains:
       - sensor
       - binary_sensor
       - sun
-      - light
-      - cover
     entities:
       - weather.bergstedt

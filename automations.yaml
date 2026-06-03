@@ -276,11 +276,10 @@
         title: Waschmaschine
       - repeat:
           until:
-          - type: is_open
-            condition: device
-            device_id: 7a0d91e47ba5f77e61eb172ffeac5421
-            entity_id: binary_sensor.klappe_briefkasten
-            domain: binary_sensor
+          - condition: state
+            entity_id: binary_sensor.tur_waschmaschine_contact
+            state:
+            - 'on'
           sequence:
           - delay:
               hours: 1
@@ -292,7 +291,7 @@
             type: notify
             message: Die Wäsche vergammelt. Hol sie raus!
             title: Waschmaschine
-          - device_id: 33ade34d9711ebc3528e8e803eab586b
+          - device_id: 96a9f03f46d6cda88e538a226e3fa01f
             domain: mobile_app
             type: notify
             message: Die Wäsche vergammelt. Hol sie raus!
@@ -307,12 +306,6 @@
           value: Läuft
         target:
           entity_id: input_text.status_waschmaschine
-      - device_id: db7e38b06231c2341537d1bafe5b7dec
-        domain: mobile_app
-        type: notify
-        message: Waschvorgang wurde gestartet
-        title: Waschmaschine
-        enabled: false
       starting_hysteresis: 2
       power_sensor: sensor.waschmaschine_energy_power
       finishing_hysteresis: 5
@@ -451,7 +444,6 @@
       motion_trigger:
       - binary_sensor.bewegung_flur_ug_oben_occupancy
       - binary_sensor.bewegung_flur_ug_unten_occupancy
-      - binary_sensor.tur_kellertreppe_contact
       light_switch:
         entity_id: light.licht_keller_treppe
       time_delay: 0.5
@@ -765,66 +757,136 @@
     domain: light
   mode: single
 - id: '1678321988948'
-  alias: Modus Urlaub - Geräte schalten
+  alias: Urlaub Away - Geräte aus und wiederherstellen
   description: ''
   triggers:
-  - entity_id:
-    - input_boolean.modus_urlaub
-    to: 'on'
-    id: urlaub_start
+  - trigger: state
+    entity_id: input_boolean.modus_urlaub_away
     from: 'off'
-    trigger: state
-  - entity_id:
-    - input_boolean.modus_urlaub
-    to: 'off'
-    id: urlaub_end
+    to: 'on'
+    id: urlaub_away_on
+  - trigger: state
+    entity_id: input_boolean.modus_urlaub_away
     from: 'on'
-    trigger: state
+    to: 'off'
+    id: urlaub_away_off
   conditions: []
   actions:
   - choose:
     - conditions:
       - condition: trigger
         id:
-        - urlaub_start
+        - urlaub_away_on
       sequence:
-      - action: homeassistant.turn_off
-        metadata: {}
-        data: {}
+      - variables:
+          action_ok: '{{ ''URLAUB_AWAY_OK_'' ~ context.id }}'
+          action_no: '{{ ''URLAUB_AWAY_NO_'' ~ context.id }}'
+          notification_tag: urlaub_away_confirm
+          urlaub_entities: '{{ label_entities(''Schalten Urlaub Away'') | list }}'
+      - action: input_boolean.turn_on
         target:
-          entity_id:
-          - switch.waschmaschine
-          - switch.trockner
-          - switch.laserdrucker
-          - cover.dachfenster_rollos
-          - cover.dachfenster
-          - switch.tv_schrank
-          - switch.shelly_jan_technik_switch_0
-          - switch.spuelmaschine
-          - switch.thermomix
-          - switch.kaffeemaschine
-          - switch.mikrowelle
-          - switch.heizung_wc
-          - switch.heizung_jan
+          entity_id: input_boolean.urlaub_away_warte_auf_bestaetigung
+        data: {}
+      - action: notify.mobile_app_pixel_7_pro
+        data:
+          title: Modus Urlaub aktiviert
+          message: Sollen alle nicht relevanten Geräte ausgeschaltet werden?
+          data:
+            tag: '{{ notification_tag }}'
+            sticky: true
+            persistent: true
+            actions:
+            - action: '{{ action_ok }}'
+              title: Ja, ausschalten
+            - action: '{{ action_no }}'
+              title: Nein
+      - wait_for_trigger:
+        - trigger: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: '{{ action_ok }}'
+        - trigger: event
+          event_type: mobile_app_notification_action
+          event_data:
+            action: '{{ action_no }}'
+        timeout:
+          minutes: 15
+        continue_on_timeout: true
+      - action: notify.mobile_app_pixel_7_pro
+        data:
+          message: clear_notification
+          data:
+            tag: '{{ notification_tag }}'
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.urlaub_away_warte_auf_bestaetigung
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ wait.trigger != none and wait.trigger.event.data.action
+              == action_ok }}'
+          sequence:
+          - condition: template
+            value_template: '{{ urlaub_entities | count > 0 }}'
+          - action: scene.create
+            data:
+              scene_id: urlaub_away_snapshot
+              snapshot_entities: '{{ urlaub_entities }}'
+          - delay:
+              seconds: 2
+          - action: input_boolean.turn_on
+            target:
+              entity_id: input_boolean.urlaub_away_snapshot_aktiv
+          - repeat:
+              for_each: '{{ urlaub_entities }}'
+              sequence:
+              - action: homeassistant.turn_off
+                target:
+                  entity_id: '{{ repeat.item }}'
+              - delay:
+                  seconds: 2
+        - conditions:
+          - condition: template
+            value_template: '{{ wait.trigger != none and wait.trigger.event.data.action
+              == action_no }}'
+          sequence: []
+        - conditions:
+          - condition: template
+            value_template: '{{ wait.trigger == none }}'
+          sequence: []
     - conditions:
       - condition: trigger
         id:
-        - urlaub_end
+        - urlaub_away_off
+      - condition: state
+        entity_id: input_boolean.urlaub_away_snapshot_aktiv
+        state: 'on'
       sequence:
-      - action: homeassistant.turn_on
-        metadata: {}
-        data: {}
+      - action: notify.mobile_app_pixel_7_pro
+        data:
+          message: clear_notification
+          data:
+            tag: urlaub_away_confirm
+      - action: scene.turn_on
         target:
-          entity_id:
-          - switch.waschmaschine
-          - switch.trockner
-          - switch.laserdrucker
-          - switch.spuelmaschine
-          - switch.tv_schrank
-          - switch.shelly_jan_technik_switch_0
-          - switch.thermomix
-          - switch.kaffeemaschine
-          - switch.mikrowelle
+          entity_id: scene.urlaub_away_snapshot
+        data: {}
+      - delay:
+          seconds: 2
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.urlaub_away_snapshot_aktiv
+        data: {}
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.urlaub_away_warte_auf_bestaetigung
+        data: {}
+    default:
+    - action: notify.mobile_app_pixel_7_pro
+      data:
+        message: clear_notification
+        data:
+          tag: urlaub_away_confirm
   mode: single
 - id: '1679737605902'
   alias: Remote 3D-Drucker
@@ -910,8 +972,9 @@
     trigger: state
   conditions:
   - condition: state
-    entity_id: input_boolean.modus_urlaub
-    state: 'off'
+    entity_id: input_boolean.modus_urlaub_away
+    state:
+    - 'off'
   actions:
   - device_id: db7e38b06231c2341537d1bafe5b7dec
     domain: mobile_app
@@ -986,8 +1049,9 @@
     trigger: state
   conditions:
   - condition: state
-    entity_id: input_boolean.modus_urlaub
-    state: 'off'
+    entity_id: input_boolean.modus_urlaub_away
+    state:
+    - 'off'
   actions:
   - device_id: db7e38b06231c2341537d1bafe5b7dec
     domain: mobile_app
@@ -1482,39 +1546,6 @@
         entity_id: input_boolean.modus_party
         state: 'off'
       default_volume: 0.3
-- id: '1692743278335'
-  alias: Sicherheit - Presence Simulation
-  description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - input_boolean.modus_urlaub
-    from: 'off'
-    to: 'on'
-    id: urlaub_on
-  - platform: state
-    entity_id:
-    - input_boolean.modus_urlaub
-    from: 'on'
-    to: 'off'
-    id: urlaub_off
-  condition: []
-  action:
-  - if:
-    - condition: trigger
-      id:
-      - urlaub_on
-    then:
-    - action: switch.turn_on
-      data: {}
-      target:
-        entity_id: switch.presence_simulation
-    else:
-    - action: switch.turn_off
-      data: {}
-      target:
-        entity_id: switch.presence_simulation
-  mode: single
 - id: '1692784795678'
   alias: ___ Allgemein - Anwesenheit
   description: ''
@@ -1643,8 +1674,10 @@
   - alias: Echo Jan Gewitter
     action: media_player.play_media
     data:
-      media_content_type: routine
-      media_content_id: Halloween-Gewitter
+      media:
+        media_content_id: Halloween-Gewitter
+        media_content_type: routine
+        metadata: {}
     enabled: false
     target:
       entity_id: media_player.echo_show_jan
@@ -1677,8 +1710,8 @@
       data: {}
       target:
         entity_id:
-        - light.spiegelleuchte
         - light.shelly_bad_decke
+        - light.bad_spiegelleuchte
   - alias: Echo Jan laut
     action: media_player.volume_set
     data:
@@ -1714,8 +1747,10 @@
   - alias: Echo Jan Regen
     action: media_player.play_media
     data:
-      media_content_type: routine
-      media_content_id: Halloween-Regen
+      media:
+        media_content_id: Halloween-Regen
+        media_content_type: routine
+        metadata: {}
     target:
       entity_id:
       - media_player.echo_show_jan
@@ -2734,9 +2769,7 @@
       backup_wait_time: 20
       restart_type: host
       pause_entities:
-      - binary_sensor.modus_urlaub_away
-      - binary_sensor.modus_urlaub_home
-      - input_boolean.modus_urlaub
+      - input_boolean.modus_urlaub_away
 - id: '1728128574600'
   alias: Steuerung Klingel
   description: ''
@@ -3235,10 +3268,8 @@
     path: Blackshome/sensor-light.yaml
     input:
       motion_trigger:
-      - binary_sensor.tur_terrasse_contact
       - binary_sensor.bewegung_garten_occupancy
       - binary_sensor.bewegung_terrasse_occupancy
-      - binary_sensor.tur_garten_pforte_contact
       light_switch:
         entity_id:
         - light.garten_lichterkette_kurz
@@ -3257,8 +3288,9 @@
       calendar_trigger: '#Krank,#Kindkrank'
       global_conditions:
       - condition: state
-        entity_id: binary_sensor.modus_urlaub_away
-        state: 'off'
+        entity_id: input_boolean.modus_urlaub_away
+        state:
+        - 'off'
       start_action_1:
       - action: input_boolean.turn_on
         metadata: {}
@@ -3287,8 +3319,9 @@
       calendar_trigger: '#Krank,#Kindkrank'
       global_conditions:
       - condition: state
-        entity_id: binary_sensor.modus_urlaub_away
-        state: 'off'
+        entity_id: input_boolean.modus_urlaub_away
+        state:
+        - 'off'
       start_action_1:
       - action: input_boolean.turn_on
         metadata: {}
@@ -3317,8 +3350,9 @@
       calendar_trigger: '#Krank,#Kindkrank'
       global_conditions:
       - condition: state
-        entity_id: binary_sensor.modus_urlaub_away
-        state: 'off'
+        entity_id: input_boolean.modus_urlaub_away
+        state:
+        - 'off'
       start_action_1:
       - action: input_boolean.turn_on
         metadata: {}
@@ -3347,8 +3381,9 @@
       calendar_trigger: '#Krank,#Kindkrank'
       global_conditions:
       - condition: state
-        entity_id: binary_sensor.modus_urlaub_away
-        state: 'off'
+        entity_id: input_boolean.modus_urlaub_away
+        state:
+        - 'off'
       start_action_1:
       - action: input_boolean.turn_on
         metadata: {}
@@ -3375,8 +3410,9 @@
     hours: '2'
   conditions:
   - condition: state
-    entity_id: input_boolean.modus_urlaub
-    state: 'off'
+    entity_id: input_boolean.modus_urlaub_away
+    state:
+    - 'off'
   actions:
   - action: automation.trigger
     metadata: {}
@@ -4161,6 +4197,7 @@
             target:
               entity_id: input_boolean.urlaub_jan_home
             data: {}
+          alias: Urlaub Jan Home
         - conditions:
           - condition: template
             value_template: '{{ (trigger.calendar_event.location | default('''', true)
@@ -4172,6 +4209,7 @@
               entity_id:
               - input_boolean.urlaub_jan_away
             data: {}
+          alias: Urlaub Jan Away
       include_end_action_buttons: []
       include_end_auto_actions:
       - enable_end_action_1
@@ -4261,3 +4299,213 @@
           entity_id: input_boolean.urlaub_steffi_home
           state:
           - 'off'
+- id: '1780395269805'
+  alias: Modus Urlaub
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.urlaub_jan_away
+    - input_boolean.urlaub_steffi_away
+    - input_boolean.urlaub_tim_away
+    - input_boolean.urlaub_lasse_away
+    - input_boolean.urlaub_jan_home
+    - input_boolean.urlaub_steffi_home
+    - input_boolean.urlaub_tim_home
+    - input_boolean.urlaub_lasse_home
+  - trigger: time_pattern
+    minutes: /5
+  - trigger: homeassistant
+    event: start
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.urlaub_jan_away
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.urlaub_steffi_away
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.urlaub_tim_away
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.urlaub_lasse_away
+        state: 'on'
+      sequence:
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.modus_urlaub_away
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.modus_urlaub_home
+      alias: Alle Urlaub Away
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: input_boolean.urlaub_jan_home
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.urlaub_steffi_home
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.urlaub_tim_home
+          state: 'on'
+        - condition: state
+          entity_id: input_boolean.urlaub_lasse_home
+          state: 'on'
+      sequence:
+      - action: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.modus_urlaub_home
+      - action: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.modus_urlaub_away
+      alias: Jemand Urlaub Home
+    default:
+    - action: input_boolean.turn_off
+      target:
+        entity_id:
+        - input_boolean.modus_urlaub_away
+        - input_boolean.modus_urlaub_home
+  mode: single
+- id: '1780396268673'
+  alias: Urlaub Steffi
+  description: ''
+  use_blueprint:
+    path: Blackshome/calendar-notifications-and-actions.yaml
+    input:
+      calendar: calendar.steffi
+      calendar_trigger: Urlaub
+      include_start_auto_actions:
+      - enable_start_action_1
+      start_action_1:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) == '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_steffi_home
+            data: {}
+          alias: Urlaub Steffi Home
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) != '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_steffi_away
+            data: {}
+          alias: Urlaub Steffi Away
+      include_end_action_buttons: []
+      include_end_auto_actions:
+      - enable_end_action_1
+      end_action_1:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.urlaub_steffi_home
+          - input_boolean.urlaub_steffi_away
+        data: {}
+      start_action_2: []
+- id: '1780396345612'
+  alias: Urlaub Lasse
+  description: ''
+  use_blueprint:
+    path: Blackshome/calendar-notifications-and-actions.yaml
+    input:
+      calendar: calendar.lasse
+      calendar_trigger: Urlaub
+      include_start_auto_actions:
+      - enable_start_action_1
+      start_action_1:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) == '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_lasse_home
+            data: {}
+          alias: Urlaub Lasse Home
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) != '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_lasse_away
+            data: {}
+          alias: Urlaub Lasse Away
+      include_end_action_buttons: []
+      include_end_auto_actions:
+      - enable_end_action_1
+      end_action_1:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.urlaub_lasse_home
+          - input_boolean.urlaub_lasse_away
+        data: {}
+      start_action_2: []
+- id: '1780396386508'
+  alias: Urlaub Tim
+  description: ''
+  use_blueprint:
+    path: Blackshome/calendar-notifications-and-actions.yaml
+    input:
+      calendar: calendar.tim
+      calendar_trigger: Urlaub
+      include_start_auto_actions:
+      - enable_start_action_1
+      start_action_1:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) == '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_tim_home
+            data: {}
+          alias: Urlaub Tim Home
+        - conditions:
+          - condition: template
+            value_template: '{{ (trigger.calendar_event.location | default('''', true)
+              | trim) != '''' }}'
+          sequence:
+          - action: input_boolean.turn_on
+            metadata: {}
+            target:
+              entity_id: input_boolean.urlaub_tim_away
+            data: {}
+          alias: Urlaub Tim Away
+      include_end_action_buttons: []
+      include_end_auto_actions:
+      - enable_end_action_1
+      end_action_1:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id:
+          - input_boolean.urlaub_tim_home
+          - input_boolean.urlaub_tim_away
+        data: {}
+      start_action_2: []

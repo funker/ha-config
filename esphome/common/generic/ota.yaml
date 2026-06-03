@@ -1,8 +1,0 @@
-# OTA Settings
-ota:
-  platform: esphome
-  id: ota_pw
-  password: !secret ota_password
-  # OTA password change
-  #password: ${old_ota_password}
-  

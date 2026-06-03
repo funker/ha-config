@@ -1,32 +1,88 @@
-# Base settings
-<<: !include ../common/device_base.yaml
+# devicetypes/gosund-sp111.yaml
 
-# Web Server
-<<: !include ../common/generic/web_server.yaml
+esp8266:
+  board: esp8285
+  restore_from_flash: true
 
-# Captive Portal
-<<: !include ../common/generic/captive_portal.yaml
+esphome:
+  on_boot:
+    priority: -100
+    then:
+      - switch.template.publish:
+          id: on_after_boot_switch
+          state: !lambda 'return id(on_after_boot_global);'
+      - switch.template.publish:
+          id: enable_button_switch
+          state: !lambda 'return id(enable_button_global);'
+      - switch.template.publish:
+          id: allow_turn_off_switch
+          state: !lambda 'return id(allow_turn_off_global);'
+      - switch.template.publish:
+          id: enable_led_switch
+          state: !lambda 'return id(enable_led_global);'
 
-# Board selection
-<<: !include ../boards/esp8266-esp8285.yaml
+      - if:
+          condition:
+            lambda: 'return id(on_after_boot_global);'
+          then:
+            - switch.turn_on: button_switch
+          else:
+            - switch.turn_off: button_switch
 
-# toggle relay on/off
+      - if:
+          condition:
+            lambda: 'return id(enable_led_global) && id(relay).state;'
+          then:
+            - output.turn_on: led_red
+          else:
+            - output.turn_off: led_red
+
+globals:
+  - id: on_after_boot_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: enable_button_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: allow_turn_off_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: enable_led_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
 binary_sensor:
   - platform: gpio
     pin:
       number: GPIO13
       mode: INPUT_PULLUP
-      inverted: True
-    id: "${devicename}_button_state"
+      inverted: true
+    id: ${devicename}_button_state
     on_press:
-      - switch.toggle: button_switch
+      - if:
+          condition:
+            lambda: 'return id(enable_button_global);'
+          then:
+            - if:
+                condition:
+                  lambda: 'return id(allow_turn_off_global) || !id(relay).state;'
+                then:
+                  - switch.toggle: button_switch
+                else:
+                  - switch.turn_on: button_switch
 
 sensor:
   - platform: total_daily_energy
     name: "Verbrauch heute"
-    power_id: "power_wattage"
+    power_id: power_wattage
     filters:
-      # Multiplication factor from W to kW is 0.001
       - multiply: 0.001
     unit_of_measurement: kWh
     icon: mdi:calendar-clock
@@ -39,7 +95,7 @@ sensor:
   - platform: hlw8012
     sel_pin:
       number: GPIO12
-      inverted: True
+      inverted: true
     cf_pin: GPIO05
     cf1_pin: GPIO04
     change_mode_every: 4
@@ -62,14 +118,14 @@ sensor:
     power:
       name: "Aktuell - Watt"
       unit_of_measurement: W
-      id: "power_wattage"
+      id: power_wattage
       icon: mdi:gauge
-      
+
 status_led:
   pin:
     number: GPIO02
-    inverted: True
-  id: led_blue
+    inverted: true
+  id: led_blue_status
 
 output:
   - platform: gpio
@@ -80,15 +136,134 @@ output:
 switch:
   - platform: template
     name: "${friendly_devicename}"
+    id: button_switch
     icon: mdi:power
     optimistic: true
-    id: button_switch
+    lambda: |-
+      return id(relay).state;
     turn_on_action:
       - switch.turn_on: relay
-      - output.turn_on: led_red
+      - if:
+          condition:
+            lambda: 'return id(enable_led_global);'
+          then:
+            - output.turn_on: led_red
+          else:
+            - output.turn_off: led_red
+      - switch.template.publish:
+          id: button_switch
+          state: ON
     turn_off_action:
-      - switch.turn_off: relay
+      - if:
+          condition:
+            lambda: 'return id(allow_turn_off_global);'
+          then:
+            - switch.turn_off: relay
+            - output.turn_off: led_red
+            - switch.template.publish:
+                id: button_switch
+                state: OFF
+          else:
+            - switch.template.publish:
+                id: button_switch
+                state: ON
+
+  - platform: template
+    name: "${friendly_devicename} On after boot"
+    id: on_after_boot_switch
+    icon: mdi:power-cycle
+    optimistic: true
+    lambda: |-
+      return id(on_after_boot_global);
+    turn_on_action:
+      - globals.set:
+          id: on_after_boot_global
+          value: 'true'
+      - switch.template.publish:
+          id: on_after_boot_switch
+          state: ON
+    turn_off_action:
+      - globals.set:
+          id: on_after_boot_global
+          value: 'false'
+      - switch.template.publish:
+          id: on_after_boot_switch
+          state: OFF
+
+  - platform: template
+    name: "${friendly_devicename} Enable Button"
+    id: enable_button_switch
+    icon: mdi:gesture-tap-button
+    optimistic: true
+    lambda: |-
+      return id(enable_button_global);
+    turn_on_action:
+      - globals.set:
+          id: enable_button_global
+          value: 'true'
+      - switch.template.publish:
+          id: enable_button_switch
+          state: ON
+    turn_off_action:
+      - globals.set:
+          id: enable_button_global
+          value: 'false'
+      - switch.template.publish:
+          id: enable_button_switch
+          state: OFF
+
+  - platform: template
+    name: "${friendly_devicename} Allow Turn Off"
+    id: allow_turn_off_switch
+    icon: mdi:lock-open-variant
+    optimistic: true
+    lambda: |-
+      return id(allow_turn_off_global);
+    turn_on_action:
+      - globals.set:
+          id: allow_turn_off_global
+          value: 'true'
+      - switch.template.publish:
+          id: allow_turn_off_switch
+          state: ON
+    turn_off_action:
+      - globals.set:
+          id: allow_turn_off_global
+          value: 'false'
+      - switch.template.publish:
+          id: allow_turn_off_switch
+          state: OFF
+
+  - platform: template
+    name: "${friendly_devicename} Enable LED"
+    id: enable_led_switch
+    icon: mdi:led-on
+    optimistic: true
+    lambda: |-
+      return id(enable_led_global);
+    turn_on_action:
+      - globals.set:
+          id: enable_led_global
+          value: 'true'
+      - switch.template.publish:
+          id: enable_led_switch
+          state: ON
+      - if:
+          condition:
+            lambda: 'return id(relay).state;'
+          then:
+            - output.turn_on: led_red
+          else:
+            - output.turn_off: led_red
+    turn_off_action:
+      - globals.set:
+          id: enable_led_global
+          value: 'false'
+      - switch.template.publish:
+          id: enable_led_switch
+          state: OFF
       - output.turn_off: led_red
+
   - platform: gpio
     pin: GPIO15
     id: relay

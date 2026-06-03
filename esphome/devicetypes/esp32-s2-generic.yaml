@@ -1,0 +1,7 @@
+# devicetypes/esp32-s2-generic.yaml
+
+esp32:
+  board: lolin_s2_mini
+  variant: ESP32S2
+  framework:
+    type: arduino
