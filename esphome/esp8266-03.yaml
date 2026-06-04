@@ -11,8 +11,8 @@ substitutions:
   project_version: "2.0"
 
   # Custom substitutions
-  sda_pin: "D1"
-  scl_pin: "D2"
+  sda_pin: "D2"
+  scl_pin: "D1"
 
   font_name: "materialdesignicons-webfont.ttf"
   entity_to_watch: "binary_sensor.presence_bad_occupancy"
