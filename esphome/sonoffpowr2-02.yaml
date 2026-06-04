@@ -18,7 +18,7 @@ substitutions:
   relay_name: "Waschmaschine"
   relay_icon: "mdi:washing-machine"
 
-  energy_total_offset: "683.92"
+  energy_total_offset: "683.92" # Migrated from Tasmota 2026-06-04
 
 packages:
   # Basic configuration
