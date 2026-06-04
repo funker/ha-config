@@ -1,7 +1,5 @@
 # esp32-01.yaml
 
-logger:
-  level: DEBUG
 substitutions:
   # Default substitutions
   config_tested_date: "2026-06-02"
@@ -59,6 +57,6 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/esp32-generic.yaml
-  - !include roles/rain-sensor.yaml
+  - !include common/sensor/rain-ses.yaml
 
 # Custom configuration
