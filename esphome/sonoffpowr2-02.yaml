@@ -18,8 +18,8 @@ substitutions:
   relay_name: "Waschmaschine"
   relay_icon: "mdi:washing-machine"
 
-
   energy_total_offset: "683.92"
+  
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
