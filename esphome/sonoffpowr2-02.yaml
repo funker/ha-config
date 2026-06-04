@@ -10,6 +10,8 @@ substitutions:
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
 
+
+  energy_total_offset: "683.92"
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
