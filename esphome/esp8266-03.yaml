@@ -5,7 +5,7 @@ substitutions:
   config_tested_date: "2026-06-02"
   devicename: "esp8266-03"
   friendly_devicename: "Unbenutzt esp8266-03"
-  room: "Badezimmer"
+  room: "Auf Lager"
   comment: "Bad Tür-Display"
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "2.0"
