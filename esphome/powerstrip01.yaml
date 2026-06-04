@@ -13,7 +13,7 @@ substitutions:
   # Custom substiturions
   # Sockets
   relay_1_name: "Staubsauger"
-  relay_2_icon: "mdi:vacuum"
+  relay_1_icon: "mdi:vacuum"
   relay_2_name: "Kellertreppe"
   relay_2_icon: "mdi:stairs-down"
   relay_3_name: "Sockel 3"
