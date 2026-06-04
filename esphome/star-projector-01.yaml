@@ -18,7 +18,19 @@ globals:
     type: bool
     restore_value: no
     initial_value: 'false'
-    
+
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp32-generic.yaml
   - !include devicetypes/generic-bk7231t-qfn32-tuya.yaml
 
 
