@@ -19,7 +19,7 @@ substitutions:
   relay_icon: "mdi:tumble-dryer"
 
   # 
-  energy_total_offset: "1058.60"
+  energy_total_offset: "1058.60" # Migration
 
 packages:
   # Basic configuration
