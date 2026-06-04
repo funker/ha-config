@@ -14,7 +14,7 @@ substitutions:
 
   # Custom substitutions
   update_interval: 10s
-  
+
   relay_name: "Dekolicht"
   relay_icon: "mdi:lightbulb-spot"
 
@@ -31,8 +31,6 @@ packages:
   # Device type
   - !include devicetypes/sonoff-pow-r2-generic.yaml
   - !include devicetypes/sonoff-pow-r2-light.yaml
-  # alternativ:
-  # - !include devicetypes/sonoff-pow-r2-switch.yaml
 
 # Custom configuration
 
