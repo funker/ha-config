@@ -11,9 +11,9 @@ substitutions:
   comment: "Star Projector Jan"
   project_name: "Espressif.ESP32"
   project_version: "1.0"
-  node_name: "star_projector_jan"
 
   # Custom substitutions
+  node_name: "star_projector_jan"
 
 globals:
   - id: dim
