@@ -6,7 +6,7 @@ substitutions:
   devicename: "esp32-07"
   friendly_devicename: "Regensensor S2"
   room: "Badezimmer"
-  comment: "ESP32 06 Regensensor S2"
+  comment: "ESP32 07 Regensensor S2"
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
