@@ -18,6 +18,8 @@ substitutions:
   relay_name: "Dekolicht"
   relay_icon: "mdi:lightbulb-spot"
 
+  energy_total_offset: "0.00"
+
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
