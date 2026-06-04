@@ -6,6 +6,7 @@ substitutions:
   project_name: "Athom.Presence Sensor"
   project_version: "1.0"
 
+# Custom substitutions
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
