@@ -13,7 +13,7 @@ substitutions:
   # Custom substiturions
   socket_name_1: "Kellertreppe"
   socket_name_2: "Staubsauger"
-  socket_name_3: ""
+  socket_name_3: "Sockel 3"
   socket_name_usb:
 
 packages:
