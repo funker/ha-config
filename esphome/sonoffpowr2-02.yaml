@@ -19,7 +19,7 @@ substitutions:
   relay_icon: "mdi:washing-machine"
 
   energy_total_offset: "683.92"
-  
+
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
@@ -32,5 +32,6 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/sonoff-pow-r2.yaml
+  # - !include devicetypes/sonoff-pow-r2-switch.yaml
 
 # Custom configuration
