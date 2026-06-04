@@ -11,7 +11,10 @@ substitutions:
   project_version: "1.0"
 
   # Custom substiturions
-  socket_
+  socket_name_1:
+  socket_name_2:
+  socket_name_3:
+  socket_name_usb:
 
 packages:
   # Basic configuration
