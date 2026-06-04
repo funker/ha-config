@@ -16,7 +16,7 @@ substitutions:
   update_interval: 10s
   
   relay_name: "Waschmaschine"
-  relay_icon: "mdi:washing"
+  relay_icon: "mdi:washing-machine"
 
 
   energy_total_offset: "683.92"
