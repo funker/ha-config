@@ -31,7 +31,7 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/sonoff-pow-r2.yaml
+  - !include devicetypes/sonoff-pow-r2-generic.yaml
   - !include devicetypes/sonoff-pow-r2-switch.yaml
 
 # Custom configuration
