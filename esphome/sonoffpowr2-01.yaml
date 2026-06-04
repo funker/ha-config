@@ -29,6 +29,8 @@ packages:
   # Device type
   - !include devicetypes/sonoff-pow-r2-generic.yaml
   - !include devicetypes/sonoff-pow-r2-light.yaml
+  # alternativ:
+  # - !include devicetypes/sonoff-pow-r2-switch.yaml
 
 # Custom configuration
 
