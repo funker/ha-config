@@ -4,7 +4,7 @@
 
 substitutions:
   # Default substitutions
-  config_tested_date: "XXX"
+  config_tested_date: ""
   devicename: "sonoffpowr2-02"
   friendly_devicename: "Waschmaschine"
   room: "Keller"
@@ -15,7 +15,7 @@ substitutions:
   # Custom substitutions
   update_interval: 10s
   
-  relay_name: "Dekolicht"
+  relay_name: "Waschmaschine"
   relay_icon: "mdi:lightbulb-spot"
 
 
