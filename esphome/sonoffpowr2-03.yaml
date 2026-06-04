@@ -1,3 +1,5 @@
+---
+
 # sonoffpowr2-03.yaml
 
 substitutions:
@@ -9,6 +11,14 @@ substitutions:
   comment: "Sonoff POW R2 Trockner"
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
+
+  # Custom substitutions
+  update_interval: 10s
+  
+  relay_name: "Waschmaschine"
+  relay_icon: "mdi:washing-machine"
+
+  energy_total_offset: "683.92"
 
 packages:
   # Basic configuration
@@ -22,5 +32,6 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/sonoff-pow-r2.yaml
+  # - !include devicetypes/sonoff-pow-r2-switch.yaml
 
 # Custom configuration
