@@ -15,7 +15,7 @@ substitutions:
   scl_pin: "GPIO35"
 
   font_name: "materialdesignicons-webfont.ttf"
-  entity_to_watch: "binary_sensor.presence_bad_occupancy"
+#   entity_to_watch: "binary_sensor.presence_bad_occupancy"
   entity_to_watch: "binary_sensor.presence_keller"
 
 packages:
