@@ -6,4 +6,19 @@ substitutions:
   project_name: "Blitzwolf.SHP9"
   project_version: "1.0"
 
-<<: !include devicetypes/blitzwolf-shp9.yaml
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp32-s2-generic.yaml
+  - !include roles/display-128x32.yaml
+
+# Custom configuration
+
