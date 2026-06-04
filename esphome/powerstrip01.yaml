@@ -17,7 +17,7 @@ substitutions:
   relay_icon_2: "mdi:stairs-down"
   relay_name_3: "Sockel 3"
   relay_name_usb: "USB"
-  relay_
+  relay_4_icon: "mdi:usb"
 
 packages:
   # Basic configuration
