@@ -4,7 +4,7 @@
 
 substitutions:
   # Default substitutions
-  config_tested_date: "XXX"
+  config_tested_date: "2026-06-04"
   devicename: "sonoffpowr2-01"
   friendly_devicename: "Dekolicht Wohnzimmer"
   room: "Wohnzimmer"
