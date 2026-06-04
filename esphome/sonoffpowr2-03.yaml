@@ -18,7 +18,6 @@ substitutions:
   relay_name: "Trockner"
   relay_icon: "mdi:tumble-dryer"
 
-  # 
   energy_total_offset: "1058.60" # Migrated from Tasmota 2026-06-04
 
 packages:
