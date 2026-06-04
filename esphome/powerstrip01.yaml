@@ -10,6 +10,8 @@ substitutions:
   project_name: "Blitzwolf.SHP9"
   project_version: "1.0"
 
+  
+
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
