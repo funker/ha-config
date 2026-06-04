@@ -10,6 +10,9 @@ substitutions:
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
 
+  # Custom substitutions
+  
+
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
