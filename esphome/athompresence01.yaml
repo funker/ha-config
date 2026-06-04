@@ -1,4 +1,8 @@
+# athom-presence01.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
   devicename: "athompresence01"
   friendly_devicename: "Präsenz Bad"
   room: "Badezimmer"
@@ -7,7 +11,7 @@ substitutions:
   project_version: "1.0"
 
   # Custom substitutions
-  
+
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
