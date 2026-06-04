@@ -36,7 +36,7 @@ packages:
 
 light:
   - platform: rgb
-    name: ${friendly_devicename} Light
+    name: "${friendly_devicename} Light"
     icon: mdi:star-shooting
     id: rgb_light
     red: red
