@@ -11,8 +11,8 @@ substitutions:
   project_version: "1.0"
 
   # Custom substitutions
-  sda_pin: "D2"
-  scl_pin: "D1"
+  sda_pin: "GPIO33"
+  scl_pin: "GPIO35"
 
   font_name: "materialdesignicons-webfont.ttf"
   entity_to_watch: "binary_sensor.presence_bad_occupancy"
