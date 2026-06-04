@@ -1,6 +1,5 @@
 # esp32-01.yaml
 
-log
 substitutions:
   # Default substitutions
   config_tested_date: "2026-06-02"
