@@ -11,7 +11,7 @@ substitutions:
   project_version: "1.0"
 
   # Custom substiturions
-  socket_name_1: "Staubsauger"
+  relay_name_1: "Staubsauger"
   socket_icon_1: "mdi:vacuum"
   socket_name_2: "Kellertreppe"
   socket_icon_2
