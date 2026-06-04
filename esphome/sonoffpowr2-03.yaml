@@ -19,7 +19,7 @@ substitutions:
   relay_icon: "mdi:tumble-dryer"
 
   # 
-  energy_total_offset: "1058.60" # Migration
+  energy_total_offset: "1058.60" # Migration from Tasmota 2026-06-04
 
 packages:
   # Basic configuration
