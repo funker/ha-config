@@ -4,7 +4,7 @@ substitutions:
   # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "esp32-07"
-  friendly_devicename: "Regensensor S2"
+  friendly_devicename: "Display Bad"
   room: "Badezimmer"
   comment: "ESP32 07 Display Bad"
   project_name: "Espressif.ESP32"
