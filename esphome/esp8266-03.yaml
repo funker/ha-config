@@ -29,4 +29,4 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/esp8266-d1-mini.yaml
-  - !include roles/display-128x64.yaml
+  - !include roles/display-128x32.yaml
