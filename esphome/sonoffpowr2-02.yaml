@@ -4,7 +4,7 @@
 
 substitutions:
   # Default substitutions
-  config_tested_date: ""
+  config_tested_date: "2026-06-04"
   devicename: "sonoffpowr2-02"
   friendly_devicename: "Waschmaschine"
   room: "Keller"
@@ -16,7 +16,7 @@ substitutions:
   update_interval: 10s
   
   relay_name: "Waschmaschine"
-  relay_icon: "mdi:lightbulb-spot"
+  relay_icon: "mdi:washing"
 
 
   energy_total_offset: "683.92"
