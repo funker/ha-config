@@ -35,3 +35,4 @@ packages:
   - !include devicetypes/sonoff-pow-r2-switch.yaml
 
 # Custom configuration
+
