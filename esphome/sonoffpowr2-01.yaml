@@ -31,3 +31,4 @@ packages:
   - !include devicetypes/sonoff-pow-r2-light.yaml
 
 # Custom configuration
+
