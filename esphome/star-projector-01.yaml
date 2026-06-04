@@ -15,12 +15,6 @@ substitutions:
   # Custom substitutions
   node_name: "star_projector_jan"
 
-globals:
-  - id: dim
-    type: bool
-    restore_value: no
-    initial_value: 'false'
-
 packages:
   # Basic configuration
   - !include common/section-esphome.yaml
