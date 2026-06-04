@@ -12,10 +12,10 @@ substitutions:
 
   # Custom substiturions
   # Sockets
-  relay_2_name: "Kellertreppe"
-  relay_2_icon: "mdi:stairs-down"
-  relay_1_name: "Staubsauger"
-  relay_1_icon: "mdi:vacuum"
+  relay_1_name: "Kellertreppe"
+  relay_1_icon: "mdi:stairs-down"
+  relay_2_name: "Staubsauger"
+  relay_2_icon: "mdi:vacuum"
   relay_3_name: "Sockel 3"
   relay_3_icon: "mdi:power-socket-de"
   # USB ports
