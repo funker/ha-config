@@ -16,7 +16,7 @@ substitutions:
 
   font_name: "materialdesignicons-webfont.ttf"
 #   entity_to_watch: "binary_sensor.presence_bad_occupancy"
-  entity_to_watch: "binary_sensor.prasenz_keller_occupancy"
+  entity_to_watch: binary_sensor.prasenz_keller_occupancy
 
 packages:
   # Basic configuration
