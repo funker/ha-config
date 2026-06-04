@@ -1,0 +1,62 @@
+# esp32-06.yaml
+
+substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
+  devicename: "esp32-06"
+  friendly_devicename: "Regensensor S2"
+  room: "Garten"
+  comment: "ESP32 06 Regensensor S2"
+  project_name: "Espressif.ESP32"
+  project_version: "1.0"
+
+  # Custom substitutions
+  # TODO: Handle case where resistance is higher than max_resistance
+  resistor_value: "9.868kOhm"
+
+  # Skip values outside this range
+  min_resistance: "1000"
+  max_resistance: "500000"
+
+  # Resistance drop required to classify a new rain event
+  rain_detection_threshold: "4000"
+
+  # Resistance increase required to classify drying
+  dry_detection_threshold: "4000"
+
+  # On boot, if resistance is below this value, assume the sensor is wet
+  wet_resistance_when_booting: "50000"
+
+  # +------------------------------+
+  # | Delay between rain measures  |
+  # +------------------------------+
+  # In dry mode
+  measure_interval_dry: "5000"
+
+  # In wet mode
+  # Must be large enough to avoid wearing the sensor tracks too fast,
+  # but small enough to stay responsive.
+  measure_interval_wet: "30000"
+
+  # Stabilization before reading the resistance.
+  # A too short delay may prevent reliable low-resistance readings.
+  stabilization_delay: 2sec
+
+  adc_pin: "GPIO4"
+  bias_pin: "GPIO35"
+
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp32-s2-generic.yaml
+  - !include roles/rain-sensor.yaml
+
+# Custom configuration
