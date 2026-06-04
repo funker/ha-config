@@ -1,3 +1,5 @@
+---
+
 # sonoffpowr2-02.yaml
 
 substitutions:
@@ -9,6 +11,7 @@ substitutions:
   comment: "Sonoff POW R2 Waschmaschine"
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
+
   # Custom substitutions
   update_interval: 10s
   
