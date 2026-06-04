@@ -15,8 +15,9 @@ substitutions:
   relay_1_name: "Staubsauger"
   relay_1_icon: "mdi:vacuum"
   relay_2_name: "Kellertreppe"
-  relay_2_icon_2: "mdi:stairs-down"
-  relay_3_name_3: "Sockel 3"
+  relay_2_icon: "mdi:stairs-down"
+  relay_3_name: "Sockel 3"
+  
   # USB ports
   relay_4_name: "USB"
   relay_4_icon: "mdi:usb"
