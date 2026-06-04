@@ -12,6 +12,7 @@ substitutions:
 
   # Custom substiturions
   socket_name_1: "Staubsauger"
+  socket_icon_1: "mdi:vacuum"
   socket_name_2: "Kellertreppe"
   socket_name_3: "Sockel 3"
   socket_name_usb: "USB"
