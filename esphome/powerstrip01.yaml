@@ -11,8 +11,8 @@ substitutions:
   project_version: "1.0"
 
   # Custom substiturions
-  relay_1_name_1: "Staubsauger"
-  relay_icon_1: "mdi:vacuum"
+  relay_1_name: "Staubsauger"
+  relay_1_icon: "mdi:vacuum"
   relay_name_2: "Kellertreppe"
   relay_icon_2
   relay_name_3: "Sockel 3"
