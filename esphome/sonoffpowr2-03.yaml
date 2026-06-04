@@ -18,7 +18,8 @@ substitutions:
   relay_name: "Trockner"
   relay_icon: "mdi:tumble-dryer"
 
-  energy_total_offset: "683.92"
+  # 
+  energy_total_offset: "1058.60"
 
 packages:
   # Basic configuration
