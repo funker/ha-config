@@ -1,4 +1,8 @@
+# esp32-07.yaml
+
 substitutions:
+  # Default substitutions
+  config_tested_date: "2026-06-02"
   devicename: "blitzwolfshp9-01"
   friendly_devicename: "Powerstrip Flur EG"
   room: "Flur EG"
