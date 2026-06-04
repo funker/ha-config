@@ -11,12 +11,12 @@ substitutions:
   project_version: "1.0"
 
   # Custom substiturions
-  relay_name_1: "Staubsauger"
-  socket_icon_1: "mdi:vacuum"
-  socket_name_2: "Kellertreppe"
-  socket_icon_2
-  socket_name_3: "Sockel 3"
-  socket_name_usb: "USB"
+  relay_1_name_1: "Staubsauger"
+  relay_icon_1: "mdi:vacuum"
+  relay_name_2: "Kellertreppe"
+  relay_icon_2
+  relay_name_3: "Sockel 3"
+  relay_name_usb: "USB"
 
 packages:
   # Basic configuration
