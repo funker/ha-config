@@ -12,7 +12,7 @@ substitutions:
 
   # Custom substitutions
   relay_name: "Dekolicht"
-  relay_icon
+  relay_icon: "mdi:lightbulb-spot"
 
 packages:
   # Basic configuration
