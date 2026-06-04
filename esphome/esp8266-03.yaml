@@ -6,9 +6,9 @@ substitutions:
   devicename: "esp8266-03"
   friendly_devicename: "Unbenutzt esp8266-03"
   room: "Auf Lager"
-  comment: "Bad Tür-Display"
+  comment: "Unbenutzt esp8266-03"
   project_name: "Wemos.D1 Mini ESP8266"
-  project_version: "2.0"
+  project_version: "1.0"
 
   # Custom substitutions
 
