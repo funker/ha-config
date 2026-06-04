@@ -21,11 +21,11 @@ packages:
   - !include common/section-esphome.yaml
   - !include common/section-system.yaml
   # Default components
-  # - !include components/binary_sensor.yaml
-  # - !include components/button.yaml
-  # - !include components/sensor.yaml
-  # - !include components/text_sensor.yaml
-  # - !include components/switch.yaml
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
   # Device type
   - !include devicetypes/blitzwolf-shp9.yaml
 
