@@ -6,7 +6,7 @@ substitutions:
   devicename: "gosundplug10"
   friendly_devicename: "Kaffeemaschine"
   room: "Küche"
-  comment: "Gosund SP111 Kaffeemaschine"
+  comment: "Gosund SP111 Toaster"
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
