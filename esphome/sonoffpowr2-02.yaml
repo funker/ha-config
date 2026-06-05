@@ -12,9 +12,7 @@ substitutions:
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
 
-  # Custom substitutions
-  update_interval: 10s
-  
+  # Custom substitutions  
   relay_name: "Waschmaschine"
   relay_icon: "mdi:washing-machine"
 
