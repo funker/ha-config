@@ -13,7 +13,7 @@ substitutions:
   project_version: "1.0"
 
   # Custom substitutions
-  relay_name: ${frie}
+  relay_name: ${friendly_devicename}
   relay_icon: "mdi:lightbulb-spot"
 
 packages:
