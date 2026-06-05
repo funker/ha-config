@@ -2,9 +2,9 @@
 
 substitutions:
   # Default substitutions
-  config_tested_date: "2026-06-02"
+  config_tested_date: "2026-06-05"
   devicename: "gosundplug10"
-  friendly_devicename: "Kaffeemaschine"
+  friendly_devicename: "Toaster"
   room: "Küche"
   comment: "Gosund SP111 Toaster"
   project_name: "Gosund.SP111"
