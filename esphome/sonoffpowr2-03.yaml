@@ -13,8 +13,6 @@ substitutions:
   project_version: "1.0"
 
   # Custom substitutions
-  update_interval: 10s
-  
   relay_name: "Trockner"
   relay_icon: "mdi:tumble-dryer"
 
