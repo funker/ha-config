@@ -8,7 +8,7 @@ substitutions:
   devicename: "gosundplug05"
   friendly_devicename: "Getränkekühlschrank"
   room: "Küche"
-  comment: "Gosund SP111 Airfryer"
+  comment: "Gosund SP111 Getränkekühlschrank"
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
