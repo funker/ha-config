@@ -1,3 +1,5 @@
+---
+
 # gosundplug09.yaml
 
 substitutions:
@@ -27,7 +29,7 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/gosund-sp111-kuehlschrank.yaml
+  - !include devicetypes/gosund-sp111.yaml
 
 # Custom configuration
 
