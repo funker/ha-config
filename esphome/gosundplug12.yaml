@@ -30,6 +30,7 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/gosund-sp111.yaml
+  - !include components/switch.yaml
 
 # Custom configuration
 
