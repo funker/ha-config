@@ -13,12 +13,8 @@ substitutions:
   project_version: "1.0"
 
   # Custom substitutions
-  update_interval: 10s
-
   relay_name: "Dekolicht"
   relay_icon: "mdi:lightbulb-spot"
-
-  energy_total_offset: "210.34"
 
 packages:
   # Basic configuration
