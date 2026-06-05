@@ -1,0 +1,111 @@
+---
+
+# devicetypes/sonoff-pow-r2-generic.yaml
+
+esp8266:
+  board: esp8285
+
+uart:
+  rx_pin: GPIO3
+  baud_rate: 4800
+  parity: EVEN
+
+binary_sensor:
+  - platform: template
+    name: "Sonoff POW Running"
+    filters:
+      - delayed_off: 15s
+    lambda: |-
+      if (isnan(id(power).state)) {
+        return {};
+      } else if (id(power).state > 4) {
+        return true;
+      } else {
+        return false;
+      }
+
+light:
+  - platform: monochromatic
+    id: led
+    name: "LED"
+    internal: true
+    output: pow_blue_led
+
+output:
+  - platform: esp8266_pwm
+    id: pow_blue_led
+    pin:
+      number: GPIO13
+      inverted: true
+
+sensor:
+  - platform: cse7766
+    current:
+      name: "${friendly_devicename} Current"
+      id: current
+      filters:
+        - throttle_average: ${update_interval}
+
+    voltage:
+      name: "${friendly_devicename} Voltage"
+      id: voltage
+      filters:
+        - throttle_average: ${update_interval}
+
+    power:
+      name: "${friendly_devicename} Power"
+      id: power
+      filters:
+        - throttle_average: ${update_interval}
+
+    energy:
+      name: "${friendly_devicename} Total Energy Raw"
+      id: energy_raw
+      filters:
+        - throttle: ${update_interval}
+
+    apparent_power:
+      name: "${friendly_devicename} Apparent Power"
+      id: apparent_power
+      filters:
+        - throttle_average: ${update_interval}
+
+    reactive_power:
+      name: "${friendly_devicename} Reactive Power"
+      id: reactive_power
+      filters:
+        - throttle_average: ${update_interval}
+
+    power_factor:
+      name: "${friendly_devicename} Power Factor"
+      id: power_factor
+      filters:
+        - throttle_average: ${update_interval}
+
+  - platform: template
+    name: "${friendly_devicename} Total Energy"
+    id: energy_total
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    update_interval: ${update_interval}
+    lambda: |-
+      if (isnan(id(energy_raw).state)) {
+        return {};
+      } else {
+        return id(energy_raw).state + ${energy_total_offset};
+      }
+
+  - platform: total_daily_energy
+    name: "${friendly_devicename} Energy Today"
+    power_id: power
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 2
+    restore: true
+    filters:
+      - multiply: 0.001
+
+      

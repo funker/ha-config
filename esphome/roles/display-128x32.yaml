@@ -1,20 +1,27 @@
 # roles/display-128x32.yaml
 
-logger:
-  level: DEBUG
+# logger:
+#   level: DEBUG
+
+esphome:
+  on_boot:
+    priority: -100
+    then:
+      - wait_until:
+          api.connected:
+      - delay: 2s
+      - component.update: my_display
 
 i2c:
   sda: ${sda_pin}
   scl: ${scl_pin}
-  # OLED displays
-  frequency: 100kHz
+  frequency: 400kHz
   scan: true
 
-# OLED displays
 font:
   - file: "common/fonts/${font_name}"
     id: mdi_font_24
-    size: 24  # Adjust the size as needed
+    size: 32  # Adjust the size as needed
     glyphs:
       - "\U000F1158" # mdi:paper-roll-outline
       - "\U000F09A1" # mdi:shower-head
@@ -32,21 +39,26 @@ binary_sensor:
     id: entity_to_watch
     entity_id: ${entity_to_watch}
     internal: true
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        - component.update: my_display
 
 display:
-  # OLED display 128 x 32 pixel
 - platform: ssd1306_i2c
   model: "SSD1306 128x32"
   address: 0x3C
-  setup_priority: -200.0
+  update_interval: never
+  # setup_priority: -200.0
   id: my_display
   lambda: !lambda |-
+    ESP_LOGD("display", "state=%d", id(entity_to_watch).state);
     if (id(entity_to_watch).state) {
       ESP_LOGD("custom", "Sensor hat einen Status");
-      it.print(4, 0, id(mdi_font_24), "\U000F1158");
-      it.printf(30, 0, id(roboto_22), "%s", "Besetzt");
+      it.print(0, 0, id(mdi_font_24), "\U000F1158");
+      it.printf(36, 4, id(roboto_24), "%s", "Besetzt");
     } else {
       ESP_LOGD("custom", "Kein Status");
-      it.print(4, 0, id(mdi_font_24), "\U000F1158");
-      it.printf(30, 0, id(roboto_22), "%s", "Frei");
+      it.print(0, 0, id(mdi_font_24), "\U000F1158");
+      it.printf(36, 4, id(roboto_24), "%s", "Frei");
     }

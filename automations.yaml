@@ -450,7 +450,7 @@
       include_time: time_disabled
       include_night_lights: night_lights_enabled
       night_lights:
-        entity_id: light.powerstrip01_powerstrip01_2
+        entity_id: light.powerstrip_flur_eg_kellertreppe
       night_time_delay: 0.5
       night_lights_after_time: '20:00:05'
       night_lights_before_time: 07:59:55
@@ -3062,7 +3062,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: light.wohnzimmer_hintergrund
+      entity_id: light.licht_hintergrund_dekolicht
   mode: single
 - id: '1729111575037'
   alias: Update Calendar Events for Upcoming Month
@@ -3977,9 +3977,11 @@
   triggers:
   - trigger: state
     entity_id:
-    - light.powerstrip01_powerstrip01_2
-    from: 'on'
-    to: 'off'
+    - light.powerstrip_flur_eg_kellertreppe
+    from:
+    - 'on'
+    to:
+    - 'off'
     for:
       hours: 0
       minutes: 0

@@ -1,14 +1,8 @@
-# Base settings
-<<: !include ../common/device_base.yaml
+# devicetypes/athom-presence.yaml
 
-# Web Server
-<<: !include ../common/generic/web_server.yaml
-
-# Captive Portal
-<<: !include ../common/generic/captive_portal.yaml
-
-# Board selection
-<<: !include ../boards/esp8266-esp8285.yaml
+esp8266:
+  board: esp8285
+  restore_from_flash: true
 
 dashboard_import:
   package_import_url: github://athom-tech/athom-configs/athom-presence-sensor.yaml
@@ -40,9 +34,6 @@ uart:
 
 
 binary_sensor:
-  - platform: status
-    name: "Status"
-
   - platform: gpio
     pin:
       number: GPIO0
@@ -104,12 +95,6 @@ binary_sensor:
         }
 
 sensor:
-  - platform: uptime
-    name: "Uptime Sensor"
-
-  - platform: wifi_signal
-    name: "WiFi Signal Sensor"
-    update_interval: 60s
 
   - platform: bh1750
     name: "Light Sensor"

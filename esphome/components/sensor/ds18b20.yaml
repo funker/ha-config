@@ -1,0 +1,14 @@
+---
+
+# components/sensor/ds18b20.yaml
+
+platform: dallas_temp
+id: ds18b20_temperature
+name: "${friendy_devicename} Temperatur"
+unit_of_measurement: "°C"
+icon: "mdi:thermometer"
+device_class: "temperature"
+state_class: "measurement"
+accuracy_decimals: 2
+address: ${dallas_address}
+

@@ -1,4 +1,6 @@
-# common/sensor/max6675.yaml
+---
+
+# components/sensor/max6675.yaml
 
 platform: max6675
 id: max6675_temperature
