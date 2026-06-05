@@ -6,7 +6,7 @@ substitutions:
   devicename: "gosundplug12"
   friendly_devicename: "Steffi Schreibtisch"
   room: "Steffi"
-  comment: "Gosund SP111 Thermomix"
+  comment: "Gosund SP111 Steffi Schreibtisch"
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
