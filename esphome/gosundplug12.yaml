@@ -6,9 +6,9 @@ substitutions:
   # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "gosundplug12"
-  friendly_devicename: "Steffi Schreibtisch"
+  friendly_devicename: "Schreibtisch"
   room: "Steffi"
-  comment: "Gosund SP111 Steffi Schreibtisch"
+  comment: "Gosund SP111 Schreibtisch"
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
