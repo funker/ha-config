@@ -30,7 +30,6 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/gosund-sp111.yaml
-  - !include components/energy_sensor.yaml
 
 # Custom configuration
 
