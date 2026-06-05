@@ -5,7 +5,7 @@ substitutions:
   config_tested_date: "2026-06-02"
   devicename: "gosundplug12"
   friendly_devicename: "Steffi Schreibtisch"
-  room: "Küche"
+  room: "Steffi"
   comment: "Gosund SP111 Thermomix"
   project_name: "Gosund.SP111"
   project_version: "1.0"
