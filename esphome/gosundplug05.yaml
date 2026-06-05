@@ -6,7 +6,7 @@ substitutions:
   # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "gosundplug05"
-  friendly_devicename: "Minikühlschrank"
+  friendly_devicename: "Getränkekühlschrank"
   room: "Küche"
   comment: "Gosund SP111 Airfryer"
   project_name: "Gosund.SP111"
