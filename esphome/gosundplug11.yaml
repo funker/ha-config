@@ -7,7 +7,7 @@ substitutions:
   config_tested_date: "2026-06-02"
   devicename: "gosundplug11"
   friendly_devicename: "3D-Drucker"
-  room: "Flur UG"
+  room: "Abseite UG"
   comment: "Gosund SP111 3D-Drucker"
   project_name: "Gosund.SP111"
   project_version: "1.0"
