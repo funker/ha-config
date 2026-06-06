@@ -1,4 +1,9 @@
+---
+
+# components/binary_sensor.yaml
+
 binary_sensor:
   - platform: status
     name: "Status"
     icon: mdi:check-circle
+

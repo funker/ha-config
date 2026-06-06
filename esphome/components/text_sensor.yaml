@@ -1,3 +1,7 @@
+---
+
+# components/text_sensor.yaml
+
 text_sensor:
   - platform: version
     name: "Version"
@@ -7,10 +11,24 @@ text_sensor:
 
   - platform: template
     name: "Configuration tested"
-    id: config_tested
+    id: info_config_tested
     icon: mdi:check
     lambda: |-
       return {"${config_tested_date}"};
+
+  - platform: template
+    name: "Devicename"
+    id: info_devicename
+    icon: mdi:information-box
+    lambda: |-
+      return {"${devicename}"};
+
+  - platform: template
+    name: "Devicename Friendly"
+    id: info_friendly_devicename
+    icon: mdi:information-box
+    lambda: |-
+      return {"${friendly_devicename}"};
 
   - platform: wifi_info
     ip_address:
@@ -25,3 +43,4 @@ text_sensor:
       name: Latest Scan Results
     dns_address:
       name: DNS Address
+

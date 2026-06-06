@@ -1,3 +1,5 @@
+---
+
 # common/section-system.yaml
 
 # Home Assistant API
@@ -52,3 +54,4 @@ wifi:
       #static_ip: !secret fallback_hotspot_static_ip
       #gateway: !secret fallback_hotspot_gateway
       #subnet: !secret fallback_hotspot_subnet
+

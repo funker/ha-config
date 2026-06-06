@@ -1,49 +1,13 @@
 ---
 
-# devicetypes/sonoff-pow-r2-generic.yaml
+# components/energy_sensor.yaml
 
 substitutions:
   update_interval: 10s
 
-esp8266:
-  board: esp8285
-
-uart:
-  rx_pin: GPIO3
-  baud_rate: 4800
-  parity: EVEN
-
-binary_sensor:
-  - platform: template
-    name: "Sonoff POW Running"
-    filters:
-      - delayed_off: 15s
-    lambda: |-
-      if (isnan(id(power).state)) {
-        return {};
-      } else if (id(power).state > 4) {
-        return true;
-      } else {
-        return false;
-      }
-
-light:
-  - platform: monochromatic
-    id: led
-    name: "LED"
-    internal: true
-    output: pow_blue_led
-
-output:
-  - platform: esp8266_pwm
-    id: pow_blue_led
-    pin:
-      number: GPIO13
-      inverted: true
-
 sensor:
   - platform: integration
-    name: "Energie"
+    name: "${friendly_devicename} Energie"
     sensor: power_wattage
     time_unit: h
     restore: true
@@ -54,14 +18,16 @@ sensor:
     filters:
       - multiply: 0.001
 
-  - platform: cse7766
-    power:
-      name: "${friendly_devicename} Leistung"
-      unit_of_measurement: W
-      id: power_wattage
-      icon: mdi:lightning-bolt
-      filters:
-        - throttle_average: ${update_interval}
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: true
+    cf_pin: GPIO05
+    cf1_pin: GPIO04
+    change_mode_every: 4
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    update_interval: 3s
 
     power:
       name: "${friendly_devicename} Leistung"
@@ -91,13 +57,13 @@ sensor:
   - platform: total_daily_energy
     name: "Energie heute"
     power_id: power_wattage
-    filters:
-      - multiply: 0.001
     unit_of_measurement: kWh
     device_class: energy
     state_class: total_increasing
     accuracy_decimals: 3
+    restore: true
+    filters:
+      - multiply: 0.001
     icon: mdi:calendar-clock
     disabled_by_default: true
 
-      

@@ -4088,7 +4088,7 @@
   use_blueprint:
     path: sbyx/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml
     input:
-      power_sensor: sensor.licht_datacenter_aktuell_watt
+      power_sensor: sensor.shelly_pm_airfryer_airfryer_energie
       starting_threshold: 15
       actions:
       - delay:
@@ -4112,7 +4112,7 @@
   use_blueprint:
     path: sbyx/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml
     input:
-      power_sensor: sensor.gosundplug10_aktuell_watt
+      power_sensor: sensor.kaffeemaschine_energie
       starting_threshold: 15
       actions:
       - delay:

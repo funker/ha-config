@@ -1,4 +1,13 @@
+---
+
 # devicetypes/gosund-sp111.yaml
+
+substitutions:
+  update_interval: 10s
+  # Higher value gives lower watt readout
+  current_res: "0.00280"
+  # Lower value gives lower voltage readout
+  voltage_div: "775"
 
 esp8266:
   board: esp8285
@@ -78,49 +87,6 @@ binary_sensor:
                 else:
                   - switch.turn_on: button_switch
 
-sensor:
-  - platform: total_daily_energy
-    name: "Verbrauch heute"
-    power_id: power_wattage
-    filters:
-      - multiply: 0.001
-    unit_of_measurement: kWh
-    icon: mdi:calendar-clock
-
-  - platform: adc
-    pin: VCC
-    name: "Aktuell - VCC Volt"
-    icon: mdi:flash-outline
-
-  - platform: hlw8012
-    sel_pin:
-      number: GPIO12
-      inverted: true
-    cf_pin: GPIO05
-    cf1_pin: GPIO04
-    change_mode_every: 4
-    current_resistor: ${current_res}
-    voltage_divider: ${voltage_div}
-    update_interval: 3s
-
-    current:
-      name: "Aktuell - Ampere"
-      unit_of_measurement: A
-      accuracy_decimals: 3
-      icon: mdi:current-ac
-
-    voltage:
-      name: "Aktuell - Volt"
-      unit_of_measurement: V
-      accuracy_decimals: 1
-      icon: mdi:flash-outline
-
-    power:
-      name: "Aktuell - Watt"
-      unit_of_measurement: W
-      id: power_wattage
-      icon: mdi:gauge
-
 status_led:
   pin:
     number: GPIO02
@@ -139,6 +105,7 @@ switch:
     id: button_switch
     icon: mdi:power
     optimistic: true
+    restore_mode: DISABLED
     lambda: |-
       return id(relay).state;
     turn_on_action:
@@ -173,6 +140,7 @@ switch:
     id: on_after_boot_switch
     icon: mdi:power-cycle
     optimistic: true
+    restore_mode: DISABLED
     lambda: |-
       return id(on_after_boot_global);
     turn_on_action:
@@ -195,6 +163,7 @@ switch:
     id: enable_button_switch
     icon: mdi:gesture-tap-button
     optimistic: true
+    restore_mode: DISABLED
     lambda: |-
       return id(enable_button_global);
     turn_on_action:
@@ -217,6 +186,7 @@ switch:
     id: allow_turn_off_switch
     icon: mdi:lock-open-variant
     optimistic: true
+    restore_mode: DISABLED
     lambda: |-
       return id(allow_turn_off_global);
     turn_on_action:
@@ -239,6 +209,7 @@ switch:
     id: enable_led_switch
     icon: mdi:led-on
     optimistic: true
+    restore_mode: DISABLED
     lambda: |-
       return id(enable_led_global);
     turn_on_action:
@@ -267,3 +238,65 @@ switch:
   - platform: gpio
     pin: GPIO15
     id: relay
+
+sensor:
+  - platform: integration
+    name: "Energie"
+    sensor: power_wattage
+    time_unit: h
+    restore: true
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: true
+    cf_pin: GPIO05
+    cf1_pin: GPIO04
+    change_mode_every: 4
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    update_interval: 3s
+
+    power:
+      name: "${friendly_devicename} Leistung"
+      unit_of_measurement: W
+      id: power_wattage
+      icon: mdi:lightning-bolt
+      filters:
+        - throttle_average: ${update_interval}
+
+    voltage:
+      name: "${friendly_devicename} Spannung"
+      unit_of_measurement: V
+      accuracy_decimals: 1
+      icon: mdi:flash-outline
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+
+    current:
+      name: "${friendly_devicename} Stromstärke"
+      unit_of_measurement: A
+      accuracy_decimals: 3
+      icon: mdi:current-ac
+      filters:
+        - throttle_average: ${update_interval}
+
+  - platform: total_daily_energy
+    name: "Energie heute"
+    power_id: power_wattage
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 3
+    icon: mdi:calendar-clock
+    disabled_by_default: true
+

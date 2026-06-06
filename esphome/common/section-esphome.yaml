@@ -1,3 +1,5 @@
+---
+
 # common/section-esphome.yaml
 
 esphome:
@@ -12,3 +14,4 @@ esphome:
   #on_boot:
     #- lambda: |-
         #id(ota_pw).set_auth_password("new-ota-password");
+
