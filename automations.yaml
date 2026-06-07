@@ -1307,7 +1307,7 @@
       include_ambient: ambient_disabled
       ambient_light_options: ambient_light_option_enabled
       ambient_light_high_value: 0
-      include_sun: sun_disabled
+      include_sun: sun_enabled
       dynamic_lighting_max_colour_temp: 4200
       dynamic_lighting_min_colour_temp: 2500
 - id: '1691268388423'
@@ -4043,7 +4043,7 @@
   triggers:
   - trigger: numeric_state
     entity_id:
-    - sensor.kuhlschrank_aktuell_watt
+    - sensor.getrankekuhlschrank_energie
     for:
       hours: 0
       minutes: 35
@@ -4138,7 +4138,7 @@
   use_blueprint:
     path: sbyx/notify-or-do-something-when-an-appliance-like-a-dishwasher-or-washing-machine-finishes.yaml
     input:
-      power_sensor: sensor.thermomix_aktuell_watt
+      power_sensor: sensor.thermomix_energie
       starting_threshold: 15
       actions:
       - delay:
