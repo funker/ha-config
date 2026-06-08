@@ -1,3 +1,5 @@
+---
+
 # rpi-pico-01.yaml
 
 substitutions:
@@ -23,4 +25,4 @@ packages:
   # Device type
   - !include devicetypes/raspberrypi-pico-w.yaml
 
-# Custom configuration
+---
