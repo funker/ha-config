@@ -27,4 +27,3 @@ packages:
   # Device type
   - !include devicetypes/esp8266-d1-mini.yaml
 
----
