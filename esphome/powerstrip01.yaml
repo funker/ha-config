@@ -29,5 +29,5 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/gosund/blitzwolf/shp9.yaml
+  device_type: !include device_types/blitzwolf/shp9.yaml
 
