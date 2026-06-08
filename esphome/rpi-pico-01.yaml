@@ -10,18 +10,6 @@ substitutions:
   room: "Auf Lager"
   comment: "Raspberry Pi Pico W 01"
   project_name: "Raspberry Pi.Pico W"
-  project_version: "1.0"
-
-packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
+  project_version: "1.0"blitzwolf-shp9.yaml
   device_type: !include device_types/raspberrypi/pico-w.yaml
 
