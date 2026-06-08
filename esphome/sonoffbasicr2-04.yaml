@@ -23,5 +23,5 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/sonoff-basic-r2.yaml
+  - !include device_types/sonoff-basic-r2.yaml
 
