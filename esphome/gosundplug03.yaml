@@ -30,4 +30,4 @@ packages:
   - !include devicetypes/gosund-sp111-generic.yaml
   - !include devicetypes/gosund-sp111-switch.yaml
 
-+------------------------------
+---
