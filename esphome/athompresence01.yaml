@@ -12,8 +12,6 @@ substitutions:
   project_name: "Athom.Presence Sensor"
   project_version: "1.0"
 
-  # Custom substitutions
-
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/athom/presence.yaml
