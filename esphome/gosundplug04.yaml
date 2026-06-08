@@ -1,0 +1,19 @@
+---
+
+# gosundplug04.yaml
+
+substitutions:
+  config_tested_date: "2026-06-02"
+  devicename: "gosund-sp111-04"
+  friendly_devicename: "TV-Schrank"
+  room: "Wohnzimmer"
+  comment: "Gosund SP111 TV-Schrank"
+  project_name: "Gosund.SP111"
+  project_version: "2.0"
+
+  relay_name: "${friendly_devicename}"
+  relay_icon: "mdi:television"
+
+packages:
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/gosund/sp111-switch.yaml
