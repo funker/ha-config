@@ -7,7 +7,7 @@ substitutions:
   devicename: "esp32-s2-02"
   friendly_devicename: "Display Bad"
   room: "Badezimmer"
-  comment: "Bad Tür-Display"
+  comment: "ESP32-S2 Bad Tür-Display"
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
