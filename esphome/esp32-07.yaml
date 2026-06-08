@@ -22,7 +22,6 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/boards/esp32-generic.yaml
-  - !include device_types/esp32-s2-generic.yaml
-  - !include roles/display-128x32.yaml
+  device_type: !include device_types/boards/esp32-s2-generic.yaml
+  role: !include roles/display-128x32.yaml
 
