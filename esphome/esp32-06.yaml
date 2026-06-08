@@ -47,6 +47,6 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/boards/esp32-generic.yaml
+  device_type: !include device_types/boards/esp32-s2-generic.yaml
   role: !include roles/rain-sensor.yaml
 
