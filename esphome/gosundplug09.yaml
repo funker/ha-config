@@ -25,7 +25,8 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/gosund-sp111.yaml
+  - !include devicetypes/gosund-sp111-generic.yaml
+  - !include devicetypes/gosund-sp111-switch.yaml
 
 # Custom configuration
 
