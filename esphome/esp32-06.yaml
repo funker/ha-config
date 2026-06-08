@@ -3,7 +3,6 @@
 # esp32-06.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "esp32-06"
   friendly_devicename: "Regensensor S2"
@@ -12,7 +11,6 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
-  # Custom substitutions
   # TODO: Handle case where resistance is higher than max_resistance
   resistor_value: "9.868kOhm"
 
