@@ -1,3 +1,5 @@
+---
+
 # sonoffbasicr2-02.yaml
 
 substitutions:
@@ -23,4 +25,4 @@ packages:
   # Device type
   - !include devicetypes/sonoff-basic-r2.yaml
 
-# Custom configuration
+---
