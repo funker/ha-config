@@ -38,5 +38,5 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/blitzwolf-shp9.yaml
+  - !include device_types/blitzwolf-shp9.yaml
 
