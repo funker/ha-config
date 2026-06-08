@@ -15,6 +15,3 @@ substitutions:
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/gosund/sp111-switch.yaml
-
-  - !include device_types/gosund-sp111-switch.yaml
-
