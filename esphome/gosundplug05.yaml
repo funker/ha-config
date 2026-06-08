@@ -12,7 +12,7 @@ substitutions:
   project_version: "1.0"
 
   relay_name: "${friendly_devicename}"
-  relay_icon: "mdi:lightbulb-spot"
+  relay_icon: "mdi:fridge-industrial"
 
 packages:
   default_package: !include common/base-device.yaml
