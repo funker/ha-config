@@ -9,7 +9,7 @@ substitutions:
   room: "Datacenter"
   comment: "TODO Datacenter Fan-Controller"
   project_name: "Espressif.ESP32"
-  project_version: "1.0"
+  project_version: "2.0"
 
 # Throttle writing parameters to the internal flash memory to reduce ESP memory wear / degradation
 preferences:
