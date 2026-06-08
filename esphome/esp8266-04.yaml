@@ -83,7 +83,6 @@ spi:
   #<<: !include common/display/ssd1306_128x64.yaml
 
 binary_sensor:
-  - <<: !include common/binary_sensor/status.yaml
   #- platform: homeassistant
     #id: bad_occupancy
     # entity_id: binary_sensor.firetab_eg_eingesteckt_2
@@ -105,10 +104,6 @@ binary_sensor:
 
   # BME680 Temperature/Pressure/Humidity/Gas sensor
   #<<: !include common/sensor/bme680.yaml
-
-sensor:
-  # MAX6675 Thermo couple sensor
-  - <<: !include common/sensor/max6675.yaml
 
 text_sensor:
   # BME680 Temperature/Pressure/Humidity/Gas sensor
