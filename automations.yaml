@@ -1307,7 +1307,7 @@
       include_ambient: ambient_disabled
       ambient_light_options: ambient_light_option_enabled
       ambient_light_high_value: 0
-      include_sun: sun_enabled
+      include_sun: sun_disabled
       dynamic_lighting_max_colour_temp: 4200
       dynamic_lighting_min_colour_temp: 2500
 - id: '1691268388423'
@@ -2340,10 +2340,10 @@
       - button.shelly_datacenter_reboot
       - button.shelly_werkstatt_decke_reboot
       - button.shelly_steffi_reboot_2
-      - button.shelly_jan_technik_reboot
       - button.shelly_bad_reboot_2
       - button.shelly_1_mini_wc_reboot
       - button.shelly_2pm_gen3_kuche_reboot
+      - button.schreibtisch_reboot
     action: button.press
   mode: single
 - id: '1725202356746'
@@ -4511,3 +4511,25 @@
           - input_boolean.urlaub_tim_away
         data: {}
       start_action_2: []
+- id: '1780863316247'
+  alias: Jan Receiver einschalten
+  description: ''
+  triggers:
+  - trigger: media_player.turned_on
+    target:
+      device_id: 43150a7171cbfccfe3c3d6ebda52f6aa
+    options:
+      behavior: any
+  conditions: []
+  actions:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 3
+      milliseconds: 0
+  - action: button.press
+    metadata: {}
+    target:
+      entity_id: button.unnamed_device_5
+    data: {}
+  mode: single

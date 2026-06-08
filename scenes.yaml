@@ -351,7 +351,7 @@
 - id: '1718740618075'
   name: Wohnzimmer Fernsehen
   entities:
-    light.wohnzimmer_hintergrund:
+    light.licht_hintergrund_dekolicht:
       supported_color_modes:
       - onoff
       color_mode: onoff
