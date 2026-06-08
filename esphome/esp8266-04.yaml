@@ -21,12 +21,6 @@ substitutions:
   #trigger_pin: D1
   #echo_pin: D2
 
-<<: !include devicetypes/esp8266-d1-mini_v2.yaml
-
-esphome:
-  <<: !include common/section-esphome.yaml
-
-<<: !include common/section-system.yaml
 
 # OLED displays
 # BME280 Temperature/Humidity/Pressure sensor
