@@ -14,5 +14,5 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/sonoff/pow-g-light.yaml
+  device_type: !include device_types/sonoff/basic-r2-light.yaml
 
