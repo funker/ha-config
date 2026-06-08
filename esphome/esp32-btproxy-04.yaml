@@ -9,7 +9,7 @@ substitutions:
   room: "Küche"
   comment: "ESP32 Bluetooth Proxy 04"
   project_name: "Espressif.ESP32"
-  project_version: "1.0"
+  project_version: "2.0"
 
 packages:
   default_package: !include common/base-device.yaml
