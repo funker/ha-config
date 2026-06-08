@@ -27,3 +27,8 @@ packages:
   # Device type
   - !include device_types/athom-presence.yaml
 
+
+packages:
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/sonoff/pow-r2-light.yaml
+
