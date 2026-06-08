@@ -1,3 +1,5 @@
+---
+
 # esp32-04.yaml
 
 substitutions:
@@ -22,3 +24,5 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/esp32-generic.yaml
+
+---
