@@ -23,5 +23,5 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include device_types/raspberrypi-pico-w.yaml
+  - !include device_types/raspberrypi/pico-w.yaml
 
