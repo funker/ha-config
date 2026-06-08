@@ -128,5 +128,4 @@ text_sensor:
         return {"Läuft"};
       }
 
-button:
-  - <<: !include common/button/restart.yaml
+---
