@@ -10,7 +10,7 @@ substitutions:
   room: "Abseite UG"
   comment: "Licht Abseite UG"
   project_name: "Sonoff.Basic R2"
-  project_version: "1.0"
+  project_version: "2.0"
 
   relay_name: "${friendly_devicename}"
   relay_icon: "phu:ceiling-aurelle"
