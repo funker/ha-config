@@ -1,5 +1,6 @@
 ---
 
+# esp32-cam-02.yaml
 
 substitutions:
   devicename: "esp32-cam-02"
