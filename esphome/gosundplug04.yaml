@@ -4,7 +4,7 @@
 
 substitutions:
   config_tested_date: "2026-06-02"
-  devicename: "gosundplug04"
+  devicename: "gosund-sp111-04"
   friendly_devicename: "TV-Schrank"
   room: "Wohnzimmer"
   comment: "Gosund SP111 TV-Schrank"
