@@ -3,7 +3,6 @@
 # star-projector-01.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "star-projector-jan"
   friendly_devicename: "Star Projector Jan"
@@ -12,7 +11,6 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
-  # Custom substitutions
   node_name: "star_projector_jan"
 
 packages:
