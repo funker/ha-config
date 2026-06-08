@@ -14,7 +14,7 @@ substitutions:
 
   # Custom substitutions  
   relay_name: "${friendly_devicename}"
-  relay_icon: "mdi:laser-printer"
+  relay_icon: "mdi:printer"
 
 packages:
   # Basic configuration
