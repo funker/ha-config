@@ -107,25 +107,12 @@ binary_sensor:
   #<<: !include common/sensor/bme680.yaml
 
 sensor:
-  - <<: !include common/sensor/uptime.yaml
-  - <<: !include common/sensor/wifi_signal.yaml
-    
   # MAX6675 Thermo couple sensor
   - <<: !include common/sensor/max6675.yaml
 
 text_sensor:
   # BME680 Temperature/Pressure/Humidity/Gas sensor
   #<<: !include common/text_sensor/bme680.yaml
-  - <<: !include common/text_sensor/version.yaml
-  - platform: template
-    name: "Kamin Zustand"
-    id: kamin_zustand
-    icon: mdi:fireplace-off
-    lambda: |-
-      if (id(kamin_temperature).state < 30) {
-        return {"Aus"};
-      } else {
-        return {"Läuft"};
-      }
+
 
 ---
