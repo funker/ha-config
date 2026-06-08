@@ -23,8 +23,8 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/esp32-generic.yaml
-  - !include devicetypes/esp32-btproxy.yaml
+  - !include device_types/esp32-generic.yaml
+  - !include device_types/esp32-btproxy.yaml
   
   # Online version
   # esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main
