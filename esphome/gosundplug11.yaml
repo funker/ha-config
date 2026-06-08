@@ -9,7 +9,7 @@ substitutions:
   room: "Abseite UG"
   comment: "Gosund SP111 3D-Drucker"
   project_name: "Gosund.SP111"
-  project_version: "1.0"
+  project_version: "2.0"
 
   relay_name: "${friendly_devicename}"
   relay_icon: "mdi:printer-3d"
