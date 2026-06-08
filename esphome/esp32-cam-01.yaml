@@ -11,7 +11,7 @@ substitutions:
   project_version: "1.0"
 
 esphome:
-  <<: !include common/section-esphome.yaml
+  <<: !include common/base-system.yaml
 
 <<: !include common/section-system.yaml
 
