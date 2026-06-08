@@ -20,5 +20,5 @@ substitutions:
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/boards/esp8266-d1-mini.yaml
-  role: !include roles/
+  role: !include roles/chimney-sensor.yaml
 
