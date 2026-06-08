@@ -1,11 +1,12 @@
 ---
 
-# esp8
+# esp8266-04
+
 substitutions:
   devicename: "esp8266-04"
-  friendly_devicename: "_Testbrett"
+  friendly_devicename: "Testbrett"
   room: "Auf Lager"
-  comment: "_Testbrett"
+  comment: "Testbrett"
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "1.0"
   
