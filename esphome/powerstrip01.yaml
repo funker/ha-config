@@ -10,7 +10,7 @@ substitutions:
   room: "Flur EG"
   comment: "Blitzwolf SHP9 Powerstrip Flur EG"
   project_name: "Blitzwolf.SHP9"
-  project_version: "1.0"
+  project_version: "2.0"
 
   # Custom substiturions
   # Sockets
