@@ -7,7 +7,7 @@ substitutions:
   devicename: "esp32-04"
   friendly_devicename: "ESP32 04"
   room: "Auf Lager"
-  comment: "ESP32 04"
+  comment: "ESP32 04 VER"
   project_name: "Espressif.ESP32"
   project_version: "2.0"
 
