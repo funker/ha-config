@@ -50,3 +50,5 @@ binary_sensor:
       } else {
         return false;
       }
+
+---
