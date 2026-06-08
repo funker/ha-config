@@ -12,6 +12,9 @@ substitutions:
   project_name: "Sonoff.Basic R2"
   project_version: "1.0"
 
+  relay_name: "${friendly_devicename}"
+  relay_icon: "mdi:lightbulb-spot"
+
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/sonoff/basic-r2-light.yaml
