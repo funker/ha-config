@@ -17,7 +17,6 @@ substitutions:
   relay_icon: "mdi:lightbulb-spot"
 
 packages:
-packages:
   base_esphome: !include common/section-esphome.yaml
   base_system: !include common/section-system.yaml
   components_binary_sensor: !include components/binary_sensor.yaml
