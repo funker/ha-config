@@ -12,7 +12,9 @@ substitutions:
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
-  # Custom substitutions
+  # Custom substitutions  
+  relay_name: "Waschmaschine"
+  relay_icon: "mdi:washing-machine"
 
 packages:
   # Basic configuration
