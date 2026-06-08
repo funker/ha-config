@@ -25,6 +25,6 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/esp8266-d1-mini.yaml
+  - !include device_types/esp8266-d1-mini.yaml
   - !include roles/scale.yaml
 
