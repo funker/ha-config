@@ -3,7 +3,6 @@
 # sonoffpowr2-01.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-04"
   devicename: "sonoffpowr2-01"
   friendly_devicename: "Licht Hintergrund"
@@ -12,7 +11,6 @@ substitutions:
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
 
-  # Custom substitutions
   relay_name: "${friendly_devicename}"
   relay_icon: "mdi:lightbulb-spot"
 
