@@ -12,7 +12,6 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "1.0"
 
-  # Custom substitutions
   # TODO: Handle case where resistance is higher than max_resistance
   resistor_value: "9.868kOhm"
 
