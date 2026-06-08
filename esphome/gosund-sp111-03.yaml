@@ -4,7 +4,7 @@
 
 substitutions:
   config_tested_date: "2026-06-02"
-  devicename: "gosundplug-03"
+  devicename: "gosund_sp111_03"
   friendly_devicename: "Laserdrucker"
   room: "Keller"
   comment: "Gosund SP111 Laserdrucker"
