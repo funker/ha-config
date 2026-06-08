@@ -28,7 +28,7 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/gosund-sp111-generic.yaml
-  - !include devicetypes/gosund-sp111-switch.yaml
+  - !include devicetypes/gosund-sp111-light.yaml
 
 # Custom configuration
 
