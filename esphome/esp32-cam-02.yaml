@@ -1,3 +1,6 @@
+---
+
+
 substitutions:
   devicename: "esp32-cam-02"
   friendly_devicename: "Berner Gary-Cam"
@@ -52,3 +55,5 @@ esp32_camera_web_server:
     mode: stream
   - port: 8081
     mode: snapshot
+
+---
