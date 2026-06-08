@@ -3,7 +3,6 @@
 # gosundplug12.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "gosundplug12"
   friendly_devicename: "Schreibtisch"
@@ -12,19 +11,6 @@ substitutions:
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
-  # Custom substitutions
-
 packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
-  - !include device_types/gosund-sp111-generic.yaml
-  - !include device_types/gosund-sp111-switch.yaml
-
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/gosund/sp111-switch.yaml
