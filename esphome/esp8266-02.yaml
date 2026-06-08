@@ -32,7 +32,6 @@ packages:
   # Device type
   - !include devicetypes/esp8266-d1-mini.yaml
 
-# Custom configuration
 spi:
   miso_pin: ${spi_miso_pin}
   clk_pin: ${spi_clk_pin}
