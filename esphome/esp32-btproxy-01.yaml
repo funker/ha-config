@@ -15,7 +15,7 @@ substitutions:
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/boards/esp32-generic.yaml
-  - !include device_types/esp32-btproxy.yaml
+  role: !include roles/esp32-btproxy.yaml
   
   # Online version
   # esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main
