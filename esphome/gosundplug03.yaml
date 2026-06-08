@@ -17,16 +17,7 @@ substitutions:
   relay_icon: "mdi:printer"
 
 packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
-  - !include device_types/gosund/sp111-generic.yaml
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/boards/esp8266-d1-mini.yaml
   device_type: !include device_types/gosund/sp111-switch.yaml
 
