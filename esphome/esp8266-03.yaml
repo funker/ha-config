@@ -1,3 +1,5 @@
+---
+
 # esp8266-03.yaml
 
 substitutions:
@@ -24,3 +26,5 @@ packages:
   - !include components/switch.yaml
   # Device type
   - !include devicetypes/esp8266-d1-mini.yaml
+
+---
