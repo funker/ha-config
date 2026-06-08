@@ -3,7 +3,6 @@
 # esp8266-02.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "esp8266-02"
   friendly_devicename: "Kamin"
@@ -12,7 +11,6 @@ substitutions:
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "1.0"
 
-  # Custom substitutions
   max6675_update_interval: 10s
   max6675_cs_pin: D8
   spi_miso_pin: D6
