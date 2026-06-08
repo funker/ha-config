@@ -22,7 +22,7 @@ substitutions:
 
 packages:
   # Basic configuration
-  - !include common/section-esphome.yaml
+  - !include common/base-system.yaml
   - !include common/section-system.yaml
   # Default components
   - !include components/binary_sensor.yaml
