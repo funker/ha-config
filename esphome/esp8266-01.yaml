@@ -1,3 +1,5 @@
+---
+
 # esp8266-01.yaml
 
 substitutions:
@@ -26,4 +28,4 @@ packages:
   - !include devicetypes/esp8266-d1-mini.yaml
   - !include roles/scale.yaml
 
-# Custom Configuration
+---
