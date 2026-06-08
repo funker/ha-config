@@ -30,4 +30,3 @@ packages:
   - !include devicetypes/sonoff-pow-r2-generic.yaml
   - !include devicetypes/sonoff-pow-r2-switch.yaml
 
----
