@@ -15,16 +15,6 @@ substitutions:
   relay_icon: "mdi:washing-machine"
 
 packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
-  - !include device_types/sonoff-pow-r2-generic.yaml
-  - !include device_types/sonoff-pow-r2-switch.yaml
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/sonoff/pow-r2-switch.yaml
 
