@@ -25,4 +25,3 @@ packages:
   # Device type
   - !include devicetypes/raspberrypi-pico-w.yaml
 
----
