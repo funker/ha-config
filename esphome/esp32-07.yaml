@@ -31,6 +31,6 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/esp32-s2-generic.yaml
+  - !include device_types/esp32-s2-generic.yaml
   - !include roles/display-128x32.yaml
 
