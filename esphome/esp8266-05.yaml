@@ -11,7 +11,7 @@ substitutions:
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "1.0"
 
-  # Custom substit
+  # Custom substitutions
 
 packages:
   # Basic configuration
