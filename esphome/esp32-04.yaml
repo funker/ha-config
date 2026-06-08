@@ -25,4 +25,3 @@ packages:
   # Device type
   - !include devicetypes/esp32-generic.yaml
 
----
