@@ -49,5 +49,5 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/boards/esp32.yaml
+  device_type: !include device_types/boards/esp32-generic.yaml
 
