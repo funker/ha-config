@@ -115,4 +115,3 @@ text_sensor:
   # BME680 Temperature/Pressure/Humidity/Gas sensor
   #<<: !include common/text_sensor/bme680.yaml
 
----
