@@ -9,7 +9,7 @@ substitutions:
   room: "Küche"
   comment: "Athom Presence Sensor Küche"
   project_name: "Athom.Presence Sensor"
-  project_version: "1.0"
+  project_version: "2.0"
 
 packages:
   default_package: !include common/base-device.yaml
