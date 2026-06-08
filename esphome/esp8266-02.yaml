@@ -9,7 +9,7 @@ substitutions:
   room: "Esszimmer"
   comment: "Kamin"
   project_name: "Wemos.D1 Mini ESP8266"
-  project_version: "1.0"
+  project_version: "2.0"
 
   max6675_update_interval: 10s
   max6675_cs_pin: D8
