@@ -1,7 +1,3 @@
----
-
-# esp8266-00
-
 substitutions:
   devicename: "esp8266-04"
   friendly_devicename: "_Testbrett"
