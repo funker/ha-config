@@ -11,6 +11,9 @@ substitutions:
   project_name: "Gosund.SP111"
   project_version: "1.0"
 
+  relay_name: "${friendly_devicename}"
+  relay_icon: "mdi:dishwasher"
+
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/gosund/sp111-switch.yaml
