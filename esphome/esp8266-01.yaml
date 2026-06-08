@@ -5,7 +5,7 @@
 substitutions:
   config_tested_date: "2026-06-02"
   devicename: "esp8266-01"
-  friendly_devicename: "Bett Jan"
+  friendly_devicename: "Bett"
   room: "Jan"
   comment: "Jan Bett"
   project_name: "Wemos.D1 Mini ESP8266"
