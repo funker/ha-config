@@ -1,6 +1,7 @@
 ---
 
 # esp8266-05
+
 substitutions:
   # Default substitutions
   config_tested_date: "2026-06-02"
