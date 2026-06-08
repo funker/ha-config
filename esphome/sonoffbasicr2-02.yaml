@@ -13,7 +13,7 @@ substitutions:
   project_version: "1.0"
 
   relay_name: "${friendly_devicename}"
-  relay_icon: "mdi:led-panel"
+  relay_icon: "phu:ceiling-aurelle"
 
 packages:
   default_package: !include common/base-device.yaml
