@@ -34,4 +34,3 @@ packages:
   - !include devicetypes/esp32-s2-generic.yaml
   - !include roles/display-128x32.yaml
 
----
