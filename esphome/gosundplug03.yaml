@@ -29,7 +29,6 @@ packages:
   # Device type
   - !include devicetypes/gosund-sp111-generic.yaml
   - !include devicetypes/gosund-sp111-switch.yaml
-  packages:
   power_meter_chip: !include ../components/hlw8012.yaml
   power_meter_common: !include ../components/power-meter-common.yaml
 
