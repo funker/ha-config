@@ -19,5 +19,5 @@ preferences:
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/boards/esp32-generic.yaml
-  - !include roles/fan-controller.yaml
+  role: !include roles/fan-controller.yaml
 
