@@ -3,7 +3,6 @@
 # esp32-btproxy-03.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2006-06-03"
   devicename: "esp32-btproxy-03"
   friendly_devicename: "Bluetooth Proxy Wohnzimmer"
@@ -13,18 +12,9 @@ substitutions:
   project_version: "1.0"
 
 packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
-  - !include device_types/esp32-generic.yaml
-  - !include device_types/esp32-btproxy.yaml
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/boards/esp32-generic.yaml
+  role: !include roles/bluetooth-proxy.yaml
   
   # Online version
   # esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main
