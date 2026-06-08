@@ -23,5 +23,5 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include devicetypes/esp32-generic.yaml
+  - !include device_types/esp32-generic.yaml
 
