@@ -1,3 +1,6 @@
+---
+
+# esp8266-05
 
 substitutions:
   devicename: "esp8266-05"
