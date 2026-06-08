@@ -27,4 +27,3 @@ packages:
   # Device type
   - !include devicetypes/athom-presence.yaml
 
----
