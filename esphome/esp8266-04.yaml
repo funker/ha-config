@@ -21,6 +21,18 @@ substitutions:
   #trigger_pin: D1
   #echo_pin: D2
 
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp8266-d1-mini.yaml
 
 # OLED displays
 # BME280 Temperature/Humidity/Pressure sensor
@@ -102,6 +114,5 @@ binary_sensor:
 text_sensor:
   # BME680 Temperature/Pressure/Humidity/Gas sensor
   #<<: !include common/text_sensor/bme680.yaml
-
 
 ---
