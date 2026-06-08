@@ -4,7 +4,7 @@
 
 substitutions:
   config_tested_date: "2026-06-02"
-  devicename: "esp32-07"
+  devicename: "esp32-s2-02"
   friendly_devicename: "Display Bad"
   room: "Badezimmer"
   comment: "Bad Tür-Display"
