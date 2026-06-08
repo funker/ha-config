@@ -38,5 +38,4 @@ packages:
   # Device type
   - !include devicetypes/blitzwolf-shp9.yaml
 
-# Custom configuration
-
+---
