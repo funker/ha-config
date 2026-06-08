@@ -17,15 +17,13 @@ substitutions:
   relay_icon: "mdi:lightbulb-spot"
 
 packages:
-  # Basic configuration
-  - !include common/section-esphome.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
-  - !include devicetypes/sonoff-pow-r2-light.yaml
+packages:
+  base_esphome: !include common/section-esphome.yaml
+  base_system: !include common/section-system.yaml
+  components_binary_sensor: !include components/binary_sensor.yaml
+  components_button: !include components/button.yaml
+  components_sensor: !include components/sensor.yaml
+  components_text_sensor: !include components/text_sensor.yaml
+  components_switch: !include components/switch.yaml
+  device_type: !include devicetypes/sonoff-pow-r2-light.yaml
 
