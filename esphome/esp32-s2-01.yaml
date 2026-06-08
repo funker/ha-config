@@ -1,6 +1,6 @@
 ---
 
-# esp32-06.yaml
+# esp32-s2-01.yaml
 
 substitutions:
   config_tested_date: "2026-06-02"
