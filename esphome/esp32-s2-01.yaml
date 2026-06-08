@@ -4,7 +4,7 @@
 
 substitutions:
   config_tested_date: "2026-06-02"
-  devicename: "esp32-06"
+  devicename: "esp32-s206"
   friendly_devicename: "Regensensor S2"
   room: "Garten"
   comment: "ESP32 S2 01 Regensensor S2"
