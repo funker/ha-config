@@ -10,15 +10,17 @@ substitutions:
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "1.0"
 
-<<: !include devicetypes/esp8266-d1-mini_v2.yaml
-
-esphome:
-  <<: !include common/section-esphome.yaml
-
-<<: !include common/section-system.yaml
-
-text_sensor:
-  - <<: !include common/text_sensor/version.yaml
-  - <<: !include common/text_sensor/wifi_info.yaml
+packages:
+  # Basic configuration
+  - !include common/section-esphome.yaml
+  - !include common/section-system.yaml
+  # Default components
+  - !include components/binary_sensor.yaml
+  - !include components/button.yaml
+  - !include components/sensor.yaml
+  - !include components/text_sensor.yaml
+  - !include components/switch.yaml
+  # Device type
+  - !include devicetypes/esp8266-d1-mini.yaml
 
 ---
