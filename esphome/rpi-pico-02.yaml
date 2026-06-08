@@ -14,5 +14,5 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/raspberry/pi-pico-w.yaml
+  device_type: !include device_types/raspberrypi/pico-w.yaml
 
