@@ -61,4 +61,3 @@ packages:
   - !include devicetypes/esp32-generic.yaml
   - !include roles/rain-sensor.yaml
 
----
