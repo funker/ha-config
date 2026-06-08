@@ -13,7 +13,7 @@ substitutions:
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/boards/esp32-generic.yaml
-  role: !include roles/espcam.yaml
+  role: !include roles/cam.yaml
   
   # Online version
   # esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic/esp32-generic.yaml@main
