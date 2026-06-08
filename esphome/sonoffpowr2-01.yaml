@@ -18,5 +18,5 @@ substitutions:
 
 packages:
   default_package: !include common/default.yaml
-  device_type: !include devicetypes/sonoff-pow-r2-light.yaml
+  device_type: !include device_types/sonoff-pow-r2-light.yaml
 
