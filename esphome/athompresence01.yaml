@@ -25,7 +25,7 @@ packages:
   - !include components/text_sensor.yaml
   - !include components/switch.yaml
   # Device type
-  - !include device_types/athom-presence.yaml
+  - !include device_types/athom/presence.yaml
 
 
 packages:
