@@ -7,7 +7,7 @@ substitutions:
   devicename: "esp8266-01"
   friendly_devicename: "Bett Jan"
   room: "Jan"
-  comment: "Jan Bettsensor"
+  comment: "Jan Bett"
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "1.0"
 
