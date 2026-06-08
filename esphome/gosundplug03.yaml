@@ -13,8 +13,8 @@ substitutions:
   project_version: "1.0"
 
   # Custom substitutions  
-  relay_name: "$"
-  relay_icon: "mdi:washing-machine"
+  relay_name: "${friendly_devicename}"
+  relay_icon: "mdi:printer"
 
 packages:
   # Basic configuration
