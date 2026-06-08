@@ -3,7 +3,6 @@
 # sonoffpowr2-03.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-04"
   devicename: "sonoffpowr2-02"
   friendly_devicename: "Trockner"
@@ -12,21 +11,9 @@ substitutions:
   project_name: "Sonoff.POW R2"
   project_version: "1.0"
 
-  # Custom substitutions
   relay_name: "${friendly_devicename}"
   relay_icon: "mdi:tumble-dryer"
 
 packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
-  - !include device_types/sonoff-pow-r2-generic.yaml
-  - !include device_types/sonoff-pow-r2-switch.yaml
-
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/sonoff/pow-r2-switch.yaml
