@@ -3,7 +3,6 @@
 # esp32-04.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "esp32-04"
   friendly_devicename: "ESP32 04"
