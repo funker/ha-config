@@ -1,3 +1,5 @@
+---
+
 # esp32-03.yaml
 
 substitutions:
@@ -28,3 +30,4 @@ packages:
   - !include devicetypes/esp32-generic.yaml
   - !include roles/fan-controller.yaml
 
+---
