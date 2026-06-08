@@ -1,6 +1,6 @@
 ---
 
-# esp32-cam-01
+# esp32-cam-01.yaml
 
 substitutions:
   devicename: "esp32-cam-01"
