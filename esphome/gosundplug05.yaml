@@ -3,7 +3,6 @@
 # gosundplug05.yaml
 
 substitutions:
-  # Default substitutions
   config_tested_date: "2026-06-02"
   devicename: "gosundplug05"
   friendly_devicename: "Getränkekühlschrank"
