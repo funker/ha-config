@@ -17,6 +17,6 @@ substitutions:
   relay_icon: "mdi:lightbulb-spot"
 
 packages:
-  base_package: 
+  base_package: !include common/default-
   device_type: !include devicetypes/sonoff-pow-r2-light.yaml
 
