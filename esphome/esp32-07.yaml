@@ -21,16 +21,8 @@ substitutions:
   entity_to_watch: binary_sensor.prasenz_keller_occupancy
 
 packages:
-  # Basic configuration
-  - !include common/base-system.yaml
-  - !include common/section-system.yaml
-  # Default components
-  - !include components/binary_sensor.yaml
-  - !include components/button.yaml
-  - !include components/sensor.yaml
-  - !include components/text_sensor.yaml
-  - !include components/switch.yaml
-  # Device type
+  default_package: !include common/base-device.yaml
+  device_type: !include device_types/boards/esp32-generic.yaml
   - !include device_types/esp32-s2-generic.yaml
   - !include roles/display-128x32.yaml
 
