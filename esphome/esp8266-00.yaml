@@ -4,7 +4,7 @@
 
 substitutions:
   config_tested_date: "2026-06-02"
-  devicename: "esp8266-01"
+  devicename: "esp8266-00"
   friendly_devicename: "Bett"
   room: "Jan"
   comment: "Jan Bett"
