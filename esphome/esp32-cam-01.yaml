@@ -5,9 +5,9 @@
 substitutions:
   config_tested_date: "2026-06-09"
   devicename: "esp32-cam-01"
-  friendly_devicename: "ESP32-Cam 03"
+  friendly_devicename: "ESP32-Cam 01"
   room: "Auf Lager"
-  comment: "ESP32-Cam 03"
+  comment: "ESP32-Cam 01"
   project_name: "Espressif.ESP32-CAM"
   project_version: "2.0"
 
