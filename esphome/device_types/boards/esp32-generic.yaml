@@ -1,0 +1,12 @@
+---
+
+# device_types/boards/esp32-generic.yaml
+
+packages:
+  base_network_esp: !include ../../common/base-network-esp.yaml
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+

@@ -1,4 +1,6 @@
-# sensor/mh-rd.yaml
+---
+
+# roles/rain-sensor.yaml
 
 esphome:
   on_boot:
@@ -289,3 +291,4 @@ script:
             - script.execute: measure
             - script.wait: measure
             - delay: !lambda "return id(measure_delay);"
+

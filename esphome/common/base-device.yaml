@@ -1,0 +1,7 @@
+---
+
+# common/base-device.yaml
+
+packages:
+  base_system: !include base-system.yaml
+  default_components: !include default-components.yaml

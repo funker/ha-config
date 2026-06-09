@@ -1,0 +1,208 @@
+---
+
+# components/relay-control.yaml
+
+globals:
+  - id: on_after_boot_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: enable_button_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: allow_turn_off_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: enable_led_global
+    type: bool
+    restore_value: yes
+    initial_value: 'true'
+
+  - id: relay_state
+    type: bool
+    restore_value: yes
+    initial_value: 'false'
+
+esphome:
+  on_boot:
+    priority: -100
+    then:
+      - switch.template.publish:
+          id: on_after_boot_switch
+          state: !lambda 'return id(on_after_boot_global);'
+      - switch.template.publish:
+          id: enable_button_switch
+          state: !lambda 'return id(enable_button_global);'
+      - switch.template.publish:
+          id: allow_turn_off_switch
+          state: !lambda 'return id(allow_turn_off_global);'
+      - switch.template.publish:
+          id: enable_led_switch
+          state: !lambda 'return id(enable_led_global);'
+
+      - if:
+          condition:
+            lambda: 'return id(on_after_boot_global);'
+          then:
+            - switch.turn_on: button_switch
+          else:
+            - switch.turn_off: button_switch
+
+      - if:
+          condition:
+            lambda: 'return id(enable_led_global) && id(relay_state);'
+          then:
+            - output.turn_on: device_status_led
+          else:
+            - output.turn_off: device_status_led
+
+switch:
+  - platform: template
+    id: button_switch
+    internal: true
+    optimistic: true
+    restore_mode: DISABLED
+    lambda: |-
+      return id(relay_state);
+    turn_on_action:
+      - output.turn_on: relay_output
+      - globals.set:
+          id: relay_state
+          value: 'true'
+      - if:
+          condition:
+            lambda: 'return id(enable_led_global);'
+          then:
+            - output.turn_on: device_status_led
+          else:
+            - output.turn_off: device_status_led
+      - switch.template.publish:
+          id: button_switch
+          state: ON
+    turn_off_action:
+      - if:
+          condition:
+            lambda: 'return id(allow_turn_off_global);'
+          then:
+            - output.turn_off: relay_output
+            - globals.set:
+                id: relay_state
+                value: 'false'
+            - output.turn_off: device_status_led
+            - switch.template.publish:
+                id: button_switch
+                state: OFF
+          else:
+            - switch.template.publish:
+                id: button_switch
+                state: ON
+
+  - platform: template
+    name: "${friendly_devicename} On after boot"
+    id: on_after_boot_switch
+    icon: mdi:power-cycle
+    entity_category: config
+    optimistic: true
+    restore_mode: DISABLED
+    lambda: |-
+      return id(on_after_boot_global);
+    turn_on_action:
+      - globals.set:
+          id: on_after_boot_global
+          value: 'true'
+      - switch.template.publish:
+          id: on_after_boot_switch
+          state: ON
+    turn_off_action:
+      - globals.set:
+          id: on_after_boot_global
+          value: 'false'
+      - switch.template.publish:
+          id: on_after_boot_switch
+          state: OFF
+
+  - platform: template
+    name: "${friendly_devicename} Enable Button"
+    id: enable_button_switch
+    icon: mdi:gesture-tap-button
+    entity_category: config
+    optimistic: true
+    restore_mode: DISABLED
+    lambda: |-
+      return id(enable_button_global);
+    turn_on_action:
+      - globals.set:
+          id: enable_button_global
+          value: 'true'
+      - switch.template.publish:
+          id: enable_button_switch
+          state: ON
+    turn_off_action:
+      - globals.set:
+          id: enable_button_global
+          value: 'false'
+      - switch.template.publish:
+          id: enable_button_switch
+          state: OFF
+
+  - platform: template
+    name: "${friendly_devicename} Allow Turn Off"
+    id: allow_turn_off_switch
+    icon: mdi:lock-open-variant
+    entity_category: config
+    optimistic: true
+    restore_mode: DISABLED
+    lambda: |-
+      return id(allow_turn_off_global);
+    turn_on_action:
+      - globals.set:
+          id: allow_turn_off_global
+          value: 'true'
+      - switch.template.publish:
+          id: allow_turn_off_switch
+          state: ON
+    turn_off_action:
+      - globals.set:
+          id: allow_turn_off_global
+          value: 'false'
+      - switch.template.publish:
+          id: allow_turn_off_switch
+          state: OFF
+
+  - platform: template
+    name: "${friendly_devicename} Enable LED"
+    id: enable_led_switch
+    icon: mdi:led-on
+    entity_category: config
+    optimistic: true
+    restore_mode: DISABLED
+    lambda: |-
+      return id(enable_led_global);
+    turn_on_action:
+      - globals.set:
+          id: enable_led_global
+          value: 'true'
+      - switch.template.publish:
+          id: enable_led_switch
+          state: ON
+      - if:
+          condition:
+            lambda: 'return id(relay_state);'
+          then:
+            - output.turn_on: device_status_led
+          else:
+            - output.turn_off: device_status_led
+    turn_off_action:
+      - globals.set:
+          id: enable_led_global
+          value: 'false'
+      - switch.template.publish:
+          id: enable_led_switch
+          state: OFF
+      - output.turn_off: device_status_led
+

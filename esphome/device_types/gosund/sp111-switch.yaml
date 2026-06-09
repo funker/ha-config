@@ -1,0 +1,18 @@
+---
+
+# device_types/gosund/sp111-switch.yaml
+
+packages:
+  generic: !include sp111-generic.yaml
+
+switch:
+  - platform: output
+    id: relay
+    name: ${relay_name}
+    icon: ${relay_icon}
+    output: relay_output
+    on_turn_on:
+      - switch.turn_on: button_switch
+    on_turn_off:
+      - switch.turn_off: button_switch
+

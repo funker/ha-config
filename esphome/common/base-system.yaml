@@ -1,0 +1,47 @@
+---
+
+# common/base-system.yaml
+
+esphome:
+  name: ${devicename}
+  friendly_name: ${friendly_devicename}
+  comment: "${comment}"
+  name_add_mac_suffix: false
+  project:
+    name: "${project_name}"
+    version: "${project_version}"
+  # OTA password change
+  #on_boot:
+    #- lambda: |-
+        #id(ota_pw).set_auth_password("new-ota-password");
+
+# Home Assistant API
+api:
+  encryption:
+    key: !secret api_key
+
+# Captive Portal
+captive_portal:
+
+# Logger
+logger:
+  level: WARN
+  baud_rate: 0
+
+# mDNS
+mdns:
+  disabled: false
+
+# OTA
+ota:
+  - platform: esphome
+    id: ota_pw
+    password: !secret ota_password
+    # OTA password change
+    #password: ${old_ota_password}
+
+# Time
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+

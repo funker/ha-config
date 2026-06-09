@@ -1,0 +1,21 @@
+---
+
+# device_types/boards/esp32-cam.yaml
+
+packages:
+  base_network_esp: !include ../../common/base-network-esp.yaml
+
+# TODO: Muss komplett überarbeitet werden.
+
+# Base settings
+<<: !include ../common/device_base.yaml
+
+# Web Server
+<<: !include ../common/generic/web_server.yaml
+
+# Captive Portal
+<<: !include ../common/generic/captive_portal.yaml
+
+# Board selection
+<<: !include ../boards/esp32.yaml
+

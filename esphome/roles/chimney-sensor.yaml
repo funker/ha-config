@@ -1,0 +1,23 @@
+---
+
+# roles/chimney-sensor.yaml
+
+
+spi:
+  miso_pin: ${spi_miso_pin}
+  clk_pin: ${spi_clk_pin}
+
+sensor:
+  - !include ../components/sensor/max6675.yaml
+
+binary_sensor:
+  - platform: template
+    name: "Zustand"
+    id: zustand
+    icon: mdi:fireplace
+    lambda: |-
+      if (id(max6675_temperature).state > ${temperature_threshold}) {
+        return true;
+      } else {
+        return false;
+      }

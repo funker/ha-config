@@ -1,0 +1,49 @@
+---
+
+# components/sensor/hlw8012.yaml
+
+substitutions:
+  update_interval: 10s
+  current_res: "0.00280"
+  voltage_div: "775"
+
+sensor:
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: true
+    cf_pin: GPIO05
+    cf1_pin: GPIO04
+    change_mode_every: 4
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    update_interval: 3s
+
+    power:
+      name: "${friendly_devicename} Leistung"
+      id: power_wattage
+      unit_of_measurement: W
+      icon: mdi:lightning-bolt
+      filters:
+        - throttle_average: ${update_interval}
+
+    voltage:
+      name: "${friendly_devicename} Spannung"
+      id: voltage_sensor
+      unit_of_measurement: V
+      accuracy_decimals: 1
+      icon: mdi:flash-outline
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+
+    current:
+      name: "${friendly_devicename} Stromstärke"
+      id: current_sensor
+      unit_of_measurement: A
+      accuracy_decimals: 3
+      icon: mdi:current-ac
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+

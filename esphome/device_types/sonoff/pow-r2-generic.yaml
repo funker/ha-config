@@ -1,0 +1,67 @@
+---
+
+# device_types/sonoff/pow-r2-generic.yaml
+
+packages:
+  base_network_esp: !include ../../common/base-network-esp.yaml
+  relay_control: !include ../../components/relay-control.yaml
+  power_meter_chip: !include ../../components/power-meter-cse7766.yaml
+  power_meter_common: !include ../../components/power-meter-common.yaml
+
+substitutions:
+  update_interval: 10s
+
+esp8266:
+  board: esp8285
+  restore_from_flash: true
+
+uart:
+  rx_pin: GPIO3
+  baud_rate: 4800
+  parity: EVEN
+
+binary_sensor:
+  - platform: gpio
+    id: pow_button
+    pin:
+      number: GPIO0
+      mode: INPUT_PULLUP
+      inverted: true
+    name: "${friendly_devicename} Button State"
+    on_press:
+      - if:
+          condition:
+            lambda: 'return id(enable_button_global);'
+          then:
+            - if:
+                condition:
+                  lambda: 'return id(allow_turn_off_global) || !id(relay_state);'
+                then:
+                  - switch.toggle: button_switch
+                else:
+                  - switch.turn_on: button_switch
+
+  - platform: template
+    name: "${friendly_devicename} Running"
+    filters:
+      - delayed_off: 15s
+    lambda: |-
+      if (isnan(id(power_wattage).state)) {
+        return {};
+      } else if (id(power_wattage).state > 4) {
+        return true;
+      } else {
+        return false;
+      }
+
+output:
+  - platform: gpio
+    id: relay_output
+    pin: GPIO12
+
+  - platform: esp8266_pwm
+    id: device_status_led
+    pin:
+      number: GPIO13
+      inverted: true
+

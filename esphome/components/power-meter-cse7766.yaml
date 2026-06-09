@@ -1,0 +1,64 @@
+---
+
+# components/power-meter-cse7766.yaml
+
+substitutions:
+  update_interval: 10s
+
+sensor:
+  - platform: cse7766
+    power:
+      name: "${friendly_devicename} Leistung"
+      id: power_wattage
+      unit_of_measurement: W
+      accuracy_decimals: 1
+      icon: mdi:lightning-bolt
+      filters:
+        - throttle_average: ${update_interval}
+
+    voltage:
+      name: "${friendly_devicename} Spannung"
+      id: voltage_sensor
+      unit_of_measurement: V
+      accuracy_decimals: 1
+      icon: mdi:flash-outline
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+
+    current:
+      name: "${friendly_devicename} Stromstärke"
+      id: current_sensor
+      unit_of_measurement: A
+      accuracy_decimals: 3
+      icon: mdi:current-ac
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+
+    apparent_power:
+      name: "${friendly_devicename} Scheinleistung"
+      id: apparent_power
+      unit_of_measurement: VA
+      accuracy_decimals: 1
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+
+    reactive_power:
+      name: "${friendly_devicename} Blindleistung"
+      id: reactive_power
+      unit_of_measurement: var
+      accuracy_decimals: 1
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+
+    power_factor:
+      name: "${friendly_devicename} Leistungsfaktor"
+      id: power_factor
+      accuracy_decimals: 2
+      disabled_by_default: true
+      filters:
+        - throttle_average: ${update_interval}
+

@@ -1,0 +1,30 @@
+---
+
+# components/power-meter-common.yaml
+
+sensor:
+  - platform: integration
+    name: "${friendly_devicename} Energie"
+    sensor: power_wattage
+    time_unit: h
+    restore: true
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+
+  - platform: total_daily_energy
+    name: "${friendly_devicename} Energie heute"
+    power_id: power_wattage
+    unit_of_measurement: kWh
+    device_class: energy
+    state_class: total_increasing
+    accuracy_decimals: 3
+    icon: mdi:calendar-clock
+    restore: true
+    filters:
+      - multiply: 0.001
+    disabled_by_default: true
+

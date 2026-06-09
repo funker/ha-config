@@ -1,0 +1,9 @@
+---
+
+# device_types/raspberry/pi-pico-w.yaml
+packages:
+  base_network_generic: !include ../../common/base-network-generic.yaml
+
+rp2040:
+  board: rpipicow
+

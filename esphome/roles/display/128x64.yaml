@@ -1,0 +1,52 @@
+---
+
+# roles/display-128x64.yaml
+
+i2c:
+  sda: ${sda_pin}
+  scl: ${scl_pin}
+  # OLED displays
+  frequency: 400kHz
+  scan: true
+
+# OLED displays
+font:
+  - file: "common/fonts/${font_name}"
+    id: mdi_font_24
+    size: 24  # Adjust the size as needed
+    glyphs:
+      - "\U000F1158" # mdi:paper-roll-outline
+      - "\U000F09A1" # mdi:shower-head
+
+  - file: "gfonts://Roboto"
+    id: roboto_24
+    size: 24
+
+  - file: "gfonts://Roboto"
+    id: roboto_22
+    size: 22
+
+binary_sensor:
+  - platform: homeassistant
+    id: entity_to_watch
+    entity_id: ${entity_to_watch}
+    internal: true
+
+display:
+  # OLED display 128 x 64 pixel
+- platform: ssd1306_i2c
+  model: "SSD1306 128x64"
+  address: 0x3C
+  setup_priority: -200.0
+  id: my_display
+  lambda: !lambda |-
+    if (id(entity_to_watch).state) {
+      ESP_LOGD("custom", "Sensor hat einen Status");
+      it.print(4, 0, id(mdi_font_24), "\U000F1158");
+      it.printf(30, 0, id(roboto_22), "%s", "Besetzt");
+    } else {
+      ESP_LOGD("custom", "Kein Status");
+      it.print(4, 0, id(mdi_font_24), "\U000F1158");
+      it.printf(30, 0, id(roboto_22), "%s", "Frei");
+    }
+

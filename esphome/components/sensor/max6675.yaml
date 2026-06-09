@@ -12,3 +12,4 @@ icon: mdi:thermometer
 device_class: temperature
 state_class: measurement
 accuracy_decimals: 1
+

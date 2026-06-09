@@ -1,6 +1,0 @@
-# devicetypes/esp32-generic.yaml
-
-esp32:
-  board: esp32dev
-  framework:
-    type: esp-idf

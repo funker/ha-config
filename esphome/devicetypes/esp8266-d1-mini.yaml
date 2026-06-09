@@ -1,4 +1,0 @@
-# devicetypes/esp8266-d1-mini.yaml
-
-esp8266:
-  board: d1_mini

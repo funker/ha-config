@@ -1,4 +1,0 @@
-# devicetypes/raspberrypi-pico-w.yaml
-
-rp2040:
-  board: rpipicow

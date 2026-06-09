@@ -66,6 +66,7 @@ google_calendars.yaml
 ip_bans.yaml
 known_devices.yaml
 spotify.yaml
+output-esphome-files*
 
 # ------------------------------------------------
 # HACS & CUSTOM

@@ -1,6 +1,6 @@
 ---
 
-# components/sensor/bme260.yaml
+# components/sensor/bme280.yaml
 
 platform: bme280
 temperature:

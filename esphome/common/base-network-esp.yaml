@@ -1,0 +1,11 @@
+---
+
+# common/base-network-esp.yaml
+
+packages:
+  base_network: !include base-network-generic.yaml
+
+# Wifi
+wifi:
+  fast_connect: true
+  min_auth_mode: WPA2

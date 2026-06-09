@@ -1,5 +1,8 @@
-number:
+---
 
+# roles/fan-controller.yaml
+
+number:
   ## OPTIONAL:
   # RECEIVE KP, KI and KD parameters from input_text.kx helpers in 
   # Home Assistant. See the PID controller below
@@ -78,14 +81,6 @@ number:
     step: 0.01
     set_action: 
       lambda: id(console_thermostat).set_ki_multiplier( x );
-
-text_sensor:
-  - <<: !include ../common/text_sensor/version.yaml
-  - <<: !include ../common/text_sensor/wifi_info.yaml
-
-sensor:
-  - <<: !include ../common/sensor/uptime.yaml
-  - <<: !include ../common/sensor/wifi_signal.yaml
 
 # text_sensor:
 
@@ -347,3 +342,4 @@ button:
   name: "PID Climate Autotune"
   on_press: 
     - climate.pid.autotune: console_thermostat
+

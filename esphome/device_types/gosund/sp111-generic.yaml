@@ -1,0 +1,55 @@
+---
+
+# device_types/gosund/sp111-generic.yaml
+
+packages:
+  base_network_esp: !include ../../common/base-network-esp.yaml
+  relay_control: !include ../../components/relay-control.yaml
+  power_meter_chip: !include ../../components/power-meter-hlw8012.yaml
+  power_meter_common: !include ../../components/power-meter-common.yaml
+
+substitutions:
+  update_interval: 10s
+  current_res: "0.00280"
+  voltage_div: "775"
+
+esp8266:
+  board: esp8285
+  restore_from_flash: true
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO13
+      mode: INPUT_PULLUP
+      inverted: true
+    id: ${devicename}_button_state
+    name: "${friendly_devicename} Button State"
+    on_press:
+      - if:
+          condition:
+            lambda: 'return id(enable_button_global);'
+          then:
+            - if:
+                condition:
+                  lambda: 'return id(allow_turn_off_global) || !id(relay_state);'
+                then:
+                  - switch.toggle: button_switch
+                else:
+                  - switch.turn_on: button_switch
+
+status_led:
+  pin:
+    number: GPIO02
+    inverted: true
+
+output:
+  - platform: gpio
+    pin: GPIO15
+    id: relay_output
+
+  - platform: gpio
+    pin: GPIO00
+    inverted: true
+    id: device_status_led
+
