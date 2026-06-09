@@ -1,16 +1,16 @@
 ---
-
 # esp32-cam-01.yaml
 
 substitutions:
+  config_tested_date: "2026-06-09"
   devicename: "esp32-cam-01"
   friendly_devicename: "ESP32-Cam 01"
   room: "Auf Lager"
   comment: "ESP32-Cam 01"
-  project_name: "Espressif.ESP32"
+  project_name: "Espressif.ESP32-CAM"
   project_version: "2.0"
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/boards/esp32-generic.yaml
+  device_type: !include device_types/boards/esp32-cam-ai-thinker.yaml
   role: !include roles/camera.yaml
