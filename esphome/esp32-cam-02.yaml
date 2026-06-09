@@ -4,7 +4,7 @@
 
 substitutions:
   devicename: "esp32-cam-02"
-  friendly_devicename: "Berner Gary-Cam"
+  friendly_devicename: "esp32-cam-02"
   room: "Auf Lager"
   comment: "Berner Gary-Cam"
   project_name: "Espressif.ESP32"
