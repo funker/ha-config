@@ -11,8 +11,7 @@ substitutions:
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "2.0"
 
-  max6675_update_interval: 10s
-  max6675_cs_pin: D8
+  cs_pin: D8
   spi_miso_pin: D6
   spi_clk_pin: D5
   temperature_threshold: "40.0"
