@@ -1,6 +1,6 @@
 ---
 
-# roles/display-128x64.yaml
+# roles/display/128x64.yaml
 
 i2c:
   sda: ${sda_pin}

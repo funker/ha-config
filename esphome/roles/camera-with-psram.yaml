@@ -1,0 +1,25 @@
+---
+
+# roles/camera-with-psram.yaml
+
+packages:
+  camera: !include camera-generic.yaml
+
+esp32_camera:
+  name: "${friendly_devicename} Kamera"
+  external_clock:
+    pin: GPIO0
+    frequency: 20MHz
+  i2c_id: camera_i2c
+  data_pins: [GPIO5, GPIO18, GPIO19, GPIO21, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  power_down_pin: GPIO32
+  resolution: 800x600
+  jpeg_quality: 12
+  max_framerate: 10 fps
+  idle_framerate: 0.2 fps
+  horizontal_mirror: false
+  vertical_flip: false
+

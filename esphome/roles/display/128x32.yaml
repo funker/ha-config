@@ -1,6 +1,6 @@
 ---
 
-# roles/display-128x32.yaml
+# roles/display/128x32.yaml
 
 # logger:
 #   level: DEBUG

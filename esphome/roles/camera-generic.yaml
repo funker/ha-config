@@ -1,0 +1,28 @@
+---
+
+# roles/camera-generic.yaml
+
+i2c:
+  id: camera_i2c
+  sda: GPIO26
+  scl: GPIO27
+  scan: false
+
+esp32_camera_web_server:
+  - port: 8080
+    mode: stream
+  - port: 8081
+    mode: snapshot
+
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: camera_flash_led
+
+light:
+  - platform: binary
+    output: camera_flash_led
+    name: "${friendly_devicename} LED"
+    entity_category: config
+    restore_mode: ALWAYS_OFF
+

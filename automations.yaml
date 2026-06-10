@@ -660,7 +660,7 @@
     - data: {}
       action: light.turn_on
       target:
-        entity_id: light.licht_werkstatt_wand
+        entity_id: light.werkstatt_wand
     - wait_for_trigger:
       - entity_id:
         - binary_sensor.tur_werkstatt_contact
@@ -676,12 +676,12 @@
     - data: {}
       action: light.turn_off
       target:
-        entity_id: light.licht_werkstatt_wand
+        entity_id: light.werkstatt_wand
     else:
     - data: {}
       action: light.turn_off
       target:
-        entity_id: light.licht_werkstatt_wand
+        entity_id: light.werkstatt_wand
   mode: single
 - id: '1677892163117'
   alias: Alexa - Schlaf gut
@@ -3062,7 +3062,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: light.licht_hintergrund_dekolicht
+      entity_id: light.licht_hintergrund_licht_hintergrund
   mode: single
 - id: '1729111575037'
   alias: Update Calendar Events for Upcoming Month
