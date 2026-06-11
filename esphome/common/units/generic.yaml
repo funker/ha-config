@@ -1,0 +1,24 @@
+---
+
+# common/units/generic.yaml
+
+substitutions:
+  unit_none: ""
+  unit_percent: "%"
+  unit_seconds: "s"
+  unit_minutes: "min"
+  unit_hours: "h"
+
+  unit_db: "dB"
+
+  unit_voltage: "V"
+  unit_current: "A"
+  unit_power: "W"
+  unit_apparent_power: "VA"
+  unit_reactive_power: "var"
+
+  unit_energy_wh: "Wh"
+  unit_energy_kwh: "kWh"
+
+  unit_frequency: "Hz"
+  unit_temperature: "°C"

@@ -4,4 +4,8 @@
 
 packages:
   base_system: !include base-system.yaml
+  base_language: !include lang/${language}.yaml
+  base_units: !include units/${measurement_units}.yaml
+  base_icons: !include ui/icons.yaml
   default_components: !include default-components.yaml
+

@@ -2,41 +2,47 @@
 
 # components/sensor/bme280.yaml
 
+substitutions:
+  update_interval: 60s
+
 platform: bme280
 temperature:
-  name: "Temperatur"
-  id: bme280_temperature
+  id: bme280_temperature_sensor
+  name: ${sensor_name_temperature}
+  icon: ${icon_temperature}
 pressure:
-  name: "Luftdruck"
-  id: bme280_pressure
+  id: bme280_pressure_sensor
+  name: ${sensor_name_pressure}
+  icon: ${icon_pressure}
 humidity:
-  name: "Relative Luftfeuchtigkeit"
-  id: bme280_humidity
+  id: bme280_relative_humidity_sensor
+  name: ${sensor_name_relative_humidity}
+  icon: ${icon_relative_humidity}
 address: 0x77
-update_interval: 15s
+update_interval: ${update_interval}
 
 platform: template
-name: "Höhe"
+name: ${sensor_name_elevation}
+icon: ${icon_elevation}
 lambda: |-
   const float STANDARD_SEA_LEVEL_PRESSURE = 1013.25; //in hPa, see note
-  return ((id(bme280_temperature).state + 273.15) / 0.0065) *
-    (powf((STANDARD_SEA_LEVEL_PRESSURE / id(bme280_pressure).state), 0.190234) - 1); // in meter
-update_interval: 15s
-icon: 'mdi:signal'
-unit_of_measurement: 'm'
+  return ((id(temperature_sensor).state + 273.15) / 0.0065) *
+    (powf((STANDARD_SEA_LEVEL_PRESSURE / id(bme280_pressure_sensor).state), 0.190234) - 1); // in meter
+update_interval: ${update_interval}
+unit_of_measurement: ${unit_distance_long}
 
 platform: absolute_humidity
-name: "Absolute Luftfeuchtigkeit"
-temperature: bme280_temperature
-humidity: bme280_humidity
-icon: mdi:humidity
+name: ${sensor_name_absolute_humidity}
+icon: ${icon_absolute_humidity}
+temperature: bme280_temperature_sensor
+humidity: bme280_humidity_sensor
 
 platform: template
-name: "Taupunkt"
+name: ${sensor_name_thaw_point}
+icon: ${icon_thaw_point}
 lambda: |-
-  return (243.5*(log(id(bme280_humidity).state/100)+((17.67*id(bme280_temperature).state)/
-  (243.5+id(bme280_temperature).state)))/(17.67-log(id(bme280_humidity).state/100)-
-  ((17.67*id(bme280_temperature).state)/(243.5+id(bme280_temperature).state))));
-unit_of_measurement: °C
-icon: 'mdi:thermometer-alert'
+  return (243.5*(log(id(bme280_humidity_sensor).state/100)+((17.67*id(bme280_temperature_sensor).state)/
+  (243.5+id(bme280_temperature_sensor).state)))/(17.67-log(id(bme280_humidity_sensor).state/100)-
+  ((17.67*id(bme280_temperature_sensor).state)/(243.5+id(bme280_temperature_sensor).state))));
+unit_of_measurement: ${unit_temperature}
 

@@ -4,6 +4,6 @@
 
 binary_sensor:
   - platform: status
-    name: "Status"
-    icon: mdi:check-circle
+    name: "${sensor_name_status}"
+    icon: "${icon_status}"
 

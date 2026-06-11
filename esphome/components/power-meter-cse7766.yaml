@@ -8,54 +8,57 @@ substitutions:
 sensor:
   - platform: cse7766
     power:
-      name: "${friendly_devicename} Leistung"
+      name: ${sensor_name_power}
+      icon: ${icon_power}
       id: power_wattage
-      unit_of_measurement: W
+      unit_of_measurement: ${unit_power}
       accuracy_decimals: 1
-      icon: mdi:lightning-bolt
       filters:
         - throttle_average: ${update_interval}
 
     voltage:
-      name: "${friendly_devicename} Spannung"
+      name: ${sensor_name_voltage}
+      icon: ${icon_voltage}
       id: voltage_sensor
-      unit_of_measurement: V
+      unit_of_measurement: ${unit_voltage}
       accuracy_decimals: 1
-      icon: mdi:flash-outline
       disabled_by_default: true
       filters:
         - throttle_average: ${update_interval}
 
     current:
-      name: "${friendly_devicename} Stromstärke"
+      name: ${sensor_name_current}
+      icon: ${icon_current}
       id: current_sensor
-      unit_of_measurement: A
+      unit_of_measurement: ${unit_current}
       accuracy_decimals: 3
-      icon: mdi:current-ac
       disabled_by_default: true
       filters:
         - throttle_average: ${update_interval}
 
     apparent_power:
-      name: "${friendly_devicename} Scheinleistung"
+      name: ${sensor_name_apparent_power}
+      icon: ${icon_apparent_power}
       id: apparent_power
-      unit_of_measurement: VA
+      unit_of_measurement: ${unit_apparent_power}
       accuracy_decimals: 1
       disabled_by_default: true
       filters:
         - throttle_average: ${update_interval}
 
     reactive_power:
-      name: "${friendly_devicename} Blindleistung"
+      name: ${sensor_name_reactive_power}
+      icon: ${icon_reactive_power}
       id: reactive_power
-      unit_of_measurement: var
+      unit_of_measurement: ${unit_reactive_power}
       accuracy_decimals: 1
       disabled_by_default: true
       filters:
         - throttle_average: ${update_interval}
 
     power_factor:
-      name: "${friendly_devicename} Leistungsfaktor"
+      name: ${sensor_name_power_factor}
+      icon: ${icon_power_factor}
       id: power_factor
       accuracy_decimals: 2
       disabled_by_default: true

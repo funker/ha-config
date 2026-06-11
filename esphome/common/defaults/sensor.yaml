@@ -4,11 +4,13 @@
 
 sensor:
   - platform: uptime
-    name: "Uptime"
+    name: "${sensor_name_uptime}"
+    icon: "${icon_uptime}"
     update_interval: 60s
 
   - platform: wifi_signal
-    name: "WiFi Signal dB"
+    name: "${sensor_name_wifi_signal_db}"
+    icon: "${icon_wifi_signal_db}"
     id: wifi_signal_db
     update_interval: 60s
     entity_category: diagnostic

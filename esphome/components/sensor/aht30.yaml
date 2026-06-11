@@ -2,14 +2,19 @@
 
 # components/sensor/aht30.yaml
 
+substitutions:
+  update_interval: 60s
+
 platform: aht10
 temperature:
-  name: "Temperatur"
-  icon: mdi:thermometer-high
+  id: aht10_temperature_sensor
+  name: ${sensor_name_temperature}
+  icon: ${icon_temperature}
 humidity:
-  name: "Relative Luftfeuchtigkeit"
-  icon: mdi:water-percent
+  id: aht10_relative_humidity_sensor
+  name: ${sensor_name_relative_humidity}
+  icon: ${icon_relative_humidity}
   accuracy_decimals: 1
-update_interval: 60s
+update_interval: ${update_interval}
 address: 0x38
 

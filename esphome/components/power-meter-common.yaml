@@ -4,11 +4,12 @@
 
 sensor:
   - platform: integration
-    name: "${friendly_devicename} Energie"
+    name: ${sensor_name_energy}
+    icon: ${icon_energy}
     sensor: power_wattage
-    time_unit: h
+    time_unit: ${unit_hours}
     restore: true
-    unit_of_measurement: kWh
+    unit_of_measurement: ${unit_energy_kwh}
     device_class: energy
     state_class: total_increasing
     accuracy_decimals: 3
@@ -16,13 +17,13 @@ sensor:
       - multiply: 0.001
 
   - platform: total_daily_energy
-    name: "${friendly_devicename} Energie heute"
+    name: ${sensor_name_energy_today}
+    icon: ${icon_energy_today}
     power_id: power_wattage
-    unit_of_measurement: kWh
+    unit_of_measurement: ${unit_energy_kwh}
     device_class: energy
     state_class: total_increasing
     accuracy_decimals: 3
-    icon: mdi:calendar-clock
     restore: true
     filters:
       - multiply: 0.001

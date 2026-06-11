@@ -9,3 +9,4 @@ packages:
 wifi:
   fast_connect: true
   min_auth_mode: WPA2
+

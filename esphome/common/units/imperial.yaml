@@ -1,0 +1,16 @@
+---
+
+# common/units/imperial.yaml
+
+packages:
+  generic: !include generic.yaml
+
+substitutions:
+  unit_temperature: "°F"
+  unit_distance_short: "in"
+  unit_distance_medium: "ft"
+  unit_distance_long: "yd"
+  unit_volume_small: "fl oz"
+  unit_volume_large: "gal"
+  unit_mass_small: "oz"
+  unit_mass_large: "lb"

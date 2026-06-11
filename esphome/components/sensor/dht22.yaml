@@ -2,12 +2,19 @@
 
 # components/sensor/dht22.yaml
 
+substitutions:
+  update_interval: 60s
+
 platform: dht
 pin: ${dht22_pin_number}
 temperature:
-  name: "Temperatur"
+  id: dht22_temperature_sensor
+  name: ${sensor_name_temperature}
+  icon: ${icon_temperature}
 humidity:
-  name: "Relative Luftfeuchtigkeit"
+  id: dht22_humidity_sensor
+  name: ${sensor_name_relative_humidity}
+  icon: ${icon_relative_humidity}
   accuracy_decimals: 1
-update_interval: 60s
+update_interval: ${update_interval}
 

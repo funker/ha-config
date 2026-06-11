@@ -505,15 +505,16 @@
       entity_id: binary_sensor.octoprint_printing
       state: 'off'
     then:
-    - type: turn_off
-      device_id: 23de74d19eea60261e4e43c0748406fb
-      entity_id: 06f97d1e384d729f870f3f125f6307bd
-      domain: switch
+    - action: switch.turn_off
+      metadata: {}
+      target:
+        device_id: 23de74d19eea60261e4e43c0748406fb
+      data: {}
     - action: light.turn_off
       metadata: {}
       data: {}
       target:
-        entity_id: light.schrank_3d_drucker
+        device_id: ea40329527a79bc5b2dce24cdcabfd09
   mode: single
 - id: '1676726332052'
   alias: Status Spülmaschine fertig
@@ -2941,11 +2942,11 @@
       - binary_sensor.prasenz_keller_occupancy
       light_switch:
         entity_id:
-        - light.licht_keller_arbeitsplatte
         - light.decke
         - light.licht_keller_tisch
         - switch.shelly_keller_decke
         - switch.licht_datacenter
+        - light.licht_keller_arbeitsplatte_licht_keller_arbeitsplatte
       time_delay: 0
       include_light_control:
       - use_brightness
@@ -3556,9 +3557,7 @@
       light_switch:
         entity_id: light.licht_keller_waschbecken_licht_keller_waschbecken
       time_delay: 0
-      night_lights:
-        entity_id: light.licht_keller_treppe_gelaender
-      include_night_lights: night_lights_enabled
+      include_night_lights: night_lights_disabled
       include_sun: sun_disabled
 - id: '1739306469919'
   alias: Heizungssteuerung Bad v5

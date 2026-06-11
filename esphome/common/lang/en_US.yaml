@@ -1,0 +1,39 @@
+---
+
+# common/lang/en_US.yaml
+
+substitutions:
+  sensor_name_status: "Status"
+  sensor_name_uptime: "Uptime"
+  sensor_name_wifi_signal_db: "WiFi Signal dB"
+  sensor_name_version: "Firmware"
+  sensor_name_config_tested: "Configuration tested"
+  sensor_name_devicename: "Devicename"
+  sensor_name_devicename_friendly: "Devicename Friendly"
+  sensor_name_ip_address: "IP Address"
+  sensor_name_connected_ssid: "Connected SSID"
+  sensor_name_connected_bssid: "Connected BSSID"
+  sensor_name_mac_address: "MAC Address"
+  sensor_name_latest_scan_results: "Latest Scan Results"
+  sensor_name_dns_address: "DNS Address"
+
+  sensor_name_button_state: "Button State"
+  sensor_name_running: "Running"
+
+  sensor_name_power: "Power"
+  sensor_name_voltage: "Voltage"
+  sensor_name_current: "Current"
+  sensor_name_energy: "Energy"
+  sensor_name_energy_today: "Energy Today"
+  sensor_name_apparent_power: "Apparent Power"
+  sensor_name_reactive_power: "Reactive Power"
+  sensor_name_power_factor: "Power Factor"
+
+  control_name_restart: "Restart"
+  control_name_safe_mode_boot: "Safe Mode Boot"
+  control_name_factory_reset: "Factory Reset"
+  control_name_on_after_boot: "On after boot"
+  control_name_enable_button: "Enable Button"
+  control_name_allow_turn_off: "Allow Turn Off"
+  control_name_enable_led: "Enable LED"
+

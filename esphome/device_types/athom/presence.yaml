@@ -53,13 +53,13 @@ binary_sensor:
         - button.press: factory_reset_device
 
   - platform: gpio
+    name: ${sensor_name_pir}
+    id: pir
     pin:
       number: GPIO14
       mode:
         input: true
         pullup: true
-    name: "Pir Sensor"
-    id: pir
     filters:
     - delayed_on: 50ms
     - delayed_off: 10s
@@ -74,7 +74,7 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-    name: "mmWave Sensor"
+    name: ${sensor_name_mmwave}
     id: mmwave
     filters:
     - delayed_on: 50ms
@@ -85,7 +85,7 @@ binary_sensor:
 
 
   - platform: template
-    name: "Occupancy"
+    name: ${sensor_name_occupancy}
     id: occupancy
     device_class: occupancy
     lambda: |-
@@ -102,13 +102,13 @@ binary_sensor:
 sensor:
 
   - platform: bh1750
-    name: "Light Sensor"
+    name: ${sensor_name_light}
     address: 0x23
     update_interval: 5s
 
 switch:
   - platform: template
-    name: "mmWave Status"
+    name: ${sensor_name_mmwave_status}
     id: "mmwave_sensor"
     internal: true
     entity_category: config

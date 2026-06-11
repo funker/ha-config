@@ -8,3 +8,4 @@ packages:
   components_sensor: !include defaults/sensor.yaml
   components_text_sensor: !include defaults/text_sensor.yaml
   components_switch: !include defaults/switch.yaml
+

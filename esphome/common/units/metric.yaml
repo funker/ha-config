@@ -1,0 +1,16 @@
+---
+
+# common/units/metric.yaml
+
+packages:
+  generic: !include generic.yaml
+
+substitutions:
+  unit_temperature: "°C"
+  unit_distance_short: "mm"
+  unit_distance_medium: "cm"
+  unit_distance_long: "m"
+  unit_volume_small: "ml"
+  unit_volume_large: "l"
+  unit_mass_small: "g"
+  unit_mass_large: "kg"

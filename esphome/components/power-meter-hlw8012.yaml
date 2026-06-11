@@ -17,32 +17,32 @@ sensor:
     change_mode_every: 4
     current_resistor: ${current_res}
     voltage_divider: ${voltage_div}
-    update_interval: 3s
+    update_interval: ${update_interval}
 
     power:
-      name: "${friendly_devicename} Leistung"
+      name: ${sensor_name_power}
+      icon: ${icon_power}
       id: power_wattage
-      unit_of_measurement: W
-      icon: mdi:lightning-bolt
+      unit_of_measurement: ${unit_power}
       filters:
         - throttle_average: ${update_interval}
 
     voltage:
-      name: "${friendly_devicename} Spannung"
+      name: ${sensor_name_voltage}
+      icon: ${icon_voltage}
       id: voltage_sensor
-      unit_of_measurement: V
+      unit_of_measurement: ${unit_voltage}
       accuracy_decimals: 1
-      icon: mdi:flash-outline
       disabled_by_default: true
       filters:
         - throttle_average: ${update_interval}
 
     current:
-      name: "${friendly_devicename} Stromstärke"
+      name: ${sensor_name_current}
+      icon: ${icon_current}
       id: current_sensor
-      unit_of_measurement: A
+      unit_of_measurement: ${unit_current}
       accuracy_decimals: 3
-      icon: mdi:current-ac
       disabled_by_default: true
       filters:
         - throttle_average: ${update_interval}

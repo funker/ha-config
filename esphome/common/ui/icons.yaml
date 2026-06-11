@@ -1,0 +1,53 @@
+---
+
+# common/ui/icons.yaml
+
+substitutions:
+  icon_status: "mdi:check-circle"
+  icon_uptime: "mdi:timer-outline"
+  icon_wifi_signal_db: "mdi:wifi"
+  icon_version: "mdi:cube-outline"
+  icon_config_tested: "mdi:check"
+  icon_devicename: "mdi:information-box"
+  icon_devicename_friendly: "mdi:information-box"
+  icon_ip_address: "mdi:ip-network"
+  icon_connected_ssid: "mdi:wifi"
+  icon_connected_bssid: "mdi:wifi-marker"
+  icon_mac_address: "mdi:card-text-outline"
+  icon_latest_scan_results: "mdi:wifi-refresh"
+  icon_dns_address: "mdi:dns"
+
+  icon_button_state: "mdi:gesture-tap-button"
+  icon_running: "mdi:play-circle-outline"
+
+  icon_power: "mdi:lightning-bolt"
+  icon_voltage: "mdi:flash-outline"
+  icon_current: "mdi:current-ac"
+  icon_energy: "mdi:lightning-bolt"
+  icon_energy_today: "mdi:calendar-clock"
+  icon_apparent_power: "mdi:sine-wave"
+  icon_reactive_power: "mdi:chart-bell-curve"
+  icon_power_factor: "mdi:angle-acute"
+
+  icon_restart: "mdi:restart"
+  icon_safe_mode_boot: "mdi:shield-alert-outline"
+  icon_factory_reset: "mdi:factory"
+  icon_on_after_boot: "mdi:power-cycle"
+  icon_enable_button: "mdi:gesture-tap-button"
+  icon_allow_turn_off: "mdi:lock-open-variant"
+  icon_enable_led: "mdi:led-on"
+
+  icon_temperature: "mdi:thermometer-high"
+  icon_absolute_humidity: "mdi:water-percent"
+  icon_relative_humidity: "mdi:water-percent"
+  icon_pressure: ""
+  icon_thaw_point: "mdi:thermometer-alert"
+  icon_elevation: "mdi:signal"
+  icon_co2_equivalent: "mdi:molecule-co2"
+  icon_breath_voc_equivalent: ""
+  icon_gas_resistance: "mdi:molecule-co2"
+  icon_iaq: "mdi:gauge"
+  icon_distance: "mdi:tape-measure"
+  icon_pir: "mdi:motion-sensor"
+  icon_mmwave: "mdi:motion-sensor"
+  icon_occupancy: "mdi:motion-sensor"

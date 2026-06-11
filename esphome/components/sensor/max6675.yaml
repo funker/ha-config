@@ -2,13 +2,16 @@
 
 # components/sensor/max6675.yaml
 
+substitutions:
+  update_interval: 60s
+
 platform: max6675
+name: ${sensor_name_temperature}
+icon: ${icon_temperature}
 id: max6675_temperature
-name: "${friendly_devicename} Temperatur"
-cs_pin: ${max6675_cs_pin}
-update_interval: ${max6675_update_interval}
-unit_of_measurement: "°C"
-icon: mdi:thermometer
+cs_pin: ${cs_pin}
+update_interval: ${update_interval}
+unit_of_measurement: ${unit_temperature}
 device_class: temperature
 state_class: measurement
 accuracy_decimals: 1

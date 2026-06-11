@@ -2,10 +2,13 @@
 
 # components/sensor/hcsr04.yaml
 
+substitutions:
+  update_interval: 1s
+
 platform: ultrasonic
+name: ${sensor_name_distance}
+icon: ${icon_distance}
 trigger_pin: ${trigger_pin}
 echo_pin: ${echo_pin}
-name: "Entfernung"
-icon: mdi:tape-measure
-update_interval: 1s
+update_interval: ${update_interval}
 

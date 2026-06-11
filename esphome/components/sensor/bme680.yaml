@@ -2,42 +2,50 @@
 
 # components/sensor/bme680.yaml
 
+substitutions:
+  update_interval: 60s
+
 platform: bme680_bsec
 bme680_bsec_id: bme680_internal
 
 temperature:
-  name: "Temperatur"
+  id: bme680_temperature_sensor
+  name: ${sensor_name_temperature}
+  icon: ${icon_temperature}
   #oversampling: 16x
-  icon: mdi:thermometer-high
 
 pressure:
-  name: "Luftdruck"
-  icon: mdi:gauge
+  id: bme680_pressure_sensor
+  name: ${sensor_name_pressure}
+  icon: ${icon_pressure}
 
 humidity:
-  id: "humidity"
-  name: "Relative Luftfeuchtigkeit"
-  icon: mdi:water-percent
+  id: bme680_relative_humidity_sensor
+  name: ${sensor_name_relative_humidity}
+  icon: ${icon_relative_humidity}
 
 co2_equivalent:
-  name: "BME680 CO2 Equivalent"
-  icon: mdi:molecule-co2
+  id: bme680_co2_equivalent_sensor
+  name: ${sensor_name_co2_equivalent}
+  icon: ${icon_co2_equivalent}
 
 breath_voc_equivalent:
-  name: "BME680 Breath VOC Equivalent"
+  id: bme680_breath_voc_equivalent_sensor
+  name: ${sensor_name_breath_voc_equivalent}
+  icon: ${icon_breath_voc_equivalent}
 
-# gas_resistance:
-# id: "gas_resistance"
-# name: "Gas Widerstand"
-# icon: mdi:molecule-co2
-# address: 0x77
-# update_interval: 60s
+gas_resistance:
+  id: bme680_gas_resistance
+  name: ${sensor_name_gas_resistance}
+  icon: $[icon_gas_resistance]
+  address: 0x77
+  update_interval: ${update_interval}
 
-# platform: template
-# name: "Luftqualität"
-# id: iaq
-# icon: "mdi:gauge"
-#   caulculation: comp_gas = log(R_gas[ohm]) + 0.04 log(Ohm)/%rh * hum[%rh]
-# lambda: |-
-#   #return log(id(gas_resistance).state) + 0.04 *  id(humidity).state;
+platform: template
+id: bme680_iaq_sensor
+name: ${sensor_name_iaq}
+icon: ${icon_iaq}
+  caulculation: comp_gas = log(R_gas[ohm]) + 0.04 log(Ohm)/%rh * hum[%rh]
+lambda: |-
+  #return log(id(bme680_gas_resistance_sensor).state) + 0.04 *  id(bme680_humidity_sensor).state;
 
