@@ -3,7 +3,7 @@
 # gosundplug03.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
+  config_tested_date: "2026-06-13"
   devicename: "gosundplug03"
   friendly_devicename: "Laserdrucker"
   room: "Keller"
