@@ -11,6 +11,9 @@ substitutions:
   project_name: "Athom.Presence Sensor"
   project_version: "2.0"
 
+  language: "de_DE"
+  measurement_units: "metric"
+
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/athom/presence.yaml
