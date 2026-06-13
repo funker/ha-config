@@ -3,7 +3,6 @@
 # esp32-s2-02.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
   devicename: "esp32-07"
   friendly_devicename: "Display Bad"
   room: "Badezimmer"
