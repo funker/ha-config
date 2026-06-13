@@ -3,7 +3,6 @@
 # esp32-btproxy-05.yaml
 
 substitutions:
-  config_tested_date: "2006-06-03"
   devicename: "esp32-btproxy-05"
   friendly_devicename: "Bluetooth Proxy Werkstatt"
   room: "Werkstatt"
