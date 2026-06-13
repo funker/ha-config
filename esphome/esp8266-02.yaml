@@ -11,6 +11,9 @@ substitutions:
   project_name: "Wemos.D1 Mini ESP8266"
   project_version: "2.0"
 
+  language: "de_DE"
+  measurement_units: "metric"
+
   cs_pin: D8
   spi_miso_pin: D6
   spi_clk_pin: D5
