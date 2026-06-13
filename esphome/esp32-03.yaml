@@ -11,6 +11,9 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "2.0"
 
+  language: "de_DE"
+  measurement_units: "metric"
+
 # Throttle writing parameters to the internal flash memory to reduce ESP memory wear / degradation
 preferences:
   flash_write_interval: 15min
