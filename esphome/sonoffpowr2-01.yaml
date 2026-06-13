@@ -3,7 +3,6 @@
 # sonoffpowr2-01.yaml
 
 substitutions:
-  config_tested_date: "2026-06-04"
   devicename: "sonoffpowr2-01"
   friendly_devicename: "Licht Hintergrund"
   room: "Wohnzimmer"
