@@ -3,7 +3,6 @@
 # rpi-pico-01.yaml
 
 substitutions:
-  config_tested_date: "XXX"
   devicename: "rpi-pico-01"
   friendly_devicename: "Raspberry Pi Pico W 01"
   room: "Auf Lager"
