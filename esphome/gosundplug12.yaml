@@ -3,7 +3,6 @@
 # gosundplug12.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
   devicename: "gosundplug12"
   friendly_devicename: "Schreibtisch"
   room: "Steffi"
