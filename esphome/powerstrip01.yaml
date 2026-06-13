@@ -12,6 +12,9 @@ substitutions:
   project_name: "Blitzwolf.SHP9"
   project_version: "2.0"
 
+  language: "de_DE"
+  measurement_units: "metric"
+
   # Custom substiturions
   # Sockets
   relay_1_name: "Staubsauger"
