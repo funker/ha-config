@@ -15,6 +15,7 @@ substitutions:
   relay_icon: "mdi:printer-3d"
 
   language: "de_DE"
+  
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/gosund/sp111-switch.yaml
