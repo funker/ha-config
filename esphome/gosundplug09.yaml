@@ -12,11 +12,11 @@ substitutions:
   project_name: "Gosund.SP111"
   project_version: "2.0"
 
-  relay_name: "${friendly_devicename}"
-  relay_icon: "mdi:fridge"
-
   language: "de_DE"
   measurement_units: "metric"
+
+  relay_name: "${friendly_devicename}"
+  relay_icon: "mdi:fridge"
 
 packages:
   default_package: !include common/base-device.yaml
