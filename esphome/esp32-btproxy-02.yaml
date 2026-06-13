@@ -3,7 +3,6 @@
 # esp32-btproxy-02.yaml
 
 substitutions:
-  config_tested_date: "2006-06-03"
   devicename: "esp32-btproxy-02"
   friendly_devicename: "Bluetooth Proxy Esszimmer"
   room: "Esszimmer"
