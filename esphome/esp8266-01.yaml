@@ -3,7 +3,6 @@
 # esp8266-01.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
   devicename: "esp8266-01"
   friendly_devicename: "Bett"
   room: "Jan"
