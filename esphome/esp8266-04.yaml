@@ -21,6 +21,9 @@ substitutions:
   #trigger_pin: D1
   #echo_pin: D2
 
+  language: "de_DE"
+  measurement_units: "metric"
+
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/boards/esp8266-d1-mini.yaml
