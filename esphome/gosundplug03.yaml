@@ -15,6 +15,7 @@ substitutions:
   relay_icon: "mdi:printer"
 
   language: "de_DE"
+  measurement_units: "metric"
 
 packages:
   default_package: !include common/base-device.yaml
