@@ -11,6 +11,9 @@ substitutions:
   project_name: "Espressif.ESP32"
   project_version: "2.0"
 
+  language: "de_DE"
+  measurement_units: "metric"
+
   sda_pin: "GPIO33"
   scl_pin: "GPIO35"
 
