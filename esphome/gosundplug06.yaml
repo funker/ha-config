@@ -3,7 +3,6 @@
 # gosundplug06.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
   devicename: "gosundplug06"
   friendly_devicename: "Spülmaschine"
   room: "Küche"
