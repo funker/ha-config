@@ -3,7 +3,6 @@
 # athompresence02.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
   devicename: "athompresence02"
   friendly_devicename: "Präsenz Keller"
   room: "Keller"
