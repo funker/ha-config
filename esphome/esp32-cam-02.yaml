@@ -3,7 +3,6 @@
 # esp32-cam-02.yaml
 
 substitutions:
-  config_tested_date: "2026-06-09"
   devicename: "esp32-cam-02"
   friendly_devicename: "ESP32-Cam 02"
   room: "Auf Lager"
