@@ -15,6 +15,9 @@ substitutions:
   relay_name: "${friendly_devicename}"
   relay_icon: "mdi:fridge"
 
+  language: "de_DE"
+  measurement_units: "metric"
+
 packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/gosund/sp111-switch.yaml
