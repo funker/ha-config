@@ -4466,3 +4466,15 @@
       entity_id: button.unnamed_device_5
     data: {}
   mode: single
+- id: '1781288604665'
+  alias: Licht Sofa
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.presence_wohnzimmer_sofa_occupancy
+      light_switch:
+        entity_id: light.licht_hintergrund_licht_hintergrund
+      include_dynamic_lighting: enable_lux_controled_brightness
+      dynamic_lighting_lux_sensor: sensor.bewegung_garten_illuminance
