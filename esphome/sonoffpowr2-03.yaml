@@ -3,7 +3,6 @@
 # sonoffpowr2-03.yaml
 
 substitutions:
-  config_tested_date: "2026-06-04"
   devicename: "sonoffpowr2-03"
   friendly_devicename: "Trockner"
   room: "Keller"
