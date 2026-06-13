@@ -3,7 +3,6 @@
 # star-projector-01.yaml
 
 substitutions:
-  config_tested_date: "2026-06-02"
   devicename: "star-projector-jan"
   friendly_devicename: "Star Projector Jan"
   room: "Jan"
