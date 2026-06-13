@@ -4,7 +4,6 @@
 
 substitutions:
   # Default substitutions
-  config_tested_date: "XXX"
   devicename: "rpi-pico-03"
   friendly_devicename: "Raspberry Pi Pico W 03"
   room: "Auf Lager"
