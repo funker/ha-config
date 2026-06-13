@@ -4,7 +4,6 @@
 
 substitutions:
   # Default substitutions
-  config_tested_date: "2026-06-02"
   devicename: "sonoffbasicr2-04"
   friendly_devicename: "Licht Abseite UG"
   room: "Abseite UG"
