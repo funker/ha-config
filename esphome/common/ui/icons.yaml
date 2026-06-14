@@ -19,6 +19,7 @@ substitutions:
 
   icon_button_state: "mdi:gesture-tap-button"
   icon_running: "mdi:play-circle-outline"
+  icon_compiled_at: "mdi:calendar-clock"
 
   icon_power: "mdi:lightning-bolt"
   icon_voltage: "mdi:flash-outline"
@@ -45,9 +46,11 @@ substitutions:
   icon_elevation: "mdi:signal"
   icon_co2_equivalent: "mdi:molecule-co2"
   icon_breath_voc_equivalent: ""
-  icon_gas_resistance: "mdi:molecule-co2"
+  icon_gas_resistance: "mdi:molecule"
   icon_iaq: "mdi:gauge"
   icon_distance: "mdi:tape-measure"
   icon_pir: "mdi:motion-sensor"
   icon_mmwave: "mdi:motion-sensor"
+  icon_mmwave_status: "mdi:motion-sensor"
   icon_occupancy: "mdi:motion-sensor"
+  icon_light: "mdi:led-on"

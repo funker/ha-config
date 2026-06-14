@@ -22,12 +22,12 @@ uart:
 
 binary_sensor:
   - platform: gpio
-    id: pow_button
+    id: pow_r2_button
     pin:
       number: GPIO0
       mode: INPUT_PULLUP
       inverted: true
-    name: "${friendly_devicename} Button State"
+    name: ${sensor_name_button_state}
     on_press:
       - if:
           condition:
@@ -42,7 +42,7 @@ binary_sensor:
                   - switch.turn_on: button_switch
 
   - platform: template
-    name: "${friendly_devicename} Running"
+    name: ${sensor_name_active}
     filters:
       - delayed_off: 15s
     lambda: |-

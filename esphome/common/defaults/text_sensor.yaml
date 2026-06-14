@@ -6,20 +6,25 @@ text_sensor:
   - platform: version
     name: ${sensor_name_version}
     icon: ${icon_version}
+    entity_category: diagnostic
     hide_timestamp: true
     hide_hash: true
 
   - platform: template
-    name: ${sensor_name_config_tested}
-    id: info_config_tested
-    icon: ${icon_config_tested}
+    name: "${sensor_name_compiled_at}"
+    id: info_compiled_at
+    icon: "${icon_compiled_at}"
+    entity_category: diagnostic
     lambda: |-
-      return {"${config_tested_date}"};
+      char build_time[esphome::Application::BUILD_TIME_STR_SIZE];
+      App.get_build_time_string(build_time);
+      return { build_time };
 
   - platform: template
     name: ${sensor_name_devicename}
     id: info_devicename
     icon: ${icon_devicename}
+    entity_category: diagnostic
     lambda: |-
       return {"${devicename}"};
 
@@ -27,6 +32,7 @@ text_sensor:
     name: ${sensor_name_devicename_friendly}
     id: info_friendly_devicename
     icon: ${icon_devicename_friendly}
+    entity_category: diagnostic
     lambda: |-
       return {"${friendly_devicename}"};
 
@@ -49,4 +55,3 @@ text_sensor:
     dns_address:
       name: ${sensor_name_dns_address}
       icon: ${icon_dns_address}
-

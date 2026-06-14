@@ -12,9 +12,9 @@ sensor:
 
 binary_sensor:
   - platform: template
-    name: "Zustand"
+    name: ${sensor_1_name}
     id: zustand
-    icon: mdi:fireplace
+    icon: ${sensor_1_icon}
     lambda: |-
       if (id(max6675_temperature).state > ${temperature_threshold}) {
         return true;

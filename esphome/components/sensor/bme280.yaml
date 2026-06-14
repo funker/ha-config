@@ -38,7 +38,7 @@ temperature: bme280_temperature_sensor
 humidity: bme280_humidity_sensor
 
 platform: template
-name: ${sensor_name_thaw_point}
+name: ${sensor_name_dew_point}
 icon: ${icon_thaw_point}
 lambda: |-
   return (243.5*(log(id(bme280_humidity_sensor).state/100)+((17.67*id(bme280_temperature_sensor).state)/

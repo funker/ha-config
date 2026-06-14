@@ -23,8 +23,8 @@ binary_sensor:
       number: GPIO13
       mode: INPUT_PULLUP
       inverted: true
-    id: ${devicename}_button_state
-    name: "${friendly_devicename} Button State"
+    id: sp111_button
+    name: ${sensor_name_button_state}
     on_press:
       - if:
           condition:
