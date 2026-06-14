@@ -18,4 +18,4 @@ substitutions:
 
 packages:
   default_package: !include common/base-device.yaml
-  device_type: !include device_types/sonoff/pow-r2-switch.yaml
+  # device_type: !include device_types/sonoff/pow-r2-switch.yaml
