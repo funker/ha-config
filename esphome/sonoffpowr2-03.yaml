@@ -19,3 +19,22 @@ substitutions:
 packages:
   default_package: !include common/base-device.yaml
   # device_type: !include device_types/sonoff/pow-r2-switch.yaml
+
+uart:
+  rx_pin: RX
+  baud_rate: 4800
+  parity: EVEN
+
+sensor:
+  - platform: cse7766
+    voltage:
+      name: "Voltage"
+    current:
+      name: "Current"
+    power:
+      name: "Power"
+
+switch:
+  - platform: gpio
+    name: "Relay"
+    pin: GPIO12
