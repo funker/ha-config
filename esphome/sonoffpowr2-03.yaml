@@ -38,10 +38,20 @@ sensor:
   - platform: cse7766
     voltage:
       name: "Voltage"
+      filters:
+        - throttle_average: 60s
     current:
       name: "Current"
+      filters:
+        - throttle_average: 60s
     power:
       name: "Power"
+      filters:
+        - throttle_average: 60s
+    energy:
+      name: "Energy"
+      filters:
+        - throttle: 60s
 
 switch:
   - platform: gpio
