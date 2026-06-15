@@ -25,7 +25,7 @@ captive_portal:
 
 # Logger
 logger:
-  level: WARN
+  # level: WARN
   baud_rate: 0
 
 # mDNS
