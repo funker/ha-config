@@ -4,9 +4,9 @@
 
 substitutions:
   devicename: "sonoffpowr2-03"
-  friendly_devicename: "Trockner"
+  friendly_devicename: "Sonoff POW R2 03 Unbenutzt"
   room: "Keller"
-  comment: "Sonoff POW R2 Trockner"
+  comment: "Sonoff POW R2 03 Unbenutzt"
   project_name: "Sonoff.POW R2"
   project_version: "2.0"
 
@@ -14,7 +14,7 @@ substitutions:
   measurement_units: "metric"
 
   relay_name: "${friendly_devicename}"
-  relay_icon: "mdi:tumble-dryer"
+  relay_icon: "mdi:wifi-offline"
 
 packages:
   default_package: !include common/base-device.yaml
