@@ -3473,8 +3473,7 @@
       motion_trigger:
       - binary_sensor.bewegung_abseite_ug_occupancy
       light_switch:
-        entity_id:
-        - light.licht_abseite_ug_licht_abseite_ug
+        entity_id: light.licht_abseite_ug_licht_abseite_ug_2
       time_delay: 0
       night_lights:
         entity_id: light.licht_keller_treppe_gelaender
