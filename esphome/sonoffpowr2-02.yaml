@@ -4,7 +4,7 @@
 
 substitutions:
   devicename: "sonoffpowr2-02"
-  friendly_devicename: "Sonoff POW R2 02 Unbenutz"
+  friendly_devicename: "Sonoff POW R2 02 Unbenutzt"
   room: "Keller"
   comment: "Sonoff POW R2 02 Unbenutzt"
   project_name: "Sonoff.POW R2"
