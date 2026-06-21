@@ -242,7 +242,7 @@
         target:
           entity_id: input_text.status_waschmaschine
       starting_hysteresis: 2
-      power_sensor: sensor.waschmaschine_energy_power
+      power_sensor: sensor.shelly_1pm_gen4_eingespeiste_energie
       finishing_hysteresis: 5
 - id: '1676132523167'
   alias: Status Trockner fertig
@@ -273,7 +273,7 @@
         target:
           entity_id: input_text.status_trockner
       starting_hysteresis: 2
-      power_sensor: sensor.trockner_energy_power
+      power_sensor: sensor.keller_shelly_waschmaschine_energie
       starting_threshold: 10
       finishing_threshold: 15
 - id: '1676149155109'
@@ -1253,7 +1253,7 @@
     path: Blackshome/sensor-light.yaml
     input:
       motion_trigger:
-      - binary_sensor.prasenz_kuche_occupancy
+      - binary_sensor.kuche_prasenz_kuche_belegt
       include_bypass: []
       include_sun: sun_disabled
       include_night_lights: night_lights_enabled
@@ -2873,7 +2873,7 @@
     path: Blackshome/sensor-light.yaml
     input:
       motion_trigger:
-      - binary_sensor.prasenz_keller_occupancy
+      - binary_sensor.keller_prasenz_keller_belegt
       light_switch:
         entity_id:
         - light.decke
@@ -2918,7 +2918,7 @@
     path: Blackshome/sensor-light.yaml
     input:
       motion_trigger:
-      - binary_sensor.presence_bad_occupancy
+      - binary_sensor.badezimmer_prasenz_bad_belegt
       light_switch:
         entity_id:
         - light.bad_spiegelleuchte
