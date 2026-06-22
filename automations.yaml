@@ -242,7 +242,7 @@
         target:
           entity_id: input_text.status_waschmaschine
       starting_hysteresis: 2
-      power_sensor: sensor.shelly_1pm_gen4_eingespeiste_energie
+      power_sensor: sensor.waschmaschine_energy
       finishing_hysteresis: 5
 - id: '1676132523167'
   alias: Status Trockner fertig
@@ -485,7 +485,7 @@
           - input_text.status_spulmaschine
         action: input_text.set_value
       starting_hysteresis: 2
-      power_sensor: sensor.spuelmaschine_aktuell_watt
+      power_sensor: sensor.spulmaschine_energie
       finishing_hysteresis: 25
 - id: '1676728893726'
   alias: Alexa Die Kinder sollen ausmachen
@@ -1275,7 +1275,7 @@
       night_lights_conditions:
       - time_enabled
       time_delay: 0
-      ambient_light_sensor: sensor.prasenz_kuche_light_sensor
+      ambient_light_sensor: sensor.kuche_prasenz_kuche_licht
       light_switch:
         entity_id:
         - light.gruppe_licht_kuche_decke
@@ -1290,7 +1290,7 @@
       - input_boolean.modus_spielen
       include_bypass_auto_off: []
       boolean_scenes_scripts: input_boolean.presence_kuche
-      dynamic_lighting_lux_sensor: sensor.prasenz_kuche_light_sensor
+      dynamic_lighting_lux_sensor: sensor.kuche_prasenz_kuche_licht
       dynamic_lighting_boolean: input_boolean.dynamic_light_kuche
       zone: zone.home
       people:
@@ -1855,18 +1855,20 @@
 - id: '1702905599858'
   alias: Alexa Bad - Wiedergabe stoppen wenn niemand anwesend
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.presence_bad_occupancy
-    to: 'off'
-    from: 'on'
+  triggers:
+  - entity_id:
+    - binary_sensor.badezimmer_prasenz_bad_belegt
+    to:
+    - 'off'
+    from:
+    - 'on'
     for:
       hours: 0
       minutes: 0
       seconds: 15
-  condition: []
-  action:
+    trigger: state
+  conditions: []
+  actions:
   - action: media_player.media_pause
     target:
       entity_id:
@@ -2901,9 +2903,9 @@
       night_lights_after_time: '23:00:00'
       night_lights_before_time: 06:00:00
       boolean_scenes_scripts: input_boolean.presence_keller
-      dynamic_lighting_lux_sensor: sensor.prasenz_keller_light_sensor
+      dynamic_lighting_lux_sensor: sensor.keller_prasenz_keller_licht
       dynamic_lighting_boolean: input_boolean.dynamic_light_keller
-      ambient_light_sensor: sensor.prasenz_keller_light_sensor
+      ambient_light_sensor: sensor.keller_prasenz_keller_licht
       zone: zone.home
       people:
       - person.jan
@@ -2929,7 +2931,7 @@
       light_transition_on: 1.5
       light_transition_off: 2
       include_ambient: ambient_enabled
-      ambient_light_sensor: sensor.presence_bad_light_sensor_2
+      ambient_light_sensor: sensor.badezimmer_prasenz_bad_licht
       ambient_light_value: 60
       ambient_light_options: ambient_light_option_enabled
       night_lights_after_time: '23:00:00'
@@ -2947,7 +2949,7 @@
       night_light_transition_on: 1.5
       night_light_transition_off: 3
       boolean_scenes_scripts: input_boolean.presence_bad
-      dynamic_lighting_lux_sensor: sensor.presence_bad_light_sensor_2
+      dynamic_lighting_lux_sensor: sensor.badezimmer_prasenz_bad_licht
       dynamic_lighting_boolean: input_boolean.dynamic_lighting_bad
       night_boolean_scenes_scripts: input_boolean.night_lights_bad
       zone: zone.home
