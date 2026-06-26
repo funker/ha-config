@@ -1639,8 +1639,9 @@
   - alias: Licht aus - Badezimmer
     if:
     - condition: state
-      entity_id: binary_sensor.presence_bad_occupancy
-      state: 'off'
+      entity_id: automation.bad_prasenz
+      state:
+      - 'off'
     then:
     - action: light.turn_off
       data: {}
