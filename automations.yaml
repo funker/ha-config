@@ -1639,7 +1639,7 @@
   - alias: Licht aus - Badezimmer
     if:
     - condition: state
-      entity_id: automation.bad_prasenz
+      entity_id: binary_sensor.badezimmer_prasenz_bad_belegt
       state:
       - 'off'
     then:
@@ -1719,8 +1719,9 @@
   - alias: Licht an - Badezimmer
     if:
     - condition: state
-      entity_id: binary_sensor.presence_bad_occupancy
-      state: 'off'
+      entity_id: binary_sensor.badezimmer_prasenz_bad_belegt
+      state:
+      - 'off'
     then:
     - action: light.turn_on
       data: {}
