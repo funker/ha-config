@@ -35,4 +35,4 @@ packages:
 
 one_wire:
   - platform: gpio
-    pin: D4    # enttsGPIO2
+    pin: D4    # entspricht GPIO2
