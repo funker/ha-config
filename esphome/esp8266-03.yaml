@@ -4,7 +4,7 @@
 
 substitutions:
   devicename: "esp8266-03"
-  friendly_devicename: "Unbenutzt esp8266-03"
+  friendly_devicename: "Kühlgefrierkombi"
   room: "Auf Lager"
   comment: "Unbenutzt esp8266-03"
   project_name: "Wemos.D1 Mini ESP8266"
