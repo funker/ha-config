@@ -4481,3 +4481,4 @@
         entity_id: light.licht_hintergrund_licht_hintergrund
       include_dynamic_lighting: enable_lux_controled_brightness
       dynamic_lighting_lux_sensor: sensor.bewegung_garten_illuminance
+      include_night_lights: night_lights_disabled
