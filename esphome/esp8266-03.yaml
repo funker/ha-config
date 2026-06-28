@@ -30,3 +30,7 @@ packages:
       ds18b20_id: ds18b20_gefrierfach
       ds18b20_name: "Gefrierfach"
       ds18b20_address: "0xBB00000000000000"  # ← echte Adresse eintragen
+
+one_wire:
+  - platform: gpio
+    pin: D4    # GPIO2 – oder welchen Pin du nutzt
