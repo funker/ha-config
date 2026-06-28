@@ -17,3 +17,16 @@ packages:
   default_package: !include common/base-device.yaml
   device_type: !include device_types/boards/esp8266-d1-mini.yaml
 
+  sensor_kuehlschrank: !include
+    file: components/sensor/ds18b20.yaml
+    vars:
+      ds18b20_id: ds18b20_kuehlschrank
+      ds18b20_name: "Kühlschrank"
+      ds18b20_address: "0xAA00000000000000"  # ← echte Adresse eintragen
+
+  sensor_gefrierfach: !include
+    file: components/sensor/ds18b20.yaml
+    vars:
+      ds18b20_id: ds18b20_gefrierfach
+      ds18b20_name: "Gefrierfach"
+      ds18b20_address: "0xBB00000000000000"  # ← echte Adresse eintragen
