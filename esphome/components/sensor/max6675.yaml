@@ -2,9 +2,6 @@
 
 # components/sensor/max6675.yaml
 
-substitutions:
-  update_interval: 60s
-
 platform: max6675
 name: ${sensor_name_temperature}
 icon: ${icon_temperature}

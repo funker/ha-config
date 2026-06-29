@@ -2,13 +2,26 @@
 
 # components/sensor/ds18b20.yaml
 
-platform: dallas_temp
-id: ds18b20_temperature
-name: ${sensor_name_temperature}
-icon: ${icon_temperature}
-unit_of_measurement: ${unit_temperature}
-device_class: "temperature"
-state_class: "measurement"
-accuracy_decimals: 2
-address: ${dallas_address}
+sensor:
+  - platform: dallas_temp
+    id: ${ds18b20_id}
+    name: ${ds18b20_name}
+    icon: ${icon_temperature}
+    unit_of_measurement: ${unit_temperature}
+    device_class: "temperature"
+    state_class: "measurement"
+    accuracy_decimals: 2
+    address: ${ds18b20_address}
+    update_interval: ${update_interval}
+
+
+# platform: dallas_temp
+# id: ds18b20_temperature
+# name: ${sensor_name_temperature}
+# icon: ${icon_temperature}
+# unit_of_measurement: ${unit_temperature}
+# device_class: "temperature"
+# state_class: "measurement"
+# accuracy_decimals: 2
+# address: ${dallas_address}
 
