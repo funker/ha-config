@@ -4482,3 +4482,15 @@
       include_dynamic_lighting: enable_lux_controled_brightness
       dynamic_lighting_lux_sensor: sensor.bewegung_garten_illuminance
       include_night_lights: night_lights_disabled
+- id: '1783155967408'
+  alias: Allgemein - ⚡ Blitzeinschlag
+  description: ''
+  use_blueprint:
+    path: zacharyd3/lightning_tracker.yaml
+    input:
+      notification_title: Blitzeinschlag in der Nähe!
+      lightning_distance_sensor: sensor.blitzortung_lightning_distance
+      lightning_azimuth_sensor: sensor.blitzortung_lightning_azimuth
+      notify_devices:
+      - db7e38b06231c2341537d1bafe5b7dec
+      only_notify_closer_strikes: true
