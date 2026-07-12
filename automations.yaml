@@ -596,7 +596,8 @@
     - data: {}
       action: light.turn_on
       target:
-        entity_id: light.werkstatt_wand
+        entity_id:
+        - light.licht_werkstatt_wand_licht_werkstatt_wand
     - wait_for_trigger:
       - entity_id:
         - binary_sensor.tur_werkstatt_contact
@@ -612,12 +613,14 @@
     - data: {}
       action: light.turn_off
       target:
-        entity_id: light.werkstatt_wand
+        entity_id:
+        - light.licht_werkstatt_wand_licht_werkstatt_wand
     else:
     - data: {}
       action: light.turn_off
       target:
-        entity_id: light.werkstatt_wand
+        entity_id:
+        - light.licht_werkstatt_wand_licht_werkstatt_wand
   mode: single
 - id: '1677892163117'
   alias: Alexa - Schlaf gut
