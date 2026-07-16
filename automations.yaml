@@ -1221,7 +1221,9 @@
       motion_trigger:
       - binary_sensor.bewegung_flur_eg_occupancy
       light_switch:
-        entity_id: light.gruppe_licht_flur_eg_decke
+        entity_id:
+        - light.gruppe_licht_flur_eg_decke
+        - light.flur_eg_wled_garderobe
       time_delay: 0
       include_light_control:
       - use_transition
