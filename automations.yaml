@@ -2711,9 +2711,11 @@
       - update.kuhlschrank_firmware
       - update.spulmaschine_firmware
       backup_wait_time: 20
-      restart_type: host
+      restart_type: no-restart
       pause_entities:
       - input_boolean.modus_urlaub_away
+      backup_bool: false
+      verbose_logging_bool: true
 - id: '1728128574600'
   alias: Steuerung Klingel
   description: ''
@@ -4023,6 +4025,7 @@
       notify_device: db7e38b06231c2341537d1bafe5b7dec
       update_mode: sequential
       sequential_delay: 30
+      update_threshold: 5
 - id: '1776584741719'
   alias: Küche - Airfryer fertig
   description: ''
