@@ -4499,8 +4499,6 @@
       notification_title: Blitzeinschlag in der Nähe!
       lightning_distance_sensor: sensor.blitzortung_lightning_distance
       lightning_azimuth_sensor: sensor.blitzortung_lightning_azimuth
-      notify_devices:
-      - db7e38b06231c2341537d1bafe5b7dec
       only_notify_closer_strikes: true
 - id: '1784303944387'
   alias: Modus alle abwesend
