@@ -1,0 +1,22 @@
+# api:
+#   encryption:
+#     key: "UHF8ODMbxP+5LIQlRfR5VA7d9bqVGh3S3D317aeyekI="
+
+substitutions:
+  # name: fancontroller-r3-3-70e3d6
+  devicename: "fancontroller01"
+  friendly_devicename: "Fan Controller"
+  room: "Datacenter"
+  comment: "Zeroflow Fan Controller Datacenter"
+  project_name: "Zeroflow.Fan Controller"
+  project_version: "1.0"
+
+  language: "de_DE"
+  measurement_units: "metric"
+
+  relay_name: "${friendly_devicename}"
+  relay_icon: "mdi:fan"
+
+packages:
+  default_package: !include common/base-device.yaml
+  zeroflow.fancontroller-rev3-3: "github://zeroflow/esphome-fancontroller/fancontroller-rev3.3-esp32s2.yaml@main"
