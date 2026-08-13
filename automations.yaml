@@ -1974,7 +1974,7 @@
   description: ''
   triggers:
   - type: turned_on
-    device_id: c216c1c61424262a655e00c51983bcb6
+    device_id: 81734895f38919720caddc751094d0f2
     entity_id: 5b9768c0f004484a87ee9a5b8a1d9aa4
     domain: binary_sensor
     trigger: device
@@ -3454,7 +3454,7 @@
     entity_id:
     - input_button.test_taste
   - type: turned_on
-    device_id: c216c1c61424262a655e00c51983bcb6
+    device_id: 81734895f38919720caddc751094d0f2
     entity_id: 5b9768c0f004484a87ee9a5b8a1d9aa4
     domain: binary_sensor
     trigger: device
