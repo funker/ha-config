@@ -827,28 +827,6 @@
         data:
           tag: urlaub_away_confirm
   mode: single
-- id: '1679737605902'
-  alias: Remote 3D-Drucker
-  description: ''
-  use_blueprint:
-    path: EPMatt/ikea_e1743.yaml
-    input:
-      integration: deCONZ
-      controller_device: adc60c603e2051a2214a281b455aa40d
-      action_button_up_short:
-      - action: light.toggle
-        metadata: {}
-        data:
-          transition: 1
-        target:
-          entity_id: light.schrank_3d_drucker
-      action_button_down_short: []
-      action_button_down_long:
-      - type: turn_off
-        device_id: 23de74d19eea60261e4e43c0748406fb
-        entity_id: 06f97d1e384d729f870f3f125f6307bd
-        domain: switch
-      helper_last_controller_event: input_text.remote_a01_last_controller_event
 - id: '1680120760365'
   alias: Badezimmer - Fenster noch offen
   description: ''
@@ -864,7 +842,7 @@
         }}:{{ (now() - timedelta(seconds=600)).minute }} offen.
       notification_icon_warning: alert
       entity: binary_sensor.fenster_bad_contact
-      notify_service: notify.alexa_media_echo_show_jan
+      notify_service: notify.mobile_app_pixel_7_pro
       seconds: 600
 - id: '1680622701789'
   alias: Tim - Licht Decke
@@ -1986,6 +1964,11 @@
       entity_id: camera.haustuer_sub
     data:
       filename: /config/www/tmp/snapshot-doorbell.jpg
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
   - action: notify.mobile_app_pixel_7_pro
     data:
       message: Es hat an der Haustür geklingelt
@@ -2523,128 +2506,6 @@
       - input_text.status_trockner
     action: input_text.set_value
   mode: single
-- id: '1727369357956'
-  alias: Remote A04 - Waschmittel
-  description: ''
-  use_blueprint:
-    path: EPMatt/ikea_e1743.yaml
-    input:
-      integration: deCONZ
-      controller_device: 86c5f5005f82132b9cb9693e9f18d8a4
-      helper_last_controller_event: input_text.remote_a04_last_controller_event
-      action_button_up_short:
-      - action: todo.get_items
-        target:
-          entity_id: todo.supermarkt
-        data:
-          status: needs_action
-        response_variable: list_supermarkt
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: '{{ not ''Waschmittel'' in list_supermarkt[''todo.supermarkt''][''items'']
-              | map(attribute=''summary'') | list }}'
-          sequence:
-          - action: todo.add_item
-            metadata: {}
-            data:
-              item: Waschmittel
-            target:
-              entity_id: todo.supermarkt
-- id: '1727377427729'
-  alias: Remote A03 - Klopapier und Zahnpasta
-  description: ''
-  use_blueprint:
-    path: EPMatt/ikea_e1743.yaml
-    input:
-      integration: Zigbee2MQTT
-      controller_device: fb4d6093b48b74c7e6fc70d58183038a
-      helper_last_controller_event: input_text.remote_a03_last_controller_event
-      action_button_up_short:
-      - action: todo.get_items
-        target:
-          entity_id: todo.supermarkt
-        data:
-          status: needs_action
-        response_variable: list_supermarkt
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: '{{ not ''Klopapier'' in list_supermarkt[''todo.supermarkt''][''items'']
-              | map(attribute=''summary'') | list }}'
-          sequence:
-          - action: todo.add_item
-            metadata: {}
-            data:
-              item: Klopapier
-            target:
-              entity_id: todo.supermarkt
-      action_button_down_short:
-      - action: todo.get_items
-        target:
-          entity_id: todo.supermarkt
-        data:
-          status: needs_action
-        response_variable: list_supermarkt
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: '{{ not ''Zahnpasta'' in list_supermarkt[''todo.supermarkt''][''items'']
-              | map(attribute=''summary'') | list }}'
-          sequence:
-          - action: todo.add_item
-            metadata: {}
-            data:
-              item: Zahnpasta
-            target:
-              entity_id: todo.supermarkt
-- id: '1727379174877'
-  alias: Remote A02 - Geschirrspülmittel und Spülmaschinensalz
-  description: ''
-  use_blueprint:
-    path: EPMatt/ikea_e1743.yaml
-    input:
-      integration: deCONZ
-      controller_device: f8c51c57daf5196ea9e454dc21b3316f
-      helper_last_controller_event: input_text.remote_a02_last_controller_event
-      action_button_up_short:
-      - action: todo.get_items
-        target:
-          entity_id: todo.supermarkt
-        data:
-          status: needs_action
-        response_variable: list_supermarkt
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: '{{ not ''Geschirrspülmittel'' in list_supermarkt[''todo.supermarkt''][''items'']
-              | map(attribute=''summary'') | list }}'
-          sequence:
-          - action: todo.add_item
-            metadata: {}
-            data:
-              item: Geschirrspülmittel
-            target:
-              entity_id: todo.supermarkt
-      action_button_down_short:
-      - action: todo.get_items
-        target:
-          entity_id: todo.supermarkt
-        data:
-          status: needs_action
-        response_variable: list_supermarkt
-      - choose:
-        - conditions:
-          - condition: template
-            value_template: '{{ not ''Spülmaschinensalz'' in list_supermarkt[''todo.supermarkt''][''items'']
-              | map(attribute=''summary'') | list }}'
-          sequence:
-          - action: todo.add_item
-            metadata: {}
-            data:
-              item: Spülmaschinensalz
-            target:
-              entity_id: todo.supermarkt
 - id: '1727532930288'
   alias: Zeit - Steuerung NAS Backup
   description: ''
@@ -2967,29 +2828,6 @@
       - person.steffi
       - person.tim
       - person.lasse
-- id: '1729099499875'
-  alias: Jan Licht aus
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - sensor.google_pixel_7_pro_jan_area
-    to:
-    from: Jan
-  conditions: []
-  actions:
-  - delay:
-      hours: 0
-      minutes: 5
-      seconds: 0
-      milliseconds: 0
-  - action: light.turn_off
-    metadata: {}
-    data:
-      transition: 2
-    target:
-      entity_id: light.licht_jan_arbeit
-  mode: single
 - id: '1729107373100'
   alias: Wohnzimmer - Jan BT Dekolicht an
   description: ''
@@ -3419,40 +3257,10 @@
       action: input_select.select_option
   mode: parallel
   max_exceeded: silent
-- id: '1738835574266'
-  alias: _WLED Test
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - input_button.test_taste
-  conditions: []
-  actions:
-  - type: turn_on
-    device_id: 09819661f9cc323b9da182895c0baf38
-    entity_id: 95cad7d1d709e5830528761259b93c0e
-    domain: light
-  - device_id: 09819661f9cc323b9da182895c0baf38
-    domain: select
-    entity_id: 97108ea3337a94c972504c7aa35f19cd
-    type: select_option
-    option: Strobe Mega
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-  - type: turn_off
-    device_id: 09819661f9cc323b9da182895c0baf38
-    entity_id: 95cad7d1d709e5830528761259b93c0e
-    domain: light
-  mode: single
 - id: '1738886632687'
   alias: Türklingel
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - input_button.test_taste
   - type: turned_on
     device_id: 81734895f38919720caddc751094d0f2
     entity_id: 5b9768c0f004484a87ee9a5b8a1d9aa4
@@ -3487,9 +3295,18 @@
         entity_id: light.licht_abseite_ug_licht_abseite_ug_2
       time_delay: 0
       night_lights:
-        entity_id: light.licht_keller_treppe_gelaender
+        entity_id: light.schrank_3d_drucker
       include_night_lights: night_lights_enabled
-      include_sun: sun_disabled
+      include_sun: sun_enabled
+      include_night_light_control:
+      - if_lights_are_on_adjust_when_crossing_over
+      night_time_delay: 1
+      night_lights_conditions:
+      - sun_enabled
+      night_lights_entity_state: []
+      state_control_entity: input_boolean.modus_wartungsarbeiten_keller
+      include_state_control: state_control_enabled
+      include_ambient: ambient_disabled
 - id: '1739049180486'
   alias: Keller Waschbecken - Bewegung
   description: ''
@@ -3503,58 +3320,6 @@
       time_delay: 0
       include_night_lights: night_lights_disabled
       include_sun: sun_disabled
-- id: '1739306469919'
-  alias: Heizungssteuerung Bad v5
-  description: ''
-  use_blueprint:
-    path: panhans/advanced_heating_control.yaml
-    input:
-      input_trvs:
-      - climate.heizung_bad
-      input_temperature_sensor: sensor.klima_bad_temperature
-      input_mode_party: []
-      input_schedulers:
-      - schedule.heizungssteuerung_bad_zeitplan
-      input_windows: []
-      input_calibration_generic: false
-      input_liming_protection: true
-      input_liming_in_winter: true
-      input_mode_winter: input_boolean.modus_winter
-      input_log_level: warning
-      input_temperature_comfort: input_number.heizung_bad_komfort_temperatur
-      input_temperature_eco: input_number.heizungssteuerung_temperatur_eco
-      input_persons: []
-      input_people_entering_home_duration:
-        hours: 0
-        minutes: 2
-        seconds: 0
-      input_people_leaving_home_duration:
-        hours: 0
-        minutes: 2
-        seconds: 0
-      input_window_legacy_restore: false
-- id: '1739306779142'
-  alias: Heizungssteuerung Steffi v5
-  description: ''
-  use_blueprint:
-    path: panhans/advanced_heating_control.yaml
-    input:
-      input_trvs:
-      - climate.heizung_steffi
-      input_mode_party: []
-      input_schedulers:
-      - schedule.heizungssteuerung_steffi_zeitplan
-      input_windows: []
-      input_calibration_generic: false
-      input_liming_protection: true
-      input_log_level: warning
-      input_invert_winter_mode_value: false
-      input_liming_in_winter: true
-      input_temperature_sensor: sensor.klima_steffi_temperature_2
-      input_temperature_comfort: input_number.heizungssteuerung_steffi_komfort_temperatur
-      input_temperature_eco: input_number.heizungssteuerung_temperatur_eco
-      input_mode_winter: input_boolean.modus_winter
-      input_reset_temperature: false
 - id: '1739310036037'
   alias: Modus Winter
   triggers:
@@ -3575,25 +3340,6 @@
       today_md >= start_md or today_md <= end_md %}\n    input_boolean.turn_on\n  {%
       else %}\n    input_boolean.turn_off\n  {% endif %}\n{% endif %}\n"
   mode: single
-- id: '1739310992867'
-  alias: Heizungssteuerung Tim v5
-  description: ''
-  use_blueprint:
-    path: panhans/advanced_heating_control.yaml
-    input:
-      input_trvs:
-      - climate.heizung_tim
-      input_temperature_sensor: sensor.klima_tim_temperature_2
-      input_temperature_comfort: input_number.heizungssteuerung_tim_komfort_temperatur
-      input_temperature_eco: input_number.heizungssteuerung_temperatur_eco
-      input_mode_party: []
-      input_schedulers:
-      - schedule.heizungssteuerung_tim_zeitplan
-      input_windows: []
-      input_liming_protection: true
-      input_liming_in_winter: true
-      input_mode_winter: input_boolean.modus_winter
-      input_log_level: warning
 - id: '1739574041103'
   alias: Müll Erinnerung
   description: ''
@@ -4463,7 +4209,7 @@
     target:
       device_id: 43150a7171cbfccfe3c3d6ebda52f6aa
     options:
-      behavior: any
+      behavior: each
   conditions: []
   actions:
   - delay:
@@ -4500,6 +4246,9 @@
       lightning_distance_sensor: sensor.blitzortung_lightning_distance
       lightning_azimuth_sensor: sensor.blitzortung_lightning_azimuth
       only_notify_closer_strikes: true
+      last_distance_helper: input_number.lightning_last_distance_helper
+      notify_devices:
+      - db7e38b06231c2341537d1bafe5b7dec
 - id: '1784303944387'
   alias: Modus alle abwesend
   description: ''
