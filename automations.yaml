@@ -3516,7 +3516,7 @@
       - binary_sensor.bewegung_wc_occupancy
       light_switch:
         entity_id: light.lampe_wc_spiegel
-      time_delay: 1
+      time_delay: 3
       light_brightness: 80
       include_light_colour_control: use_colour_temperature
       light_colour_temperature: 3200
