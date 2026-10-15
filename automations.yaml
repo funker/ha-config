@@ -3520,7 +3520,7 @@
       light_brightness: 80
       include_light_colour_control: use_colour_temperature
       light_colour_temperature: 3200
-      include_night_lights: night_lights_disabled
+      include_night_lights: night_lights_enabled
       night_lights_conditions:
       - sun_enabled
       night_lights:
@@ -3535,6 +3535,7 @@
       dynamic_lighting_max_brightness: 69
       dynamic_lighting_lux_sensor: sensor.bewegung_wc_illuminance
       night_light_brightness: 10
+      night_time_delay: 3
 - id: '1749942585296'
   alias: Update Notification
   description: ''
