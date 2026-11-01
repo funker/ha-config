@@ -1,12 +1,37 @@
-sensor:
-  - name: "Regen erwartet"
-    unique_id: modus_rain_tomorrow
-    icon: "mdi:weather-rainy"
-    state: >
-      {% set forecast = state_attr('weather.forecast_home_assistant', 'forecast') %}
-      {% if forecast and forecast | count > 1 %}
-        {% set tomorrow = forecast[1] %}
-        {{ 'rain' in tomorrow.condition | default('') }}
-      {% else %}
-        false
-      {% endif %}
+# sensor:
+#   - name: "Regen erwartet"
+#     unique_id: modus_rain_tomorrow
+#     icon: "mdi:weather-rainy"
+#     state: >
+#       {% set forecast = state_attr('weather.forecast_home_assistant', 'forecast') %}
+#       {% if forecast and forecast | count > 1 %}
+#         {% set tomorrow = forecast[1] %}
+#         {{ 'rain' in tomorrow.condition | default('') }}
+#       {% else %}
+#         false
+#       {% endif %}
+
+template:
+  - trigger:
+      - platform: time_pattern
+        hours: "/1"
+      - platform: homeassistant
+        event: start
+    action:
+      - service: weather.get_forecasts
+        data:
+          type: daily
+        target:
+          entity_id: weather.forecast_home_assistant
+        response_variable: daily
+    sensor:
+      - name: "Regen erwartet"
+        unique_id: modus_rain_tomorrow
+        icon: "mdi:weather-rainy"
+        state: >
+          {% set forecast = daily['weather.forecast_home_assistant'].forecast %}
+          {% if forecast | count > 1 %}
+            {{ 'rain' in (forecast[1].condition | default('')) }}
+          {% else %}
+            false
+          {% endif %}
