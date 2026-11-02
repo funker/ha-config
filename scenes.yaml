@@ -525,3 +525,92 @@
       entity_only: true
     light.gruppe_licht_werkstatt_wand:
       entity_only: true
+- id: '1793573960753'
+  name: Wohnzimmer Geburtstag Steffi
+  entities:
+    light.gruppe_wohnzimmer_stehlampen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      effect_list:
+      - blink
+      - breathe
+      - channel_change
+      - colorloop
+      - finish_effect
+      - okay
+      - stop_colorloop
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect:
+      color_mode: xy
+      brightness: 178
+      color_temp_kelvin:
+      hs_color:
+      - 308.125
+      - 37.647
+      rgb_color:
+      - 255
+      - 159
+      - 242
+      xy_color:
+      - 0.371
+      - 0.239
+      entity_id:
+      - light.wohnzimmer_stehlampe_links_oben
+      - light.wohnzimmer_stehlampe_links_unten
+      - light.wohnzimmer_stehlampe_rechts_oben
+      - light.wohnzimmer_stehlampe_rechts_unten
+      icon: mdi:floor-lamp
+      friendly_name: Wohnzimmer Stehlampen
+      supported_features: 44
+      state: 'on'
+  metadata:
+    light.gruppe_wohnzimmer_stehlampen:
+      entity_only: true
+  icon: mdi:gift
+- id: '1793574074570'
+  name: Wohnzimmer Standard
+  entities:
+    light.gruppe_wohnzimmer_stehlampen:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
+      effect_list:
+      - blink
+      - breathe
+      - channel_change
+      - colorloop
+      - finish_effect
+      - okay
+      - stop_colorloop
+      - stop_effect
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect:
+      color_mode: color_temp
+      brightness: 178
+      color_temp_kelvin: 2840
+      hs_color:
+      - 28.109
+      - 61.425
+      rgb_color:
+      - 255
+      - 172
+      - 98
+      xy_color:
+      - 0.511
+      - 0.386
+      entity_id:
+      - light.wohnzimmer_stehlampe_links_oben
+      - light.wohnzimmer_stehlampe_links_unten
+      - light.wohnzimmer_stehlampe_rechts_oben
+      - light.wohnzimmer_stehlampe_rechts_unten
+      icon: mdi:floor-lamp
+      friendly_name: Wohnzimmer Stehlampen
+      supported_features: 44
+      state: 'on'
+  metadata:
+    light.gruppe_wohnzimmer_stehlampen:
+      entity_only: true
