@@ -4288,3 +4288,78 @@
       message: Das Haus wurde verriegelt
       title: Lockdown
   mode: single
+- id: '1794501637349'
+  alias: Entwurf Auto
+  description: ''
+  triggers:
+  - trigger: time
+    at: '16:45:00'
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    alias: Abends
+  - trigger: time
+    at: 07:30:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    alias: Morgens
+  conditions:
+  - condition: and
+    conditions:
+    - condition: battery.is_level
+      target:
+        entity_id: sensor.skoda_superb_combi_batteriestand
+      options:
+        threshold:
+          type: above
+          value:
+            active_choice: number
+            number: 20
+    - condition: temperature.is_value
+      target:
+        entity_id: sensor.bergstedt_temperatur
+      options:
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 0
+        threshold:
+          type: below
+          value:
+            active_choice: number
+            number: 10
+            unit_of_measurement: °C
+    - condition: or
+      conditions:
+      - condition: zone.in_zone
+        target:
+          entity_id: person.jan
+        options:
+          for: 00:00:00
+          zone: zone.otto_office
+      - condition: zone.in_zone
+        target:
+          entity_id: person.jan
+        options:
+          for: 00:00:00
+          zone: zone.home
+  actions:
+  - action: climate.set_temperature
+    metadata: {}
+    data:
+      temperature: 19
+      hvac_mode: heat_cool
+    target:
+      device_id: 10f0aa48a533aa06291df3e172f36a20
+  - action: notify.mobile_app_pixel_7_pro
+    metadata: {}
+    data:
+      message: Klima an
+  mode: single
