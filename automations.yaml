@@ -4289,7 +4289,7 @@
       title: Lockdown
   mode: single
 - id: '1794501637349'
-  alias: Entwurf Auto
+  alias: Skoda vorheizen
   description: ''
   triggers:
   - trigger: time
@@ -4343,13 +4343,13 @@
           entity_id: person.jan
         options:
           for: 00:00:00
-          zone: zone.otto_office
+          zone: zone.zuhause
       - condition: zone.in_zone
         target:
           entity_id: person.jan
         options:
           for: 00:00:00
-          zone: zone.home
+          zone: zone.otto_office
   actions:
   - action: climate.set_temperature
     metadata: {}
