@@ -4363,3 +4363,28 @@
     data:
       message: Klima an
   mode: single
+- id: '1794987281961'
+  alias: Entwurf Auto laden Benachrichtigung
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.skoda_superb_combi_ladestatus
+    to:
+    - charging
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+  conditions:
+  - condition: zone.in_zone
+    target:
+      entity_id:
+      - person.jan
+      - person.steffi
+    options:
+      for: 00:00:00
+      zone: zone.otto_office
+      behavior: any
+  actions: []
+  mode: single
