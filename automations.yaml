@@ -1216,7 +1216,7 @@
       - use_transition
       night_lights_conditions:
       - sun_enabled
-      night_light_brightness: 34
+      night_light_brightness: 48
       ambient_light_value: 40
       include_dynamic_lighting: enable_sun_elevation_colour_brightness
       dynamic_lighting_max_brightness: 88
@@ -4369,12 +4369,11 @@
   triggers:
   - trigger: state
     entity_id:
-    - sensor.skoda_superb_combi_ladestatus
-    to:
-    - charging
+    - binary_sensor.skoda_superb_combi_ladekabel
+    to: 'on'
     for:
       hours: 0
-      minutes: 1
+      minutes: 2
       seconds: 0
   conditions:
   - condition: zone.in_zone
@@ -4386,5 +4385,31 @@
       for: 00:00:00
       zone: zone.otto_office
       behavior: any
-  actions: []
+  actions:
+  - action: shell_command.create_umpark_ics
+    data:
+      start: '{{ (now() + timedelta(hours=2, minutes=45)).strftime(''%Y%m%dT%H%M%S'')
+        }}'
+      end: '{{ (now() + timedelta(hours=3, minutes=0)).strftime(''%Y%m%dT%H%M%S'')
+        }}'
+      uid: ha-umparken-{{ now().strftime('%Y%m%dT%H%M%S') }}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - action: smtp.send_message
+    data:
+      title: Auto umparken
+      message: 'Das Auto wurde um {{ now().strftime(''%H:%M'') }} ans Ladekabel gesteckt.
+        Bitte um {{ (now() + timedelta(hours=2, minutes=45)).strftime(''%H:%M'') }}
+        umparken. Die Kalendereinladung ist im Anhang.
+
+        '
+      data:
+        attachments:
+        - file_path: /config/www/auto-umparken.ics
+          filename: auto-umparken.ics
+    target:
+      entity_id: notify.jan_amundsen_jan_amundsen
   mode: single
